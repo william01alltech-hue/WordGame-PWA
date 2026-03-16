@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英文單字防衛戰 V14 - 1200字會考大圓滿版</title>
+    <title>英文單字防衛戰 V15 - 雙模切換終極版</title>
     
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,174 +14,137 @@
            ★ CSS 變數主題庫 (Theme Engine) ★
            ========================================= */
         :root, body[data-theme="cyberpunk"] {
-            --bg-main: #111;
-            --text-main: #00ffcc;
-            --title-shadow: 0 0 15px #00ffcc;
-            --title-accent: #ff0055;
-            --title-accent-shadow: 0 0 10px #ff0055;
-            --board-bg: #0a0a0a;
-            --board-border: #333;
-            --board-shadow: 0 0 40px rgba(0,255,204,0.1);
+            --bg-main: #111; --text-main: #00ffcc;
+            --title-shadow: 0 0 15px #00ffcc; --title-accent: #ff0055; --title-accent-shadow: 0 0 10px #ff0055;
+            --board-bg: #0a0a0a; --board-border: #333; --board-shadow: 0 0 40px rgba(0,255,204,0.1);
             --board-bg-img: linear-gradient(#111 2px, transparent 2px), linear-gradient(90deg, #111 2px, transparent 2px);
-            --block-bg: #ff0055;
-            --block-border: #ff4d88;
-            --block-bg-resting: #b3003b;
-            --block-border-resting: #80002a;
-            --block-text: white;
-            --input-bg: #222;
-            --input-text: #00ffcc;
-            --input-border: #444;
-            --input-focus: #00ffcc;
-            --panel-bg: #222;
-            --panel-text: #ddd;
+            --block-bg: #ff0055; --block-border: #ff4d88;
+            --block-bg-resting: #b3003b; --block-border-resting: #80002a; --block-text: white;
+            --input-bg: #222; --input-text: #00ffcc; --input-border: #444; --input-focus: #00ffcc;
+            --panel-bg: #222; --panel-text: #ddd;
         }
 
         body[data-theme="arcade"] {
-            --bg-main: #2b2b2b;
-            --text-main: #ffe000;
-            --title-shadow: 3px 3px 0px #e52521;
-            --title-accent: #e52521;
-            --title-accent-shadow: none;
-            --board-bg: #000;
-            --board-border: #ffe000;
-            --board-shadow: 0 0 20px rgba(255,224,0,0.2);
+            --bg-main: #2b2b2b; --text-main: #ffe000;
+            --title-shadow: 3px 3px 0px #e52521; --title-accent: #e52521; --title-accent-shadow: none;
+            --board-bg: #000; --board-border: #ffe000; --board-shadow: 0 0 20px rgba(255,224,0,0.2);
             --board-bg-img: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.05) 2px, rgba(255,255,255,0.05) 4px);
-            --block-bg: #e52521;
-            --block-border: #fff;
-            --block-bg-resting: #8a1614;
-            --block-border-resting: #aaaaaa;
-            --block-text: white;
-            --input-bg: #000;
-            --input-text: #ffe000;
-            --input-border: #ffe000;
-            --input-focus: #e52521;
-            --panel-bg: #1a1a1a;
-            --panel-text: #ccc;
+            --block-bg: #e52521; --block-border: #fff;
+            --block-bg-resting: #8a1614; --block-border-resting: #aaaaaa; --block-text: white;
+            --input-bg: #000; --input-text: #ffe000; --input-border: #ffe000; --input-focus: #e52521;
+            --panel-bg: #1a1a1a; --panel-text: #ccc;
         }
 
         body[data-theme="light"] {
-            --bg-main: #f4f6f9;
-            --text-main: #2c3e50;
-            --title-shadow: none;
-            --title-accent: #3498db;
-            --title-accent-shadow: none;
-            --board-bg: #ffffff;
-            --board-border: #bdc3c7;
-            --board-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --bg-main: #f4f6f9; --text-main: #2c3e50;
+            --title-shadow: none; --title-accent: #3498db; --title-accent-shadow: none;
+            --board-bg: #ffffff; --board-border: #bdc3c7; --board-shadow: 0 10px 30px rgba(0,0,0,0.1);
             --board-bg-img: none;
-            --block-bg: #3498db;
-            --block-border: #2980b9;
-            --block-bg-resting: #7f8c8d;
-            --block-border-resting: #95a5a6;
-            --block-text: white;
-            --input-bg: #fff;
-            --input-text: #2c3e50;
-            --input-border: #bdc3c7;
-            --input-focus: #3498db;
-            --panel-bg: #ffffff;
-            --panel-text: #333;
+            --block-bg: #3498db; --block-border: #2980b9;
+            --block-bg-resting: #7f8c8d; --block-border-resting: #95a5a6; --block-text: white;
+            --input-bg: #fff; --input-text: #2c3e50; --input-border: #bdc3c7; --input-focus: #3498db;
+            --panel-bg: #ffffff; --panel-text: #333;
         }
 
-        /* --- 全域設定 --- */
         body {
             background-color: var(--bg-main); color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex; flex-direction: column; align-items: center;
-            margin: 0; padding: 20px; overflow-x: hidden;
-            transition: background-color 0.3s, color 0.3s;
+            margin: 0; padding: 15px; overflow-x: hidden; transition: 0.3s;
         }
         
-        h2 { color: var(--text-main); text-shadow: var(--title-shadow); margin-top:0; transition: 0.3s; }
+        h2 { color: var(--text-main); text-shadow: var(--title-shadow); margin-top:0; margin-bottom: 10px; transition: 0.3s; font-size: 24px;}
         h2 span { color: var(--title-accent); text-shadow: var(--title-accent-shadow); }
 
         .global-shake { animation: anim-global-shake 0.3s cubic-bezier(.36,.07,.19,.97) both; }
-        @keyframes anim-global-shake {
-            0%, 100% { transform: translate(0, 0) rotate(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translate(-15px, 12px) rotate(-2deg); }
-            20%, 40%, 60%, 80% { transform: translate(15px, -12px) rotate(2deg); }
-        }
-
-        #flash-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: white; z-index: 9999; opacity: 0; pointer-events: none;
-        }
-        .flash-active { animation: anim-flash 0.4s ease-out forwards; }
-        @keyframes anim-flash { 0% { opacity: 0.9; } 100% { opacity: 0; } }
+        @keyframes anim-global-shake { 10%, 90% { transform: translate(-5px, 5px) rotate(-1deg); } 20%, 80% { transform: translate(5px, -5px) rotate(1deg); } }
 
         /* --- 控制面板 --- */
         #control-panel {
             width: 100%; max-width: 400px; display: flex; flex-wrap: wrap;
             justify-content: space-between; gap: 6px; margin-bottom: 10px; align-items: center; z-index: 100;
         }
-        select, button { padding: 6px 8px; font-size: 14px; border-radius: 5px; border: none; outline: none; cursor: pointer; font-weight:bold; }
+        select, button { padding: 8px 5px; font-size: 14px; border-radius: 5px; border: none; outline: none; cursor: pointer; font-weight:bold; }
         select { background-color: var(--input-bg); color: var(--input-text); border: 1px solid var(--input-border); }
         
-        button { background-color: #27ae60; color: white; flex-grow: 1; transition: 0.2s;}
-        button:hover { background-color: #2ecc71; box-shadow: 0 0 10px #2ecc71; }
+        button { background-color: #27ae60; color: white; transition: 0.2s;}
         button:disabled { background-color: #555; cursor: not-allowed; box-shadow:none; color:#888;}
-        
         #bgm-toggle-btn { background-color: #8e44ad; width: 48%; }
         #bgm-toggle-btn.off { background-color: #7f8c8d; text-decoration: line-through;}
-
         #level-select { background-color: #e67e22; color: white; width: 48%; border:none;}
 
-        .score-board { font-size: 22px; font-weight: 900; color: var(--text-main); width: 100%; text-align: right; text-shadow: var(--title-shadow); margin-top: 5px; transition: 0.3s;}
+        .score-board { font-size: 20px; font-weight: 900; color: var(--text-main); width: 100%; text-align: right; text-shadow: var(--title-shadow); margin-top: 5px; transition: 0.3s;}
 
         /* --- 遊戲掉落區 --- */
         #game-board {
-            width: 100%; max-width: 400px; height: 500px; 
+            width: 100%; max-width: 400px; height: 420px; 
             background-color: var(--board-bg); border: 4px solid var(--board-border); 
             border-radius: 10px; position: relative; box-shadow: var(--board-shadow); 
-            perspective: 1000px; z-index: 1; transition: 0.3s;
+            overflow: hidden; z-index: 1; transition: 0.3s;
             background-image: var(--board-bg-img); background-size: 30px 30px; 
         }
         #game-board.game-over { border-color: red !important; box-shadow: 0 0 100px rgba(255, 0, 0, 0.8) !important; }
 
         .word-block {
-            position: absolute; background-color: var(--block-bg); padding: 10px 18px;
-            border-radius: 6px; font-size: 22px; font-weight: 900; color: var(--block-text);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4); white-space: nowrap; transform-origin: center center; 
+            position: absolute; background-color: var(--block-bg); padding: 8px 15px;
+            border-radius: 6px; font-size: 20px; font-weight: 900; color: var(--block-text);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4); white-space: nowrap; 
             z-index: 10; border: 2px solid var(--block-border); transition: background-color 0.2s, border-color 0.2s;
         }
         .word-block.resting { background-color: var(--block-bg-resting); border-color: var(--block-border-resting); }
 
-        /* --- 輸入區 --- */
-        #input-container { width: 100%; max-width: 400px; margin-top: 15px; z-index: 100; position: relative;}
+        /* --- 輸入與操作區 --- */
+        #action-area { width: 100%; max-width: 400px; margin-top: 15px; z-index: 100; min-height: 120px; }
+        
+        /* 鍵盤輸入框 */
         #type-input {
-            width: 100%; padding: 15px; font-size: 26px; text-align: center; border: 4px solid var(--input-border);
+            width: 100%; padding: 15px; font-size: 24px; text-align: center; border: 4px solid var(--input-border);
             border-radius: 8px; box-sizing: border-box; outline: none; transition: all 0.2s;
             font-weight: bold; background-color: var(--input-bg); color: var(--input-text); text-transform: uppercase;
         }
         #type-input:focus { border-color: var(--input-focus); box-shadow: 0 0 20px var(--input-focus); }
 
+        /* 選擇題按鈕區 */
+        #mc-container {
+            display: none; /* 預設隱藏，切換模式才顯示 */
+            grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; height: 100%;
+        }
+        .mc-btn {
+            background-color: var(--input-bg); color: var(--input-text);
+            border: 2px solid var(--input-border); padding: 15px 5px; font-size: 18px;
+            border-radius: 8px; cursor: pointer; word-break: break-word; transition: 0.1s;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+        }
+        .mc-btn:active { transform: scale(0.95); }
+        .mc-btn:hover:not(:disabled) { border-color: var(--input-focus); box-shadow: 0 0 10px var(--input-focus); }
+        .mc-btn.correct { background-color: #27ae60 !important; color: white !important; border-color: #2ecc71 !important; box-shadow: 0 0 15px #2ecc71;}
+        .mc-btn.wrong { background-color: #c0392b !important; color: white !important; border-color: #e74c3c !important; box-shadow: 0 0 15px #e74c3c;}
+
         /* --- 特效 --- */
-        .eff-glow { animation: anim-glow 0.8s forwards; background-color: var(--input-focus) !important; }
-        @keyframes anim-glow { 40% { transform: scale(4); opacity: 1; } 100% { transform: scale(7); opacity: 0; } }
-        .eff-flyup { animation: anim-flyup 0.5s ease-in forwards; }
-        @keyframes anim-flyup { 100% { transform: translateY(-1000px) scale(3) rotate(1080deg); opacity: 0; } }
-        .eff-spin { animation: anim-spin 0.4s forwards; }
-        @keyframes anim-spin { 100% { transform: rotate(3600deg) scale(0); opacity: 0; } }
-        .particle { position: absolute; width: 10px; height: 10px; pointer-events: none; z-index: 998; animation: anim-particle 0.6s forwards; }
-        @keyframes anim-particle { 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
+        .eff-glow { animation: anim-glow 0.5s forwards; background-color: var(--input-focus) !important; color: var(--bg-main)!important;}
+        @keyframes anim-glow { 50% { transform: scale(3); opacity: 1; } 100% { transform: scale(5); opacity: 0; } }
     </style>
 </head>
 <body data-theme="cyberpunk">
 
-    <div id="flash-overlay"></div>
-
     <h2>單字防衛戰 <span>DEFENSE</span></h2>
     
     <div id="control-panel">
-        <select id="mode-select" style="width: 23%;">
-            <option value="A">中->英</option>
-            <option value="B">英->中</option>
-            <option value="C">混合</option>
+        <select id="input-mode-select" style="width: 48%; background-color: #3498db; color: white; border: none;">
+            <option value="typing">⌨️ 鍵盤打字模式</option>
+            <option value="mc" selected>👆 選擇題 (手機推薦)</option>
         </select>
-        <select id="speed-select" style="width: 23%;">
-            <option value="1">慢速</option>
-            <option value="3" selected>中速</option>
-            <option value="6">快速</option>
-            <option value="10">極速</option>
+        
+        <select id="mode-select" style="width: 48%;">
+            <option value="A">出題: 中文 找 英文</option>
+            <option value="B">出題: 英文 找 中文</option>
+            <option value="C">混合隨機</option>
+        </select>
+        
+        <select id="speed-select" style="width: 48%;">
+            <option value="1">🐢 慢速</option>
+            <option value="2" selected>🚶 中速</option>
+            <option value="4">🏃 快速</option>
         </select>
         
         <select id="level-select">
@@ -195,118 +158,127 @@
         </select>
 
         <button id="bgm-toggle-btn">🔊 BGM: ON</button>
-        
         <select id="theme-select" style="width: 48%;">
-            <option value="cyberpunk" selected>🎨 賽博主題</option>
-            <option value="arcade">🎨 街機主題</option>
-            <option value="light">🎨 校園主題</option>
+            <option value="cyberpunk" selected>🎨 賽博</option>
+            <option value="arcade">🎨 街機</option>
+            <option value="light">🎨 校園</option>
         </select>
 
-        <button id="start-btn" disabled style="width: 100%; margin-top:5px; padding: 10px;">載入單字中...</button>
+        <button id="start-btn" disabled style="width: 100%; margin-top:5px; padding: 12px; font-size: 16px;">載入單字中...</button>
         <div class="score-board">SCORE: <span id="score-display">0</span></div>
     </div>
 
     <div id="game-board"></div>
-    <div id="input-container">
-        <input type="text" id="type-input" placeholder="請先點擊開始遊戲" disabled autocomplete="off">
+    
+    <div id="action-area">
+        <input type="text" id="type-input" placeholder="請先點擊開始遊戲" disabled autocomplete="off" style="display: none;">
+        
+        <div id="mc-container">
+            <button class="mc-btn" disabled>準備中</button>
+            <button class="mc-btn" disabled>準備中</button>
+            <button class="mc-btn" disabled>準備中</button>
+            <button class="mc-btn" disabled>準備中</button>
+        </div>
     </div>
 
     <script>
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const themeSelect = document.getElementById("theme-select");
-        themeSelect.addEventListener("change", (e) => document.body.setAttribute('data-theme', e.target.value));
+        
+        // 主題切換
+        document.getElementById("theme-select").addEventListener("change", (e) => document.body.setAttribute('data-theme', e.target.value));
 
         // --- BGM 引擎 ---
         let isBgmPlaying = false, isBgmEnabled = true, nextNoteTime = 0, current16thNote = 0, bgmTimerID;
         const cpBass = [36, 36, 36, 39, 36, 36, 36, 43, 36, 36, 36, 39, 36, 34, 34, 46];
-
         function playBGMNote(time) {
-            const midi = cpBass[current16thNote] - 12; 
-            const freq = 440 * Math.pow(2, (midi - 69) / 12);
+            const freq = 440 * Math.pow(2, ((cpBass[current16thNote] - 12) - 69) / 12);
             const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.type = 'sawtooth'; osc.frequency.value = freq;
-            gain.gain.setValueAtTime(0.1, time); gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+            gain.gain.setValueAtTime(0.08, time); gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
             osc.start(time); osc.stop(time + 0.1);
         }
-
         function bgmScheduler() {
             while (nextNoteTime < audioCtx.currentTime + 0.1) {
-                playBGMNote(nextNoteTime);
-                const secondsPerBeat = 60.0 / 130;
-                nextNoteTime += 0.25 * secondsPerBeat;
-                current16thNote = (current16thNote + 1) % 16;
+                playBGMNote(nextNoteTime); nextNoteTime += 0.25 * (60.0 / 120); current16thNote = (current16thNote + 1) % 16;
             }
             bgmTimerID = setTimeout(bgmScheduler, 25);
         }
-
         function startBGM() { if (isBgmEnabled && !isBgmPlaying) { isBgmPlaying = true; nextNoteTime = audioCtx.currentTime; bgmScheduler(); } }
         function stopBGM() { isBgmPlaying = false; clearTimeout(bgmTimerID); }
-
         document.getElementById("bgm-toggle-btn").addEventListener("click", function() {
-            isBgmEnabled = !isBgmEnabled;
-            this.textContent = isBgmEnabled ? "🔊 BGM: ON" : "🔇 BGM: OFF";
-            this.classList.toggle("off", !isBgmEnabled);
-            isBgmEnabled ? startBGM() : stopBGM();
+            isBgmEnabled = !isBgmEnabled; this.textContent = isBgmEnabled ? "🔊 BGM: ON" : "🔇 BGM: OFF";
+            this.classList.toggle("off", !isBgmEnabled); isBgmEnabled ? startBGM() : stopBGM();
         });
 
         // =========================================
-        // ★ 遊戲邏輯 ★
+        // ★ 核心遊戲邏輯 ★
         // =========================================
-        let fetchedWords = []; // 存 1200 字
-        let activePool = [];   // 目前選定學期的字
-        let activeBlocks = [];
+        let fetchedWords = []; let activePool = []; let activeBlocks = [];
         let gameInterval, spawnInterval;
-        let fallSpeed = 3, isGameOver = false, score = 0, currentMode = "A";
+        let fallSpeed = 2, isGameOver = false, score = 0, currentMode = "A";
+        
+        // 操作模式狀態
+        let currentInputMode = "mc"; 
+        let currentTargetBlock = null; // 選擇題目前鎖定最底下的方塊
 
         const board = document.getElementById("game-board");
-        const inputField = document.getElementById("type-input");
+        const typeInput = document.getElementById("type-input");
+        const mcContainer = document.getElementById("mc-container");
         const startBtn = document.getElementById("start-btn");
         const scoreDisplay = document.getElementById("score-display");
-        const levelSelect = document.getElementById("level-select");
+        const inputModeSelect = document.getElementById("input-mode-select");
 
-        // 初始化：讀取本地 words.json
+        // 監聽模式切換
+        inputModeSelect.addEventListener("change", (e) => {
+            currentInputMode = e.target.value;
+            if (currentInputMode === "typing") {
+                typeInput.style.display = "block"; mcContainer.style.display = "none";
+            } else {
+                typeInput.style.display = "none"; mcContainer.style.display = "grid";
+            }
+        });
+
         async function initApp() {
             try {
-                // 指向您剛剛生成的 words.json
                 const response = await fetch('words.json');
                 if (!response.ok) throw new Error();
                 fetchedWords = await response.json();
-                startBtn.textContent = "開始遊戲 (1200字已就緒)";
-                startBtn.disabled = false;
+                startBtn.textContent = "🚀 開始防衛 (1200字就緒)"; startBtn.disabled = false;
+                
+                // 初始化介面
+                inputModeSelect.dispatchEvent(new Event('change'));
             } catch (e) {
                 startBtn.textContent = "無法載入 words.json";
-                console.error("請確認 words.json 是否在同一個資料夾。");
             }
         }
 
         startBtn.addEventListener("click", () => {
             if (audioCtx.state === 'suspended') audioCtx.resume();
             
-            // 根據選單過濾單字
-            const selectedLevel = levelSelect.value;
-            if (selectedLevel === "ALL") {
-                activePool = [...fetchedWords];
-            } else {
-                activePool = fetchedWords.filter(w => w.level === selectedLevel);
-            }
-
+            const selectedLevel = document.getElementById("level-select").value;
+            activePool = selectedLevel === "ALL" ? [...fetchedWords] : fetchedWords.filter(w => w.level === selectedLevel);
             if (activePool.length === 0) { alert("該學期沒有單字！"); return; }
 
-            // 重置遊戲
-            board.innerHTML = ""; activeBlocks = []; isGameOver = false; score = 0;
-            scoreDisplay.textContent = "0"; board.classList.remove("game-over");
-            document.body.style.backgroundColor = "";
+            board.innerHTML = ""; activeBlocks = []; isGameOver = false; score = 0; scoreDisplay.textContent = "0";
+            board.classList.remove("game-over"); currentTargetBlock = null;
 
             currentMode = document.getElementById("mode-select").value;
             fallSpeed = parseInt(document.getElementById("speed-select").value);
             
-            inputField.disabled = false; inputField.value = ""; inputField.focus();
-            startBtn.disabled = true; levelSelect.disabled = true;
+            // 鎖定設定
+            startBtn.disabled = true; document.querySelectorAll("select").forEach(s => s.disabled = true);
+
+            // 啟動操作區
+            if (currentInputMode === "typing") {
+                typeInput.disabled = false; typeInput.value = ""; typeInput.focus();
+            } else {
+                updateMCButtons(null); // 清空按鈕
+            }
 
             startBGM();
-            spawnInterval = setInterval(spawnWord, fallSpeed > 5 ? 1200 : 2000);
-            gameInterval = setInterval(updatePhysics, 50);
+            spawnInterval = setInterval(spawnWord, fallSpeed > 2 ? 1500 : 2500);
+            gameInterval = setInterval(updatePhysics, 40);
         });
 
         function spawnWord() {
@@ -319,10 +291,9 @@
             blockEl.textContent = isCnToEn ? wordData.ch : wordData.en;
             board.appendChild(blockEl);
             
-            blockEl.style.left = Math.random() * (board.clientWidth - blockEl.clientWidth - 20) + "px";
+            blockEl.style.left = Math.random() * (board.clientWidth - blockEl.clientWidth - 10) + "px";
             activeBlocks.push({ 
-                element: blockEl, 
-                y: 0, 
+                element: blockEl, y: 0, 
                 target: isCnToEn ? wordData.en.toLowerCase() : wordData.ch,
                 isResting: false 
             });
@@ -334,65 +305,136 @@
 
             activeBlocks.forEach((block, index) => {
                 if (block.isResting) return;
-
                 let nextY = block.y + fallSpeed;
                 let blockBottom = nextY + block.element.offsetHeight;
 
-                // 碰到地板
                 if (blockBottom >= board.clientHeight) {
-                    block.y = board.clientHeight - block.element.offsetHeight;
-                    block.isResting = true;
+                    block.y = board.clientHeight - block.element.offsetHeight; block.isResting = true;
                 } else {
-                    // 檢查堆疊碰撞
                     for (let j = 0; j < index; j++) {
                         let other = activeBlocks[j];
                         if (!other.isResting) continue;
-                        
-                        let bLeft = parseFloat(block.element.style.left);
-                        let bRight = bLeft + block.element.offsetWidth;
-                        let oLeft = parseFloat(other.element.style.left);
-                        let oRight = oLeft + other.element.offsetWidth;
-
+                        let bLeft = parseFloat(block.element.style.left), bRight = bLeft + block.element.offsetWidth;
+                        let oLeft = parseFloat(other.element.style.left), oRight = oLeft + other.element.offsetWidth;
                         if (blockBottom >= other.y && bRight > oLeft && bLeft < oRight) {
-                            block.y = other.y - block.element.offsetHeight;
-                            block.isResting = true;
-                            break;
+                            block.y = other.y - block.element.offsetHeight; block.isResting = true; break;
                         }
                     }
                 }
-
                 if (!block.isResting) block.y = nextY;
                 block.element.style.top = block.y + "px";
                 if (block.isResting) block.element.classList.add("resting");
-
-                // 滿到頂部
                 if (block.isResting && block.y <= 0) triggerGameOver();
+            });
+
+            // --- 選擇題模式：永遠鎖定最靠近底部的方塊 ---
+            if (currentInputMode === "mc" && activeBlocks.length > 0) {
+                // activeBlocks 已經依照 y 座標排序過，[0] 就是最底下的
+                let lowestBlock = activeBlocks[0];
+                if (lowestBlock !== currentTargetBlock) {
+                    currentTargetBlock = lowestBlock;
+                    updateMCButtons(lowestBlock);
+                }
+            } else if (currentInputMode === "mc" && activeBlocks.length === 0) {
+                if (currentTargetBlock !== null) { currentTargetBlock = null; updateMCButtons(null); }
+            }
+        }
+
+        // =========================================
+        // ★ 選擇題模式核心邏輯 ★
+        // =========================================
+        function updateMCButtons(block) {
+            const buttons = mcContainer.querySelectorAll(".mc-btn");
+            if (!block) {
+                buttons.forEach(btn => { btn.textContent = "等待單字..."; btn.onclick = null; btn.disabled = true; });
+                return;
+            }
+
+            let correctAnswer = block.target;
+            let options = [correctAnswer];
+            let isTargetEnglish = /^[a-zA-Z\s-]+$/.test(correctAnswer); // 判斷目標是英文還是中文
+
+            // 產生 3 個錯誤選項
+            let attempts = 0;
+            while(options.length < 4 && attempts < 100) {
+                attempts++;
+                let randWord = activePool[Math.floor(Math.random() * activePool.length)];
+                let wrongVal = isTargetEnglish ? randWord.en.toLowerCase() : randWord.ch;
+                if (!options.includes(wrongVal)) options.push(wrongVal);
+            }
+
+            // 洗牌
+            options.sort(() => Math.random() - 0.5);
+
+            buttons.forEach((btn, index) => {
+                btn.textContent = options[index];
+                btn.className = "mc-btn"; // 重置顏色
+                btn.disabled = false;
+                btn.onclick = () => handleMCClick(options[index], btn, block);
             });
         }
 
-        inputField.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                const val = inputField.value.trim().toLowerCase();
-                let hitIdx = activeBlocks.findIndex(b => b.target.toLowerCase() === val);
+        function handleMCClick(selectedAnswer, btnElement, targetBlock) {
+            if (isGameOver || !targetBlock) return;
+
+            // 答對了！
+            if (selectedAnswer === targetBlock.target) {
+                btnElement.classList.add("correct");
+                const hitIdx = activeBlocks.indexOf(targetBlock);
+                if (hitIdx > -1) activeBlocks.splice(hitIdx, 1);
                 
+                targetBlock.element.classList.add("eff-glow");
+                setTimeout(() => targetBlock.element.remove(), 400);
+                
+                score += 10; scoreDisplay.textContent = score;
+                currentTargetBlock = null; // 觸發下一幀更新按鈕
+                mcContainer.querySelectorAll(".mc-btn").forEach(b => b.onclick = null); // 暫停連點
+                
+            } else {
+                // 答錯了！
+                btnElement.classList.add("wrong");
+                document.body.style.backgroundColor = "#4a0000";
+                setTimeout(()=> document.body.style.backgroundColor = "", 150);
+                setTimeout(()=> btnElement.classList.remove("wrong"), 300);
+            }
+        }
+
+        // --- 鍵盤模式核心邏輯 ---
+        typeInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && currentInputMode === "typing") {
+                const val = typeInput.value.trim().toLowerCase();
+                let hitIdx = activeBlocks.findIndex(b => b.target.toLowerCase() === val);
                 if (hitIdx !== -1) {
                     const b = activeBlocks.splice(hitIdx, 1)[0];
                     b.element.classList.add("eff-glow");
-                    setTimeout(() => b.element.remove(), 500);
-                    score += 10;
+                    setTimeout(() => b.element.remove(), 400);
+                    score += 15; // 打字比較難，給 15 分
                     scoreDisplay.textContent = score;
+                } else {
+                    document.body.style.backgroundColor = "#4a0000";
+                    setTimeout(()=> document.body.style.backgroundColor = "", 150);
                 }
-                inputField.value = "";
+                typeInput.value = "";
             }
         });
 
         function triggerGameOver() {
-            isGameOver = true; clearInterval(gameInterval); clearInterval(spawnInterval);
-            stopBGM();
-            board.classList.add("game-over");
-            inputField.disabled = true; inputField.placeholder = "GAME OVER";
-            startBtn.disabled = false; startBtn.textContent = "重新挑戰";
-            levelSelect.disabled = false;
+            isGameOver = true; clearInterval(gameInterval); clearInterval(spawnInterval); stopBGM();
+            board.classList.add("game-over"); document.body.classList.add("global-shake");
+            
+            if (currentInputMode === "typing") {
+                typeInput.disabled = true; typeInput.placeholder = "GAME OVER";
+            } else {
+                mcContainer.querySelectorAll(".mc-btn").forEach(b => { b.disabled = true; b.textContent = "GAME OVER"; b.className="mc-btn"; });
+            }
+            
+            startBtn.disabled = false; startBtn.textContent = "🔄 重新挑戰";
+            document.querySelectorAll("select").forEach(s => s.disabled = false);
+        }
+
+        // 註冊 PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
         }
 
         initApp();
