@@ -1,0 +1,5862 @@
+[
+  {
+    "en": "I",
+    "ch": "我",
+    "level": "1A"
+  },
+  {
+    "en": "you",
+    "ch": "你",
+    "level": "1A"
+  },
+  {
+    "en": "he",
+    "ch": "他",
+    "level": "1A"
+  },
+  {
+    "en": "she",
+    "ch": "她",
+    "level": "1A"
+  },
+  {
+    "en": "it",
+    "ch": "它/牠",
+    "level": "1A"
+  },
+  {
+    "en": "we",
+    "ch": "我們",
+    "level": "1A"
+  },
+  {
+    "en": "they",
+    "ch": "他們",
+    "level": "1A"
+  },
+  {
+    "en": "me",
+    "ch": "我(受格)",
+    "level": "1A"
+  },
+  {
+    "en": "him",
+    "ch": "他(受格)",
+    "level": "1A"
+  },
+  {
+    "en": "her",
+    "ch": "她(受格)",
+    "level": "1A"
+  },
+  {
+    "en": "us",
+    "ch": "我們(受格)",
+    "level": "1A"
+  },
+  {
+    "en": "them",
+    "ch": "他們(受格)",
+    "level": "1A"
+  },
+  {
+    "en": "my",
+    "ch": "我的",
+    "level": "1A"
+  },
+  {
+    "en": "your",
+    "ch": "你的",
+    "level": "1A"
+  },
+  {
+    "en": "his",
+    "ch": "他的",
+    "level": "1A"
+  },
+  {
+    "en": "its",
+    "ch": "它的",
+    "level": "1A"
+  },
+  {
+    "en": "our",
+    "ch": "我們的",
+    "level": "1A"
+  },
+  {
+    "en": "their",
+    "ch": "他們的",
+    "level": "1A"
+  },
+  {
+    "en": "mine",
+    "ch": "我的(所有代名詞)",
+    "level": "1A"
+  },
+  {
+    "en": "yours",
+    "ch": "你的(所有代名詞)",
+    "level": "1A"
+  },
+  {
+    "en": "this",
+    "ch": "這個",
+    "level": "1A"
+  },
+  {
+    "en": "that",
+    "ch": "那個",
+    "level": "1A"
+  },
+  {
+    "en": "these",
+    "ch": "這些",
+    "level": "1A"
+  },
+  {
+    "en": "those",
+    "ch": "那些",
+    "level": "1A"
+  },
+  {
+    "en": "am",
+    "ch": "是",
+    "level": "1A"
+  },
+  {
+    "en": "is",
+    "ch": "是",
+    "level": "1A"
+  },
+  {
+    "en": "are",
+    "ch": "是",
+    "level": "1A"
+  },
+  {
+    "en": "was",
+    "ch": "是(過去式)",
+    "level": "1A"
+  },
+  {
+    "en": "were",
+    "ch": "是(過去式)",
+    "level": "1A"
+  },
+  {
+    "en": "be",
+    "ch": "是/成為",
+    "level": "1A"
+  },
+  {
+    "en": "do",
+    "ch": "做/助動詞",
+    "level": "1A"
+  },
+  {
+    "en": "does",
+    "ch": "做/助動詞",
+    "level": "1A"
+  },
+  {
+    "en": "did",
+    "ch": "做(過去式)",
+    "level": "1A"
+  },
+  {
+    "en": "have",
+    "ch": "有",
+    "level": "1A"
+  },
+  {
+    "en": "has",
+    "ch": "有",
+    "level": "1A"
+  },
+  {
+    "en": "had",
+    "ch": "有(過去式)",
+    "level": "1A"
+  },
+  {
+    "en": "can",
+    "ch": "能/會",
+    "level": "1A"
+  },
+  {
+    "en": "could",
+    "ch": "能/會(過去式)",
+    "level": "1A"
+  },
+  {
+    "en": "will",
+    "ch": "將要",
+    "level": "1A"
+  },
+  {
+    "en": "would",
+    "ch": "將要(過去式)",
+    "level": "1A"
+  },
+  {
+    "en": "what",
+    "ch": "什麼",
+    "level": "1A"
+  },
+  {
+    "en": "who",
+    "ch": "誰",
+    "level": "1A"
+  },
+  {
+    "en": "where",
+    "ch": "在哪裡",
+    "level": "1A"
+  },
+  {
+    "en": "when",
+    "ch": "何時",
+    "level": "1A"
+  },
+  {
+    "en": "why",
+    "ch": "為什麼",
+    "level": "1A"
+  },
+  {
+    "en": "how",
+    "ch": "如何",
+    "level": "1A"
+  },
+  {
+    "en": "which",
+    "ch": "哪一個",
+    "level": "1A"
+  },
+  {
+    "en": "whose",
+    "ch": "誰的",
+    "level": "1A"
+  },
+  {
+    "en": "one",
+    "ch": "一",
+    "level": "1A"
+  },
+  {
+    "en": "two",
+    "ch": "二",
+    "level": "1A"
+  },
+  {
+    "en": "three",
+    "ch": "三",
+    "level": "1A"
+  },
+  {
+    "en": "four",
+    "ch": "四",
+    "level": "1A"
+  },
+  {
+    "en": "five",
+    "ch": "五",
+    "level": "1A"
+  },
+  {
+    "en": "six",
+    "ch": "六",
+    "level": "1A"
+  },
+  {
+    "en": "seven",
+    "ch": "七",
+    "level": "1A"
+  },
+  {
+    "en": "eight",
+    "ch": "八",
+    "level": "1A"
+  },
+  {
+    "en": "nine",
+    "ch": "九",
+    "level": "1A"
+  },
+  {
+    "en": "ten",
+    "ch": "十",
+    "level": "1A"
+  },
+  {
+    "en": "eleven",
+    "ch": "十一",
+    "level": "1A"
+  },
+  {
+    "en": "twelve",
+    "ch": "十二",
+    "level": "1A"
+  },
+  {
+    "en": "thirteen",
+    "ch": "十三",
+    "level": "1A"
+  },
+  {
+    "en": "fourteen",
+    "ch": "十四",
+    "level": "1A"
+  },
+  {
+    "en": "fifteen",
+    "ch": "十五",
+    "level": "1A"
+  },
+  {
+    "en": "sixteen",
+    "ch": "十六",
+    "level": "1A"
+  },
+  {
+    "en": "seventeen",
+    "ch": "十七",
+    "level": "1A"
+  },
+  {
+    "en": "eighteen",
+    "ch": "十八",
+    "level": "1A"
+  },
+  {
+    "en": "nineteen",
+    "ch": "十九",
+    "level": "1A"
+  },
+  {
+    "en": "twenty",
+    "ch": "二十",
+    "level": "1A"
+  },
+  {
+    "en": "thirty",
+    "ch": "三十",
+    "level": "1A"
+  },
+  {
+    "en": "forty",
+    "ch": "四十",
+    "level": "1A"
+  },
+  {
+    "en": "fifty",
+    "ch": "五十",
+    "level": "1A"
+  },
+  {
+    "en": "sixty",
+    "ch": "六十",
+    "level": "1A"
+  },
+  {
+    "en": "seventy",
+    "ch": "七十",
+    "level": "1A"
+  },
+  {
+    "en": "eighty",
+    "ch": "八十",
+    "level": "1A"
+  },
+  {
+    "en": "ninety",
+    "ch": "九十",
+    "level": "1A"
+  },
+  {
+    "en": "hundred",
+    "ch": "百",
+    "level": "1A"
+  },
+  {
+    "en": "thousand",
+    "ch": "千",
+    "level": "1A"
+  },
+  {
+    "en": "million",
+    "ch": "百萬",
+    "level": "1A"
+  },
+  {
+    "en": "red",
+    "ch": "紅色",
+    "level": "1A"
+  },
+  {
+    "en": "blue",
+    "ch": "藍色",
+    "level": "1A"
+  },
+  {
+    "en": "green",
+    "ch": "綠色",
+    "level": "1A"
+  },
+  {
+    "en": "yellow",
+    "ch": "黃色",
+    "level": "1A"
+  },
+  {
+    "en": "black",
+    "ch": "黑色",
+    "level": "1A"
+  },
+  {
+    "en": "white",
+    "ch": "白色",
+    "level": "1A"
+  },
+  {
+    "en": "gray",
+    "ch": "灰色",
+    "level": "1A"
+  },
+  {
+    "en": "pink",
+    "ch": "粉紅色",
+    "level": "1A"
+  },
+  {
+    "en": "purple",
+    "ch": "紫色",
+    "level": "1A"
+  },
+  {
+    "en": "brown",
+    "ch": "棕色",
+    "level": "1A"
+  },
+  {
+    "en": "orange",
+    "ch": "橘色/橘子",
+    "level": "1A"
+  },
+  {
+    "en": "father",
+    "ch": "父親",
+    "level": "1A"
+  },
+  {
+    "en": "mother",
+    "ch": "母親",
+    "level": "1A"
+  },
+  {
+    "en": "brother",
+    "ch": "兄弟",
+    "level": "1A"
+  },
+  {
+    "en": "sister",
+    "ch": "姊妹",
+    "level": "1A"
+  },
+  {
+    "en": "grandfather",
+    "ch": "祖父",
+    "level": "1A"
+  },
+  {
+    "en": "grandmother",
+    "ch": "祖母",
+    "level": "1A"
+  },
+  {
+    "en": "uncle",
+    "ch": "叔伯",
+    "level": "1A"
+  },
+  {
+    "en": "aunt",
+    "ch": "姑姨",
+    "level": "1A"
+  },
+  {
+    "en": "son",
+    "ch": "兒子",
+    "level": "1A"
+  },
+  {
+    "en": "daughter",
+    "ch": "女兒",
+    "level": "1A"
+  },
+  {
+    "en": "cousin",
+    "ch": "表/堂兄弟姊妹",
+    "level": "1A"
+  },
+  {
+    "en": "parent",
+    "ch": "父母親",
+    "level": "1A"
+  },
+  {
+    "en": "husband",
+    "ch": "丈夫",
+    "level": "1A"
+  },
+  {
+    "en": "wife",
+    "ch": "妻子",
+    "level": "1A"
+  },
+  {
+    "en": "baby",
+    "ch": "嬰兒",
+    "level": "1A"
+  },
+  {
+    "en": "teacher",
+    "ch": "老師",
+    "level": "1A"
+  },
+  {
+    "en": "student",
+    "ch": "學生",
+    "level": "1A"
+  },
+  {
+    "en": "friend",
+    "ch": "朋友",
+    "level": "1A"
+  },
+  {
+    "en": "classmate",
+    "ch": "同班同學",
+    "level": "1A"
+  },
+  {
+    "en": "boy",
+    "ch": "男孩",
+    "level": "1A"
+  },
+  {
+    "en": "girl",
+    "ch": "女孩",
+    "level": "1A"
+  },
+  {
+    "en": "man",
+    "ch": "男人",
+    "level": "1A"
+  },
+  {
+    "en": "woman",
+    "ch": "女人",
+    "level": "1A"
+  },
+  {
+    "en": "child",
+    "ch": "小孩",
+    "level": "1A"
+  },
+  {
+    "en": "person",
+    "ch": "人(單數)",
+    "level": "1A"
+  },
+  {
+    "en": "people",
+    "ch": "人們(複數)",
+    "level": "1A"
+  },
+  {
+    "en": "school",
+    "ch": "學校",
+    "level": "1A"
+  },
+  {
+    "en": "class",
+    "ch": "班級/課",
+    "level": "1A"
+  },
+  {
+    "en": "book",
+    "ch": "書",
+    "level": "1A"
+  },
+  {
+    "en": "pen",
+    "ch": "原子筆",
+    "level": "1A"
+  },
+  {
+    "en": "pencil",
+    "ch": "鉛筆",
+    "level": "1A"
+  },
+  {
+    "en": "eraser",
+    "ch": "橡皮擦",
+    "level": "1A"
+  },
+  {
+    "en": "ruler",
+    "ch": "尺",
+    "level": "1A"
+  },
+  {
+    "en": "bag",
+    "ch": "袋子/書包",
+    "level": "1A"
+  },
+  {
+    "en": "desk",
+    "ch": "書桌",
+    "level": "1A"
+  },
+  {
+    "en": "chair",
+    "ch": "椅子",
+    "level": "1A"
+  },
+  {
+    "en": "paper",
+    "ch": "紙",
+    "level": "1A"
+  },
+  {
+    "en": "box",
+    "ch": "盒子",
+    "level": "1A"
+  },
+  {
+    "en": "picture",
+    "ch": "圖片",
+    "level": "1A"
+  },
+  {
+    "en": "map",
+    "ch": "地圖",
+    "level": "1A"
+  },
+  {
+    "en": "dog",
+    "ch": "狗",
+    "level": "1A"
+  },
+  {
+    "en": "cat",
+    "ch": "貓",
+    "level": "1A"
+  },
+  {
+    "en": "bird",
+    "ch": "鳥",
+    "level": "1A"
+  },
+  {
+    "en": "fish",
+    "ch": "魚",
+    "level": "1A"
+  },
+  {
+    "en": "pig",
+    "ch": "豬",
+    "level": "1A"
+  },
+  {
+    "en": "cow",
+    "ch": "母牛",
+    "level": "1A"
+  },
+  {
+    "en": "horse",
+    "ch": "馬",
+    "level": "1A"
+  },
+  {
+    "en": "sheep",
+    "ch": "綿羊",
+    "level": "1A"
+  },
+  {
+    "en": "chicken",
+    "ch": "雞",
+    "level": "1A"
+  },
+  {
+    "en": "duck",
+    "ch": "鴨",
+    "level": "1A"
+  },
+  {
+    "en": "monkey",
+    "ch": "猴子",
+    "level": "1A"
+  },
+  {
+    "en": "elephant",
+    "ch": "大象",
+    "level": "1A"
+  },
+  {
+    "en": "tiger",
+    "ch": "老虎",
+    "level": "1A"
+  },
+  {
+    "en": "lion",
+    "ch": "獅子",
+    "level": "1A"
+  },
+  {
+    "en": "bear",
+    "ch": "熊",
+    "level": "1A"
+  },
+  {
+    "en": "big",
+    "ch": "大的",
+    "level": "1A"
+  },
+  {
+    "en": "small",
+    "ch": "小的",
+    "level": "1A"
+  },
+  {
+    "en": "tall",
+    "ch": "高的",
+    "level": "1A"
+  },
+  {
+    "en": "short",
+    "ch": "矮的/短的",
+    "level": "1A"
+  },
+  {
+    "en": "long",
+    "ch": "長的",
+    "level": "1A"
+  },
+  {
+    "en": "old",
+    "ch": "老的/舊的",
+    "level": "1A"
+  },
+  {
+    "en": "new",
+    "ch": "新的",
+    "level": "1A"
+  },
+  {
+    "en": "young",
+    "ch": "年輕的",
+    "level": "1A"
+  },
+  {
+    "en": "good",
+    "ch": "好的",
+    "level": "1A"
+  },
+  {
+    "en": "bad",
+    "ch": "壞的",
+    "level": "1A"
+  },
+  {
+    "en": "happy",
+    "ch": "快樂的",
+    "level": "1A"
+  },
+  {
+    "en": "sad",
+    "ch": "悲傷的",
+    "level": "1A"
+  },
+  {
+    "en": "angry",
+    "ch": "生氣的",
+    "level": "1A"
+  },
+  {
+    "en": "tired",
+    "ch": "疲倦的",
+    "level": "1A"
+  },
+  {
+    "en": "hungry",
+    "ch": "飢餓的",
+    "level": "1A"
+  },
+  {
+    "en": "thirsty",
+    "ch": "口渴的",
+    "level": "1A"
+  },
+  {
+    "en": "hot",
+    "ch": "熱的",
+    "level": "1A"
+  },
+  {
+    "en": "cold",
+    "ch": "冷的",
+    "level": "1A"
+  },
+  {
+    "en": "warm",
+    "ch": "溫暖的",
+    "level": "1A"
+  },
+  {
+    "en": "cool",
+    "ch": "涼爽的",
+    "level": "1A"
+  },
+  {
+    "en": "eat",
+    "ch": "吃",
+    "level": "1A"
+  },
+  {
+    "en": "drink",
+    "ch": "喝",
+    "level": "1A"
+  },
+  {
+    "en": "play",
+    "ch": "玩",
+    "level": "1A"
+  },
+  {
+    "en": "run",
+    "ch": "跑",
+    "level": "1A"
+  },
+  {
+    "en": "jump",
+    "ch": "跳躍",
+    "level": "1A"
+  },
+  {
+    "en": "swim",
+    "ch": "游泳",
+    "level": "1A"
+  },
+  {
+    "en": "sit",
+    "ch": "坐",
+    "level": "1A"
+  },
+  {
+    "en": "stand",
+    "ch": "站立",
+    "level": "1A"
+  },
+  {
+    "en": "read",
+    "ch": "閱讀",
+    "level": "1A"
+  },
+  {
+    "en": "write",
+    "ch": "寫",
+    "level": "1A"
+  },
+  {
+    "en": "listen",
+    "ch": "聽",
+    "level": "1A"
+  },
+  {
+    "en": "speak",
+    "ch": "說(語言)",
+    "level": "1A"
+  },
+  {
+    "en": "talk",
+    "ch": "談話",
+    "level": "1A"
+  },
+  {
+    "en": "say",
+    "ch": "說",
+    "level": "1A"
+  },
+  {
+    "en": "tell",
+    "ch": "告訴",
+    "level": "1A"
+  },
+  {
+    "en": "look",
+    "ch": "看",
+    "level": "1A"
+  },
+  {
+    "en": "see",
+    "ch": "看見",
+    "level": "1A"
+  },
+  {
+    "en": "watch",
+    "ch": "觀看",
+    "level": "1A"
+  },
+  {
+    "en": "sleep",
+    "ch": "睡覺",
+    "level": "1A"
+  },
+  {
+    "en": "wake",
+    "ch": "醒來",
+    "level": "1A"
+  },
+  {
+    "en": "open",
+    "ch": "打開",
+    "level": "1A"
+  },
+  {
+    "en": "close",
+    "ch": "關閉",
+    "level": "1A"
+  },
+  {
+    "en": "come",
+    "ch": "來",
+    "level": "1A"
+  },
+  {
+    "en": "go",
+    "ch": "去",
+    "level": "1A"
+  },
+  {
+    "en": "apple",
+    "ch": "蘋果",
+    "level": "1A"
+  },
+  {
+    "en": "banana",
+    "ch": "香蕉",
+    "level": "1A"
+  },
+  {
+    "en": "water",
+    "ch": "水",
+    "level": "1A"
+  },
+  {
+    "en": "milk",
+    "ch": "牛奶",
+    "level": "1A"
+  },
+  {
+    "en": "tea",
+    "ch": "茶",
+    "level": "1A"
+  },
+  {
+    "en": "juice",
+    "ch": "果汁",
+    "level": "1A"
+  },
+  {
+    "en": "bread",
+    "ch": "麵包",
+    "level": "1A"
+  },
+  {
+    "en": "rice",
+    "ch": "米飯",
+    "level": "1A"
+  },
+  {
+    "en": "egg",
+    "ch": "蛋",
+    "level": "1A"
+  },
+  {
+    "en": "monday",
+    "ch": "星期一",
+    "level": "1A"
+  },
+  {
+    "en": "tuesday",
+    "ch": "星期二",
+    "level": "1A"
+  },
+  {
+    "en": "wednesday",
+    "ch": "星期三",
+    "level": "1A"
+  },
+  {
+    "en": "thursday",
+    "ch": "星期四",
+    "level": "1A"
+  },
+  {
+    "en": "friday",
+    "ch": "星期五",
+    "level": "1A"
+  },
+  {
+    "en": "saturday",
+    "ch": "星期六",
+    "level": "1A"
+  },
+  {
+    "en": "sunday",
+    "ch": "星期日",
+    "level": "1A"
+  },
+  {
+    "en": "today",
+    "ch": "今天",
+    "level": "1A"
+  },
+  {
+    "en": "tomorrow",
+    "ch": "明天",
+    "level": "1A"
+  },
+  {
+    "en": "yesterday",
+    "ch": "昨天",
+    "level": "1A"
+  },
+  {
+    "en": "very",
+    "ch": "非常",
+    "level": "1A"
+  },
+  {
+    "en": "too",
+    "ch": "太/也",
+    "level": "1A"
+  },
+  {
+    "en": "much",
+    "ch": "多(不可數)",
+    "level": "1A"
+  },
+  {
+    "en": "many",
+    "ch": "多(可數)",
+    "level": "1A"
+  },
+  {
+    "en": "here",
+    "ch": "這裡",
+    "level": "1A"
+  },
+  {
+    "en": "there",
+    "ch": "那裡",
+    "level": "1A"
+  },
+  {
+    "en": "now",
+    "ch": "現在",
+    "level": "1A"
+  },
+  {
+    "en": "then",
+    "ch": "那時/然後",
+    "level": "1A"
+  },
+  {
+    "en": "in",
+    "ch": "在...裡面",
+    "level": "1A"
+  },
+  {
+    "en": "on",
+    "ch": "在...上面",
+    "level": "1A"
+  },
+  {
+    "en": "at",
+    "ch": "在(特定地點/時間)",
+    "level": "1A"
+  },
+  {
+    "en": "under",
+    "ch": "在...下面",
+    "level": "1A"
+  },
+  {
+    "en": "up",
+    "ch": "向上",
+    "level": "1A"
+  },
+  {
+    "en": "down",
+    "ch": "向下",
+    "level": "1A"
+  },
+  {
+    "en": "to",
+    "ch": "往/向",
+    "level": "1A"
+  },
+  {
+    "en": "for",
+    "ch": "為了/給",
+    "level": "1A"
+  },
+  {
+    "en": "with",
+    "ch": "和/用",
+    "level": "1A"
+  },
+  {
+    "en": "about",
+    "ch": "關於",
+    "level": "1A"
+  },
+  {
+    "en": "january",
+    "ch": "一月",
+    "level": "1B"
+  },
+  {
+    "en": "february",
+    "ch": "二月",
+    "level": "1B"
+  },
+  {
+    "en": "march",
+    "ch": "三月",
+    "level": "1B"
+  },
+  {
+    "en": "april",
+    "ch": "四月",
+    "level": "1B"
+  },
+  {
+    "en": "may",
+    "ch": "五月",
+    "level": "1B"
+  },
+  {
+    "en": "june",
+    "ch": "六月",
+    "level": "1B"
+  },
+  {
+    "en": "july",
+    "ch": "七月",
+    "level": "1B"
+  },
+  {
+    "en": "august",
+    "ch": "八月",
+    "level": "1B"
+  },
+  {
+    "en": "september",
+    "ch": "九月",
+    "level": "1B"
+  },
+  {
+    "en": "october",
+    "ch": "十月",
+    "level": "1B"
+  },
+  {
+    "en": "november",
+    "ch": "十一月",
+    "level": "1B"
+  },
+  {
+    "en": "december",
+    "ch": "十二月",
+    "level": "1B"
+  },
+  {
+    "en": "month",
+    "ch": "月份",
+    "level": "1B"
+  },
+  {
+    "en": "year",
+    "ch": "年",
+    "level": "1B"
+  },
+  {
+    "en": "season",
+    "ch": "季節",
+    "level": "1B"
+  },
+  {
+    "en": "spring",
+    "ch": "春天",
+    "level": "1B"
+  },
+  {
+    "en": "summer",
+    "ch": "夏天",
+    "level": "1B"
+  },
+  {
+    "en": "fall",
+    "ch": "秋天",
+    "level": "1B"
+  },
+  {
+    "en": "autumn",
+    "ch": "秋天",
+    "level": "1B"
+  },
+  {
+    "en": "winter",
+    "ch": "冬天",
+    "level": "1B"
+  },
+  {
+    "en": "weather",
+    "ch": "天氣",
+    "level": "1B"
+  },
+  {
+    "en": "sun",
+    "ch": "太陽",
+    "level": "1B"
+  },
+  {
+    "en": "moon",
+    "ch": "月亮",
+    "level": "1B"
+  },
+  {
+    "en": "star",
+    "ch": "星星",
+    "level": "1B"
+  },
+  {
+    "en": "rain",
+    "ch": "雨",
+    "level": "1B"
+  },
+  {
+    "en": "snow",
+    "ch": "雪",
+    "level": "1B"
+  },
+  {
+    "en": "wind",
+    "ch": "風",
+    "level": "1B"
+  },
+  {
+    "en": "cloud",
+    "ch": "雲",
+    "level": "1B"
+  },
+  {
+    "en": "sky",
+    "ch": "天空",
+    "level": "1B"
+  },
+  {
+    "en": "sunny",
+    "ch": "晴朗的",
+    "level": "1B"
+  },
+  {
+    "en": "rainy",
+    "ch": "下雨的",
+    "level": "1B"
+  },
+  {
+    "en": "cloudy",
+    "ch": "多雲的",
+    "level": "1B"
+  },
+  {
+    "en": "windy",
+    "ch": "風大的",
+    "level": "1B"
+  },
+  {
+    "en": "snowy",
+    "ch": "下雪的",
+    "level": "1B"
+  },
+  {
+    "en": "head",
+    "ch": "頭",
+    "level": "1B"
+  },
+  {
+    "en": "hair",
+    "ch": "頭髮",
+    "level": "1B"
+  },
+  {
+    "en": "face",
+    "ch": "臉",
+    "level": "1B"
+  },
+  {
+    "en": "eye",
+    "ch": "眼睛",
+    "level": "1B"
+  },
+  {
+    "en": "ear",
+    "ch": "耳朵",
+    "level": "1B"
+  },
+  {
+    "en": "nose",
+    "ch": "鼻子",
+    "level": "1B"
+  },
+  {
+    "en": "mouth",
+    "ch": "嘴巴",
+    "level": "1B"
+  },
+  {
+    "en": "tooth",
+    "ch": "牙齒",
+    "level": "1B"
+  },
+  {
+    "en": "arm",
+    "ch": "手臂",
+    "level": "1B"
+  },
+  {
+    "en": "hand",
+    "ch": "手",
+    "level": "1B"
+  },
+  {
+    "en": "leg",
+    "ch": "腿",
+    "level": "1B"
+  },
+  {
+    "en": "foot",
+    "ch": "腳",
+    "level": "1B"
+  },
+  {
+    "en": "body",
+    "ch": "身體",
+    "level": "1B"
+  },
+  {
+    "en": "home",
+    "ch": "家",
+    "level": "1B"
+  },
+  {
+    "en": "house",
+    "ch": "房子",
+    "level": "1B"
+  },
+  {
+    "en": "room",
+    "ch": "房間",
+    "level": "1B"
+  },
+  {
+    "en": "living room",
+    "ch": "客廳",
+    "level": "1B"
+  },
+  {
+    "en": "bedroom",
+    "ch": "臥室",
+    "level": "1B"
+  },
+  {
+    "en": "bathroom",
+    "ch": "浴室",
+    "level": "1B"
+  },
+  {
+    "en": "kitchen",
+    "ch": "廚房",
+    "level": "1B"
+  },
+  {
+    "en": "door",
+    "ch": "門",
+    "level": "1B"
+  },
+  {
+    "en": "window",
+    "ch": "窗戶",
+    "level": "1B"
+  },
+  {
+    "en": "bed",
+    "ch": "床",
+    "level": "1B"
+  },
+  {
+    "en": "table",
+    "ch": "桌子(餐桌)",
+    "level": "1B"
+  },
+  {
+    "en": "sofa",
+    "ch": "沙發",
+    "level": "1B"
+  },
+  {
+    "en": "lamp",
+    "ch": "燈",
+    "level": "1B"
+  },
+  {
+    "en": "fan",
+    "ch": "電風扇",
+    "level": "1B"
+  },
+  {
+    "en": "park",
+    "ch": "公園",
+    "level": "1B"
+  },
+  {
+    "en": "zoo",
+    "ch": "動物園",
+    "level": "1B"
+  },
+  {
+    "en": "hospital",
+    "ch": "醫院",
+    "level": "1B"
+  },
+  {
+    "en": "bank",
+    "ch": "銀行",
+    "level": "1B"
+  },
+  {
+    "en": "post office",
+    "ch": "郵局",
+    "level": "1B"
+  },
+  {
+    "en": "library",
+    "ch": "圖書館",
+    "level": "1B"
+  },
+  {
+    "en": "store",
+    "ch": "商店",
+    "level": "1B"
+  },
+  {
+    "en": "shop",
+    "ch": "商店",
+    "level": "1B"
+  },
+  {
+    "en": "market",
+    "ch": "市場",
+    "level": "1B"
+  },
+  {
+    "en": "restaurant",
+    "ch": "餐廳",
+    "level": "1B"
+  },
+  {
+    "en": "supermarket",
+    "ch": "超市",
+    "level": "1B"
+  },
+  {
+    "en": "museum",
+    "ch": "博物館",
+    "level": "1B"
+  },
+  {
+    "en": "theater",
+    "ch": "戲院",
+    "level": "1B"
+  },
+  {
+    "en": "factory",
+    "ch": "工廠",
+    "level": "1B"
+  },
+  {
+    "en": "office",
+    "ch": "辦公室",
+    "level": "1B"
+  },
+  {
+    "en": "farm",
+    "ch": "農場",
+    "level": "1B"
+  },
+  {
+    "en": "car",
+    "ch": "汽車",
+    "level": "1B"
+  },
+  {
+    "en": "bus",
+    "ch": "公車",
+    "level": "1B"
+  },
+  {
+    "en": "train",
+    "ch": "火車",
+    "level": "1B"
+  },
+  {
+    "en": "bike",
+    "ch": "腳踏車",
+    "level": "1B"
+  },
+  {
+    "en": "bicycle",
+    "ch": "腳踏車",
+    "level": "1B"
+  },
+  {
+    "en": "boat",
+    "ch": "小船",
+    "level": "1B"
+  },
+  {
+    "en": "ship",
+    "ch": "大船",
+    "level": "1B"
+  },
+  {
+    "en": "plane",
+    "ch": "飛機",
+    "level": "1B"
+  },
+  {
+    "en": "airplane",
+    "ch": "飛機",
+    "level": "1B"
+  },
+  {
+    "en": "taxi",
+    "ch": "計程車",
+    "level": "1B"
+  },
+  {
+    "en": "motorcycle",
+    "ch": "機車",
+    "level": "1B"
+  },
+  {
+    "en": "truck",
+    "ch": "卡車",
+    "level": "1B"
+  },
+  {
+    "en": "doctor",
+    "ch": "醫生",
+    "level": "1B"
+  },
+  {
+    "en": "nurse",
+    "ch": "護士",
+    "level": "1B"
+  },
+  {
+    "en": "driver",
+    "ch": "司機",
+    "level": "1B"
+  },
+  {
+    "en": "cook",
+    "ch": "廚師",
+    "level": "1B"
+  },
+  {
+    "en": "worker",
+    "ch": "工人",
+    "level": "1B"
+  },
+  {
+    "en": "police",
+    "ch": "警察",
+    "level": "1B"
+  },
+  {
+    "en": "singer",
+    "ch": "歌手",
+    "level": "1B"
+  },
+  {
+    "en": "dancer",
+    "ch": "舞者",
+    "level": "1B"
+  },
+  {
+    "en": "farmer",
+    "ch": "農夫",
+    "level": "1B"
+  },
+  {
+    "en": "actor",
+    "ch": "男演員",
+    "level": "1B"
+  },
+  {
+    "en": "actress",
+    "ch": "女演員",
+    "level": "1B"
+  },
+  {
+    "en": "writer",
+    "ch": "作家",
+    "level": "1B"
+  },
+  {
+    "en": "reporter",
+    "ch": "記者",
+    "level": "1B"
+  },
+  {
+    "en": "clerk",
+    "ch": "店員",
+    "level": "1B"
+  },
+  {
+    "en": "businessman",
+    "ch": "商人",
+    "level": "1B"
+  },
+  {
+    "en": "always",
+    "ch": "總是",
+    "level": "1B"
+  },
+  {
+    "en": "usually",
+    "ch": "通常",
+    "level": "1B"
+  },
+  {
+    "en": "often",
+    "ch": "經常",
+    "level": "1B"
+  },
+  {
+    "en": "sometimes",
+    "ch": "有時",
+    "level": "1B"
+  },
+  {
+    "en": "never",
+    "ch": "從不",
+    "level": "1B"
+  },
+  {
+    "en": "early",
+    "ch": "早的",
+    "level": "1B"
+  },
+  {
+    "en": "late",
+    "ch": "晚的",
+    "level": "1B"
+  },
+  {
+    "en": "fast",
+    "ch": "快",
+    "level": "1B"
+  },
+  {
+    "en": "slow",
+    "ch": "慢",
+    "level": "1B"
+  },
+  {
+    "en": "quickly",
+    "ch": "快速地",
+    "level": "1B"
+  },
+  {
+    "en": "slowly",
+    "ch": "緩慢地",
+    "level": "1B"
+  },
+  {
+    "en": "next to",
+    "ch": "在...旁邊",
+    "level": "1B"
+  },
+  {
+    "en": "near",
+    "ch": "在...附近",
+    "level": "1B"
+  },
+  {
+    "en": "behind",
+    "ch": "在...後面",
+    "level": "1B"
+  },
+  {
+    "en": "front",
+    "ch": "前面",
+    "level": "1B"
+  },
+  {
+    "en": "between",
+    "ch": "在...之間",
+    "level": "1B"
+  },
+  {
+    "en": "inside",
+    "ch": "在裡面",
+    "level": "1B"
+  },
+  {
+    "en": "outside",
+    "ch": "在外面",
+    "level": "1B"
+  },
+  {
+    "en": "left",
+    "ch": "左邊",
+    "level": "1B"
+  },
+  {
+    "en": "right",
+    "ch": "右邊",
+    "level": "1B"
+  },
+  {
+    "en": "top",
+    "ch": "頂部",
+    "level": "1B"
+  },
+  {
+    "en": "bottom",
+    "ch": "底部",
+    "level": "1B"
+  },
+  {
+    "en": "breakfast",
+    "ch": "早餐",
+    "level": "1B"
+  },
+  {
+    "en": "lunch",
+    "ch": "午餐",
+    "level": "1B"
+  },
+  {
+    "en": "dinner",
+    "ch": "晚餐",
+    "level": "1B"
+  },
+  {
+    "en": "meal",
+    "ch": "餐",
+    "level": "1B"
+  },
+  {
+    "en": "cake",
+    "ch": "蛋糕",
+    "level": "1B"
+  },
+  {
+    "en": "cookie",
+    "ch": "餅乾",
+    "level": "1B"
+  },
+  {
+    "en": "candy",
+    "ch": "糖果",
+    "level": "1B"
+  },
+  {
+    "en": "ice cream",
+    "ch": "冰淇淋",
+    "level": "1B"
+  },
+  {
+    "en": "fruit",
+    "ch": "水果",
+    "level": "1B"
+  },
+  {
+    "en": "vegetable",
+    "ch": "蔬菜",
+    "level": "1B"
+  },
+  {
+    "en": "meat",
+    "ch": "肉",
+    "level": "1B"
+  },
+  {
+    "en": "beef",
+    "ch": "牛肉",
+    "level": "1B"
+  },
+  {
+    "en": "pork",
+    "ch": "豬肉",
+    "level": "1B"
+  },
+  {
+    "en": "fish",
+    "ch": "魚肉",
+    "level": "1B"
+  },
+  {
+    "en": "soup",
+    "ch": "湯",
+    "level": "1B"
+  },
+  {
+    "en": "salad",
+    "ch": "沙拉",
+    "level": "1B"
+  },
+  {
+    "en": "sandwich",
+    "ch": "三明治",
+    "level": "1B"
+  },
+  {
+    "en": "hamburger",
+    "ch": "漢堡",
+    "level": "1B"
+  },
+  {
+    "en": "pizza",
+    "ch": "披薩",
+    "level": "1B"
+  },
+  {
+    "en": "noodle",
+    "ch": "麵條",
+    "level": "1B"
+  },
+  {
+    "en": "french fries",
+    "ch": "薯條",
+    "level": "1B"
+  },
+  {
+    "en": "wash",
+    "ch": "洗",
+    "level": "1B"
+  },
+  {
+    "en": "clean",
+    "ch": "清理",
+    "level": "1B"
+  },
+  {
+    "en": "help",
+    "ch": "幫助",
+    "level": "1B"
+  },
+  {
+    "en": "work",
+    "ch": "工作",
+    "level": "1B"
+  },
+  {
+    "en": "study",
+    "ch": "學習",
+    "level": "1B"
+  },
+  {
+    "en": "learn",
+    "ch": "學習",
+    "level": "1B"
+  },
+  {
+    "en": "ask",
+    "ch": "詢問",
+    "level": "1B"
+  },
+  {
+    "en": "answer",
+    "ch": "回答",
+    "level": "1B"
+  },
+  {
+    "en": "buy",
+    "ch": "買",
+    "level": "1B"
+  },
+  {
+    "en": "sell",
+    "ch": "賣",
+    "level": "1B"
+  },
+  {
+    "en": "pay",
+    "ch": "付款",
+    "level": "1B"
+  },
+  {
+    "en": "spend",
+    "ch": "花費",
+    "level": "1B"
+  },
+  {
+    "en": "cost",
+    "ch": "價值",
+    "level": "1B"
+  },
+  {
+    "en": "bring",
+    "ch": "帶來",
+    "level": "1B"
+  },
+  {
+    "en": "take",
+    "ch": "拿走",
+    "level": "1B"
+  },
+  {
+    "en": "get",
+    "ch": "得到",
+    "level": "1B"
+  },
+  {
+    "en": "give",
+    "ch": "給",
+    "level": "1B"
+  },
+  {
+    "en": "make",
+    "ch": "製造",
+    "level": "1B"
+  },
+  {
+    "en": "build",
+    "ch": "建立",
+    "level": "1B"
+  },
+  {
+    "en": "fix",
+    "ch": "修理",
+    "level": "1B"
+  },
+  {
+    "en": "use",
+    "ch": "使用",
+    "level": "1B"
+  },
+  {
+    "en": "wear",
+    "ch": "穿戴",
+    "level": "1B"
+  },
+  {
+    "en": "beautiful",
+    "ch": "美麗的",
+    "level": "1B"
+  },
+  {
+    "en": "ugly",
+    "ch": "醜陋的",
+    "level": "1B"
+  },
+  {
+    "en": "cute",
+    "ch": "可愛的",
+    "level": "1B"
+  },
+  {
+    "en": "smart",
+    "ch": "聰明的",
+    "level": "1B"
+  },
+  {
+    "en": "stupid",
+    "ch": "愚笨的",
+    "level": "1B"
+  },
+  {
+    "en": "lazy",
+    "ch": "懶惰的",
+    "level": "1B"
+  },
+  {
+    "en": "hard-working",
+    "ch": "勤勞的",
+    "level": "1B"
+  },
+  {
+    "en": "rich",
+    "ch": "富有的",
+    "level": "1B"
+  },
+  {
+    "en": "poor",
+    "ch": "貧窮的",
+    "level": "1B"
+  },
+  {
+    "en": "heavy",
+    "ch": "重的",
+    "level": "1B"
+  },
+  {
+    "en": "light",
+    "ch": "輕的",
+    "level": "1B"
+  },
+  {
+    "en": "thick",
+    "ch": "厚的",
+    "level": "1B"
+  },
+  {
+    "en": "thin",
+    "ch": "薄的/瘦的",
+    "level": "1B"
+  },
+  {
+    "en": "fat",
+    "ch": "胖的",
+    "level": "1B"
+  },
+  {
+    "en": "fine",
+    "ch": "好的",
+    "level": "1B"
+  },
+  {
+    "en": "great",
+    "ch": "棒的",
+    "level": "1B"
+  },
+  {
+    "en": "excellent",
+    "ch": "極好的",
+    "level": "1B"
+  },
+  {
+    "en": "terrible",
+    "ch": "可怕的",
+    "level": "1B"
+  },
+  {
+    "en": "shirt",
+    "ch": "襯衫",
+    "level": "1B"
+  },
+  {
+    "en": "t-shirt",
+    "ch": "T恤",
+    "level": "1B"
+  },
+  {
+    "en": "coat",
+    "ch": "外套",
+    "level": "1B"
+  },
+  {
+    "en": "jacket",
+    "ch": "夾克",
+    "level": "1B"
+  },
+  {
+    "en": "pants",
+    "ch": "褲子",
+    "level": "1B"
+  },
+  {
+    "en": "jeans",
+    "ch": "牛仔褲",
+    "level": "1B"
+  },
+  {
+    "en": "skirt",
+    "ch": "裙子",
+    "level": "1B"
+  },
+  {
+    "en": "dress",
+    "ch": "洋裝",
+    "level": "1B"
+  },
+  {
+    "en": "shoe",
+    "ch": "鞋子",
+    "level": "1B"
+  },
+  {
+    "en": "sock",
+    "ch": "襪子",
+    "level": "1B"
+  },
+  {
+    "en": "hat",
+    "ch": "帽子",
+    "level": "1B"
+  },
+  {
+    "en": "cap",
+    "ch": "棒球帽",
+    "level": "1B"
+  },
+  {
+    "en": "glasses",
+    "ch": "眼鏡",
+    "level": "1B"
+  },
+  {
+    "en": "umbrella",
+    "ch": "雨傘",
+    "level": "1B"
+  },
+  {
+    "en": "sport",
+    "ch": "運動",
+    "level": "1B"
+  },
+  {
+    "en": "baseball",
+    "ch": "棒球",
+    "level": "1B"
+  },
+  {
+    "en": "basketball",
+    "ch": "籃球",
+    "level": "1B"
+  },
+  {
+    "en": "soccer",
+    "ch": "足球",
+    "level": "1B"
+  },
+  {
+    "en": "tennis",
+    "ch": "網球",
+    "level": "1B"
+  },
+  {
+    "en": "badminton",
+    "ch": "羽毛球",
+    "level": "1B"
+  },
+  {
+    "en": "ping-pong",
+    "ch": "桌球",
+    "level": "1B"
+  },
+  {
+    "en": "dodgeball",
+    "ch": "躲避球",
+    "level": "1B"
+  },
+  {
+    "en": "frisbee",
+    "ch": "飛盤",
+    "level": "1B"
+  },
+  {
+    "en": "jog",
+    "ch": "慢跑",
+    "level": "1B"
+  },
+  {
+    "en": "hike",
+    "ch": "健行",
+    "level": "1B"
+  },
+  {
+    "en": "camp",
+    "ch": "露營",
+    "level": "1B"
+  },
+  {
+    "en": "sing",
+    "ch": "唱歌",
+    "level": "1B"
+  },
+  {
+    "en": "dance",
+    "ch": "跳舞",
+    "level": "1B"
+  },
+  {
+    "en": "draw",
+    "ch": "畫畫",
+    "level": "1B"
+  },
+  {
+    "en": "paint",
+    "ch": "繪畫/油漆",
+    "level": "1B"
+  },
+  {
+    "en": "music",
+    "ch": "音樂",
+    "level": "1B"
+  },
+  {
+    "en": "song",
+    "ch": "歌曲",
+    "level": "1B"
+  },
+  {
+    "en": "piano",
+    "ch": "鋼琴",
+    "level": "1B"
+  },
+  {
+    "en": "guitar",
+    "ch": "吉他",
+    "level": "1B"
+  },
+  {
+    "en": "violin",
+    "ch": "小提琴",
+    "level": "1B"
+  },
+  {
+    "en": "money",
+    "ch": "金錢",
+    "level": "1B"
+  },
+  {
+    "en": "dollar",
+    "ch": "元",
+    "level": "1B"
+  },
+  {
+    "en": "cent",
+    "ch": "分",
+    "level": "1B"
+  },
+  {
+    "en": "cash",
+    "ch": "現金",
+    "level": "1B"
+  },
+  {
+    "en": "card",
+    "ch": "卡片",
+    "level": "1B"
+  },
+  {
+    "en": "ticket",
+    "ch": "票",
+    "level": "1B"
+  },
+  {
+    "en": "wallet",
+    "ch": "錢包",
+    "level": "1B"
+  },
+  {
+    "en": "health",
+    "ch": "健康",
+    "level": "2A"
+  },
+  {
+    "en": "sick",
+    "ch": "生病的",
+    "level": "2A"
+  },
+  {
+    "en": "ill",
+    "ch": "生病的",
+    "level": "2A"
+  },
+  {
+    "en": "fever",
+    "ch": "發燒",
+    "level": "2A"
+  },
+  {
+    "en": "headache",
+    "ch": "頭痛",
+    "level": "2A"
+  },
+  {
+    "en": "toothache",
+    "ch": "牙痛",
+    "level": "2A"
+  },
+  {
+    "en": "stomachache",
+    "ch": "胃痛",
+    "level": "2A"
+  },
+  {
+    "en": "sore throat",
+    "ch": "喉嚨痛",
+    "level": "2A"
+  },
+  {
+    "en": "cough",
+    "ch": "咳嗽",
+    "level": "2A"
+  },
+  {
+    "en": "medicine",
+    "ch": "藥",
+    "level": "2A"
+  },
+  {
+    "en": "pill",
+    "ch": "藥丸",
+    "level": "2A"
+  },
+  {
+    "en": "clinic",
+    "ch": "診所",
+    "level": "2A"
+  },
+  {
+    "en": "patient",
+    "ch": "病人",
+    "level": "2A"
+  },
+  {
+    "en": "healthy",
+    "ch": "健康的",
+    "level": "2A"
+  },
+  {
+    "en": "weak",
+    "ch": "虛弱的",
+    "level": "2A"
+  },
+  {
+    "en": "strong",
+    "ch": "強壯的",
+    "level": "2A"
+  },
+  {
+    "en": "holiday",
+    "ch": "假日",
+    "level": "2A"
+  },
+  {
+    "en": "festival",
+    "ch": "節慶",
+    "level": "2A"
+  },
+  {
+    "en": "party",
+    "ch": "派對",
+    "level": "2A"
+  },
+  {
+    "en": "gift",
+    "ch": "禮物",
+    "level": "2A"
+  },
+  {
+    "en": "present",
+    "ch": "禮物",
+    "level": "2A"
+  },
+  {
+    "en": "celebrate",
+    "ch": "慶祝",
+    "level": "2A"
+  },
+  {
+    "en": "invite",
+    "ch": "邀請",
+    "level": "2A"
+  },
+  {
+    "en": "join",
+    "ch": "參加",
+    "level": "2A"
+  },
+  {
+    "en": "halloween",
+    "ch": "萬聖節",
+    "level": "2A"
+  },
+  {
+    "en": "thanksgiving",
+    "ch": "感恩節",
+    "level": "2A"
+  },
+  {
+    "en": "christmas",
+    "ch": "聖誕節",
+    "level": "2A"
+  },
+  {
+    "en": "history",
+    "ch": "歷史",
+    "level": "2A"
+  },
+  {
+    "en": "science",
+    "ch": "科學",
+    "level": "2A"
+  },
+  {
+    "en": "math",
+    "ch": "數學",
+    "level": "2A"
+  },
+  {
+    "en": "english",
+    "ch": "英文",
+    "level": "2A"
+  },
+  {
+    "en": "art",
+    "ch": "美術",
+    "level": "2A"
+  },
+  {
+    "en": "pe",
+    "ch": "體育",
+    "level": "2A"
+  },
+  {
+    "en": "geography",
+    "ch": "地理",
+    "level": "2A"
+  },
+  {
+    "en": "biology",
+    "ch": "生物",
+    "level": "2A"
+  },
+  {
+    "en": "subject",
+    "ch": "科目",
+    "level": "2A"
+  },
+  {
+    "en": "lesson",
+    "ch": "課程",
+    "level": "2A"
+  },
+  {
+    "en": "grade",
+    "ch": "成績/年級",
+    "level": "2A"
+  },
+  {
+    "en": "test",
+    "ch": "考試",
+    "level": "2A"
+  },
+  {
+    "en": "exam",
+    "ch": "測驗",
+    "level": "2A"
+  },
+  {
+    "en": "quiz",
+    "ch": "小考",
+    "level": "2A"
+  },
+  {
+    "en": "homework",
+    "ch": "作業",
+    "level": "2A"
+  },
+  {
+    "en": "fail",
+    "ch": "不及格",
+    "level": "2A"
+  },
+  {
+    "en": "pass",
+    "ch": "通過",
+    "level": "2A"
+  },
+  {
+    "en": "internet",
+    "ch": "網路",
+    "level": "2A"
+  },
+  {
+    "en": "email",
+    "ch": "電子郵件",
+    "level": "2A"
+  },
+  {
+    "en": "website",
+    "ch": "網站",
+    "level": "2A"
+  },
+  {
+    "en": "online",
+    "ch": "線上的",
+    "level": "2A"
+  },
+  {
+    "en": "offline",
+    "ch": "離線的",
+    "level": "2A"
+  },
+  {
+    "en": "screen",
+    "ch": "螢幕",
+    "level": "2A"
+  },
+  {
+    "en": "keyboard",
+    "ch": "鍵盤",
+    "level": "2A"
+  },
+  {
+    "en": "mouse",
+    "ch": "滑鼠",
+    "level": "2A"
+  },
+  {
+    "en": "click",
+    "ch": "點擊",
+    "level": "2A"
+  },
+  {
+    "en": "type",
+    "ch": "打字",
+    "level": "2A"
+  },
+  {
+    "en": "message",
+    "ch": "訊息",
+    "level": "2A"
+  },
+  {
+    "en": "app",
+    "ch": "應用程式",
+    "level": "2A"
+  },
+  {
+    "en": "cellphone",
+    "ch": "手機",
+    "level": "2A"
+  },
+  {
+    "en": "smartphone",
+    "ch": "智慧型手機",
+    "level": "2A"
+  },
+  {
+    "en": "computer",
+    "ch": "電腦",
+    "level": "2A"
+  },
+  {
+    "en": "radio",
+    "ch": "收音機",
+    "level": "2A"
+  },
+  {
+    "en": "television",
+    "ch": "電視",
+    "level": "2A"
+  },
+  {
+    "en": "video",
+    "ch": "影片",
+    "level": "2A"
+  },
+  {
+    "en": "camera",
+    "ch": "相機",
+    "level": "2A"
+  },
+  {
+    "en": "photo",
+    "ch": "相片",
+    "level": "2A"
+  },
+  {
+    "en": "nature",
+    "ch": "自然",
+    "level": "2A"
+  },
+  {
+    "en": "earth",
+    "ch": "地球",
+    "level": "2A"
+  },
+  {
+    "en": "world",
+    "ch": "世界",
+    "level": "2A"
+  },
+  {
+    "en": "ocean",
+    "ch": "海洋",
+    "level": "2A"
+  },
+  {
+    "en": "sea",
+    "ch": "海",
+    "level": "2A"
+  },
+  {
+    "en": "island",
+    "ch": "島嶼",
+    "level": "2A"
+  },
+  {
+    "en": "forest",
+    "ch": "森林",
+    "level": "2A"
+  },
+  {
+    "en": "mountain",
+    "ch": "山",
+    "level": "2A"
+  },
+  {
+    "en": "tree",
+    "ch": "樹木",
+    "level": "2A"
+  },
+  {
+    "en": "flower",
+    "ch": "花",
+    "level": "2A"
+  },
+  {
+    "en": "grass",
+    "ch": "草",
+    "level": "2A"
+  },
+  {
+    "en": "leaf",
+    "ch": "葉子",
+    "level": "2A"
+  },
+  {
+    "en": "river",
+    "ch": "河流",
+    "level": "2A"
+  },
+  {
+    "en": "lake",
+    "ch": "湖泊",
+    "level": "2A"
+  },
+  {
+    "en": "pond",
+    "ch": "池塘",
+    "level": "2A"
+  },
+  {
+    "en": "beach",
+    "ch": "海灘",
+    "level": "2A"
+  },
+  {
+    "en": "sand",
+    "ch": "沙",
+    "level": "2A"
+  },
+  {
+    "en": "rock",
+    "ch": "岩石",
+    "level": "2A"
+  },
+  {
+    "en": "stone",
+    "ch": "石頭",
+    "level": "2A"
+  },
+  {
+    "en": "air",
+    "ch": "空氣",
+    "level": "2A"
+  },
+  {
+    "en": "recycle",
+    "ch": "回收",
+    "level": "2A"
+  },
+  {
+    "en": "plastic",
+    "ch": "塑膠",
+    "level": "2A"
+  },
+  {
+    "en": "metal",
+    "ch": "金屬",
+    "level": "2A"
+  },
+  {
+    "en": "glass",
+    "ch": "玻璃",
+    "level": "2A"
+  },
+  {
+    "en": "pollution",
+    "ch": "污染",
+    "level": "2A"
+  },
+  {
+    "en": "trash",
+    "ch": "垃圾",
+    "level": "2A"
+  },
+  {
+    "en": "garbage",
+    "ch": "垃圾",
+    "level": "2A"
+  },
+  {
+    "en": "rubbish",
+    "ch": "垃圾",
+    "level": "2A"
+  },
+  {
+    "en": "waste",
+    "ch": "廢物/浪費",
+    "level": "2A"
+  },
+  {
+    "en": "dirty",
+    "ch": "髒的",
+    "level": "2A"
+  },
+  {
+    "en": "save",
+    "ch": "拯救/省",
+    "level": "2A"
+  },
+  {
+    "en": "protect",
+    "ch": "保護",
+    "level": "2A"
+  },
+  {
+    "en": "environment",
+    "ch": "環境",
+    "level": "2A"
+  },
+  {
+    "en": "safe",
+    "ch": "安全的",
+    "level": "2A"
+  },
+  {
+    "en": "dangerous",
+    "ch": "危險的",
+    "level": "2A"
+  },
+  {
+    "en": "trip",
+    "ch": "旅行",
+    "level": "2A"
+  },
+  {
+    "en": "travel",
+    "ch": "旅遊",
+    "level": "2A"
+  },
+  {
+    "en": "tour",
+    "ch": "旅行團",
+    "level": "2A"
+  },
+  {
+    "en": "vacation",
+    "ch": "假期",
+    "level": "2A"
+  },
+  {
+    "en": "passport",
+    "ch": "護照",
+    "level": "2A"
+  },
+  {
+    "en": "luggage",
+    "ch": "行李",
+    "level": "2A"
+  },
+  {
+    "en": "airport",
+    "ch": "機場",
+    "level": "2A"
+  },
+  {
+    "en": "station",
+    "ch": "車站",
+    "level": "2A"
+  },
+  {
+    "en": "hotel",
+    "ch": "旅館",
+    "level": "2A"
+  },
+  {
+    "en": "flight",
+    "ch": "班機",
+    "level": "2A"
+  },
+  {
+    "en": "guide",
+    "ch": "導遊",
+    "level": "2A"
+  },
+  {
+    "en": "foreign",
+    "ch": "外國的",
+    "level": "2A"
+  },
+  {
+    "en": "country",
+    "ch": "國家",
+    "level": "2A"
+  },
+  {
+    "en": "city",
+    "ch": "城市",
+    "level": "2A"
+  },
+  {
+    "en": "town",
+    "ch": "城鎮",
+    "level": "2A"
+  },
+  {
+    "en": "village",
+    "ch": "村莊",
+    "level": "2A"
+  },
+  {
+    "en": "capital",
+    "ch": "首都",
+    "level": "2A"
+  },
+  {
+    "en": "future",
+    "ch": "未來",
+    "level": "2A"
+  },
+  {
+    "en": "plan",
+    "ch": "計畫",
+    "level": "2A"
+  },
+  {
+    "en": "dream",
+    "ch": "夢想",
+    "level": "2A"
+  },
+  {
+    "en": "goal",
+    "ch": "目標",
+    "level": "2A"
+  },
+  {
+    "en": "career",
+    "ch": "職業",
+    "level": "2A"
+  },
+  {
+    "en": "business",
+    "ch": "生意",
+    "level": "2A"
+  },
+  {
+    "en": "engineer",
+    "ch": "工程師",
+    "level": "2A"
+  },
+  {
+    "en": "pilot",
+    "ch": "飛行員",
+    "level": "2A"
+  },
+  {
+    "en": "lawyer",
+    "ch": "律師",
+    "level": "2A"
+  },
+  {
+    "en": "boss",
+    "ch": "老闆",
+    "level": "2A"
+  },
+  {
+    "en": "manager",
+    "ch": "經理",
+    "level": "2A"
+  },
+  {
+    "en": "secretary",
+    "ch": "秘書",
+    "level": "2A"
+  },
+  {
+    "en": "soldier",
+    "ch": "士兵",
+    "level": "2A"
+  },
+  {
+    "en": "scientist",
+    "ch": "科學家",
+    "level": "2A"
+  },
+  {
+    "en": "success",
+    "ch": "成功",
+    "level": "2A"
+  },
+  {
+    "en": "succeed",
+    "ch": "成功(動詞)",
+    "level": "2A"
+  },
+  {
+    "en": "try",
+    "ch": "嘗試",
+    "level": "2A"
+  },
+  {
+    "en": "practice",
+    "ch": "練習",
+    "level": "2A"
+  },
+  {
+    "en": "exercise",
+    "ch": "運動/練習",
+    "level": "2A"
+  },
+  {
+    "en": "prepare",
+    "ch": "準備",
+    "level": "2A"
+  },
+  {
+    "en": "review",
+    "ch": "複習",
+    "level": "2A"
+  },
+  {
+    "en": "remember",
+    "ch": "記得",
+    "level": "2A"
+  },
+  {
+    "en": "forget",
+    "ch": "忘記",
+    "level": "2A"
+  },
+  {
+    "en": "believe",
+    "ch": "相信",
+    "level": "2A"
+  },
+  {
+    "en": "decide",
+    "ch": "決定",
+    "level": "2A"
+  },
+  {
+    "en": "understand",
+    "ch": "了解",
+    "level": "2A"
+  },
+  {
+    "en": "guess",
+    "ch": "猜測",
+    "level": "2A"
+  },
+  {
+    "en": "hope",
+    "ch": "希望",
+    "level": "2A"
+  },
+  {
+    "en": "wish",
+    "ch": "願望",
+    "level": "2A"
+  },
+  {
+    "en": "agree",
+    "ch": "同意",
+    "level": "2A"
+  },
+  {
+    "en": "disagree",
+    "ch": "不同意",
+    "level": "2A"
+  },
+  {
+    "en": "more",
+    "ch": "更多",
+    "level": "2A"
+  },
+  {
+    "en": "less",
+    "ch": "較少",
+    "level": "2A"
+  },
+  {
+    "en": "better",
+    "ch": "更好",
+    "level": "2A"
+  },
+  {
+    "en": "worse",
+    "ch": "更糟",
+    "level": "2A"
+  },
+  {
+    "en": "most",
+    "ch": "最多",
+    "level": "2A"
+  },
+  {
+    "en": "least",
+    "ch": "最少",
+    "level": "2A"
+  },
+  {
+    "en": "best",
+    "ch": "最好",
+    "level": "2A"
+  },
+  {
+    "en": "worst",
+    "ch": "最糟",
+    "level": "2A"
+  },
+  {
+    "en": "enough",
+    "ch": "足夠的",
+    "level": "2A"
+  },
+  {
+    "en": "almost",
+    "ch": "幾乎",
+    "level": "2A"
+  },
+  {
+    "en": "already",
+    "ch": "已經",
+    "level": "2A"
+  },
+  {
+    "en": "maybe",
+    "ch": "也許",
+    "level": "2A"
+  },
+  {
+    "en": "perhaps",
+    "ch": "或許",
+    "level": "2A"
+  },
+  {
+    "en": "really",
+    "ch": "真地",
+    "level": "2A"
+  },
+  {
+    "en": "exactly",
+    "ch": "確切地",
+    "level": "2A"
+  },
+  {
+    "en": "ant",
+    "ch": "螞蟻",
+    "level": "2A"
+  },
+  {
+    "en": "bee",
+    "ch": "蜜蜂",
+    "level": "2A"
+  },
+  {
+    "en": "bug",
+    "ch": "蟲子",
+    "level": "2A"
+  },
+  {
+    "en": "butterfly",
+    "ch": "蝴蝶",
+    "level": "2A"
+  },
+  {
+    "en": "insect",
+    "ch": "昆蟲",
+    "level": "2A"
+  },
+  {
+    "en": "spider",
+    "ch": "蜘蛛",
+    "level": "2A"
+  },
+  {
+    "en": "frog",
+    "ch": "青蛙",
+    "level": "2A"
+  },
+  {
+    "en": "turtle",
+    "ch": "烏龜",
+    "level": "2A"
+  },
+  {
+    "en": "snake",
+    "ch": "蛇",
+    "level": "2A"
+  },
+  {
+    "en": "rat",
+    "ch": "大老鼠",
+    "level": "2A"
+  },
+  {
+    "en": "mouse",
+    "ch": "滑鼠/老鼠",
+    "level": "2A"
+  },
+  {
+    "en": "hammer",
+    "ch": "鐵鎚",
+    "level": "2A"
+  },
+  {
+    "en": "nail",
+    "ch": "釘子/指甲",
+    "level": "2A"
+  },
+  {
+    "en": "tool",
+    "ch": "工具",
+    "level": "2A"
+  },
+  {
+    "en": "machine",
+    "ch": "機器",
+    "level": "2A"
+  },
+  {
+    "en": "robot",
+    "ch": "機器人",
+    "level": "2A"
+  },
+  {
+    "en": "shape",
+    "ch": "形狀",
+    "level": "2A"
+  },
+  {
+    "en": "circle",
+    "ch": "圓形",
+    "level": "2A"
+  },
+  {
+    "en": "square",
+    "ch": "正方形",
+    "level": "2A"
+  },
+  {
+    "en": "triangle",
+    "ch": "三角形",
+    "level": "2A"
+  },
+  {
+    "en": "line",
+    "ch": "線",
+    "level": "2A"
+  },
+  {
+    "en": "space",
+    "ch": "太空/空間",
+    "level": "2B"
+  },
+  {
+    "en": "universe",
+    "ch": "宇宙",
+    "level": "2B"
+  },
+  {
+    "en": "planet",
+    "ch": "行星",
+    "level": "2B"
+  },
+  {
+    "en": "ground",
+    "ch": "地面",
+    "level": "2B"
+  },
+  {
+    "en": "soil",
+    "ch": "土壤",
+    "level": "2B"
+  },
+  {
+    "en": "dirt",
+    "ch": "泥土",
+    "level": "2B"
+  },
+  {
+    "en": "mud",
+    "ch": "泥巴",
+    "level": "2B"
+  },
+  {
+    "en": "sand",
+    "ch": "沙子",
+    "level": "2B"
+  },
+  {
+    "en": "rock",
+    "ch": "岩石",
+    "level": "2B"
+  },
+  {
+    "en": "stone",
+    "ch": "石頭",
+    "level": "2B"
+  },
+  {
+    "en": "gold",
+    "ch": "黃金",
+    "level": "2B"
+  },
+  {
+    "en": "silver",
+    "ch": "白銀",
+    "level": "2B"
+  },
+  {
+    "en": "iron",
+    "ch": "鐵",
+    "level": "2B"
+  },
+  {
+    "en": "wood",
+    "ch": "木頭",
+    "level": "2B"
+  },
+  {
+    "en": "board",
+    "ch": "木板",
+    "level": "2B"
+  },
+  {
+    "en": "branch",
+    "ch": "樹枝",
+    "level": "2B"
+  },
+  {
+    "en": "leaf",
+    "ch": "葉子",
+    "level": "2B"
+  },
+  {
+    "en": "root",
+    "ch": "根部",
+    "level": "2B"
+  },
+  {
+    "en": "plant",
+    "ch": "植物/種植",
+    "level": "2B"
+  },
+  {
+    "en": "seed",
+    "ch": "種子",
+    "level": "2B"
+  },
+  {
+    "en": "crop",
+    "ch": "農作物",
+    "level": "2B"
+  },
+  {
+    "en": "corn",
+    "ch": "玉米",
+    "level": "2B"
+  },
+  {
+    "en": "bean",
+    "ch": "豆子",
+    "level": "2B"
+  },
+  {
+    "en": "nut",
+    "ch": "堅果",
+    "level": "2B"
+  },
+  {
+    "en": "wave",
+    "ch": "波浪",
+    "level": "2B"
+  },
+  {
+    "en": "coast",
+    "ch": "海岸",
+    "level": "2B"
+  },
+  {
+    "en": "shore",
+    "ch": "岸邊",
+    "level": "2B"
+  },
+  {
+    "en": "beach",
+    "ch": "海灘",
+    "level": "2B"
+  },
+  {
+    "en": "pool",
+    "ch": "池子",
+    "level": "2B"
+  },
+  {
+    "en": "drop",
+    "ch": "滴/掉落",
+    "level": "2B"
+  },
+  {
+    "en": "steam",
+    "ch": "蒸氣",
+    "level": "2B"
+  },
+  {
+    "en": "ice",
+    "ch": "冰",
+    "level": "2B"
+  },
+  {
+    "en": "fog",
+    "ch": "霧",
+    "level": "2B"
+  },
+  {
+    "en": "storm",
+    "ch": "暴風雨",
+    "level": "2B"
+  },
+  {
+    "en": "thunder",
+    "ch": "雷",
+    "level": "2B"
+  },
+  {
+    "en": "lightning",
+    "ch": "閃電",
+    "level": "2B"
+  },
+  {
+    "en": "rainbow",
+    "ch": "彩虹",
+    "level": "2B"
+  },
+  {
+    "en": "breeze",
+    "ch": "微風",
+    "level": "2B"
+  },
+  {
+    "en": "shadow",
+    "ch": "影子",
+    "level": "2B"
+  },
+  {
+    "en": "tool",
+    "ch": "工具",
+    "level": "2B"
+  },
+  {
+    "en": "hammer",
+    "ch": "鐵鎚",
+    "level": "2B"
+  },
+  {
+    "en": "nail",
+    "ch": "釘子/指甲",
+    "level": "2B"
+  },
+  {
+    "en": "saw",
+    "ch": "鋸子/看見(過)",
+    "level": "2B"
+  },
+  {
+    "en": "scissors",
+    "ch": "剪刀",
+    "level": "2B"
+  },
+  {
+    "en": "knife",
+    "ch": "刀子",
+    "level": "2B"
+  },
+  {
+    "en": "fork",
+    "ch": "叉子",
+    "level": "2B"
+  },
+  {
+    "en": "spoon",
+    "ch": "湯匙",
+    "level": "2B"
+  },
+  {
+    "en": "plate",
+    "ch": "盤子",
+    "level": "2B"
+  },
+  {
+    "en": "bowl",
+    "ch": "碗",
+    "level": "2B"
+  },
+  {
+    "en": "cup",
+    "ch": "杯子",
+    "level": "2B"
+  },
+  {
+    "en": "glass",
+    "ch": "玻璃/玻璃杯",
+    "level": "2B"
+  },
+  {
+    "en": "dish",
+    "ch": "菜餚/盤子",
+    "level": "2B"
+  },
+  {
+    "en": "pan",
+    "ch": "平底鍋",
+    "level": "2B"
+  },
+  {
+    "en": "pot",
+    "ch": "鍋子",
+    "level": "2B"
+  },
+  {
+    "en": "basket",
+    "ch": "籃子",
+    "level": "2B"
+  },
+  {
+    "en": "bucket",
+    "ch": "水桶",
+    "level": "2B"
+  },
+  {
+    "en": "bottle",
+    "ch": "瓶子",
+    "level": "2B"
+  },
+  {
+    "en": "box",
+    "ch": "盒子",
+    "level": "2B"
+  },
+  {
+    "en": "pack",
+    "ch": "包裹/打包",
+    "level": "2B"
+  },
+  {
+    "en": "pocket",
+    "ch": "口袋",
+    "level": "2B"
+  },
+  {
+    "en": "purse",
+    "ch": "女用錢包",
+    "level": "2B"
+  },
+  {
+    "en": "wallet",
+    "ch": "皮夾",
+    "level": "2B"
+  },
+  {
+    "en": "umbrella",
+    "ch": "雨傘",
+    "level": "2B"
+  },
+  {
+    "en": "towel",
+    "ch": "毛巾",
+    "level": "2B"
+  },
+  {
+    "en": "soap",
+    "ch": "肥皂",
+    "level": "2B"
+  },
+  {
+    "en": "brush",
+    "ch": "刷子",
+    "level": "2B"
+  },
+  {
+    "en": "comb",
+    "ch": "梳子",
+    "level": "2B"
+  },
+  {
+    "en": "mirror",
+    "ch": "鏡子",
+    "level": "2B"
+  },
+  {
+    "en": "rope",
+    "ch": "繩子",
+    "level": "2B"
+  },
+  {
+    "en": "string",
+    "ch": "細繩",
+    "level": "2B"
+  },
+  {
+    "en": "wire",
+    "ch": "電線",
+    "level": "2B"
+  },
+  {
+    "en": "lock",
+    "ch": "鎖",
+    "level": "2B"
+  },
+  {
+    "en": "key",
+    "ch": "鑰匙",
+    "level": "2B"
+  },
+  {
+    "en": "ring",
+    "ch": "戒指/環",
+    "level": "2B"
+  },
+  {
+    "en": "bell",
+    "ch": "鈴鐺",
+    "level": "2B"
+  },
+  {
+    "en": "lamp",
+    "ch": "燈",
+    "level": "2B"
+  },
+  {
+    "en": "light",
+    "ch": "光線/燈",
+    "level": "2B"
+  },
+  {
+    "en": "candle",
+    "ch": "蠟燭",
+    "level": "2B"
+  },
+  {
+    "en": "match",
+    "ch": "火柴/比賽",
+    "level": "2B"
+  },
+  {
+    "en": "fire",
+    "ch": "火",
+    "level": "2B"
+  },
+  {
+    "en": "smoke",
+    "ch": "煙",
+    "level": "2B"
+  },
+  {
+    "en": "oil",
+    "ch": "油",
+    "level": "2B"
+  },
+  {
+    "en": "gas",
+    "ch": "瓦斯/氣體",
+    "level": "2B"
+  },
+  {
+    "en": "pipe",
+    "ch": "管子",
+    "level": "2B"
+  },
+  {
+    "en": "place",
+    "ch": "地方",
+    "level": "2B"
+  },
+  {
+    "en": "spot",
+    "ch": "斑點/地點",
+    "level": "2B"
+  },
+  {
+    "en": "point",
+    "ch": "點/得分",
+    "level": "2B"
+  },
+  {
+    "en": "area",
+    "ch": "區域",
+    "level": "2B"
+  },
+  {
+    "en": "center",
+    "ch": "中心",
+    "level": "2B"
+  },
+  {
+    "en": "middle",
+    "ch": "中間",
+    "level": "2B"
+  },
+  {
+    "en": "side",
+    "ch": "旁邊/側面",
+    "level": "2B"
+  },
+  {
+    "en": "edge",
+    "ch": "邊緣",
+    "level": "2B"
+  },
+  {
+    "en": "corner",
+    "ch": "角落",
+    "level": "2B"
+  },
+  {
+    "en": "front",
+    "ch": "前面",
+    "level": "2B"
+  },
+  {
+    "en": "back",
+    "ch": "後面/背部",
+    "level": "2B"
+  },
+  {
+    "en": "top",
+    "ch": "頂端",
+    "level": "2B"
+  },
+  {
+    "en": "bottom",
+    "ch": "底部",
+    "level": "2B"
+  },
+  {
+    "en": "east",
+    "ch": "東方",
+    "level": "2B"
+  },
+  {
+    "en": "west",
+    "ch": "西方",
+    "level": "2B"
+  },
+  {
+    "en": "south",
+    "ch": "南方",
+    "level": "2B"
+  },
+  {
+    "en": "north",
+    "ch": "北方",
+    "level": "2B"
+  },
+  {
+    "en": "straight",
+    "ch": "直的",
+    "level": "2B"
+  },
+  {
+    "en": "forward",
+    "ch": "向前",
+    "level": "2B"
+  },
+  {
+    "en": "backward",
+    "ch": "向後",
+    "level": "2B"
+  },
+  {
+    "en": "cross",
+    "ch": "十字架/越過",
+    "level": "2B"
+  },
+  {
+    "en": "past",
+    "ch": "過去/經過",
+    "level": "2B"
+  },
+  {
+    "en": "along",
+    "ch": "沿著",
+    "level": "2B"
+  },
+  {
+    "en": "block",
+    "ch": "街區/阻擋",
+    "level": "2B"
+  },
+  {
+    "en": "street",
+    "ch": "街道",
+    "level": "2B"
+  },
+  {
+    "en": "road",
+    "ch": "道路",
+    "level": "2B"
+  },
+  {
+    "en": "path",
+    "ch": "小徑",
+    "level": "2B"
+  },
+  {
+    "en": "way",
+    "ch": "方法/道路",
+    "level": "2B"
+  },
+  {
+    "en": "highway",
+    "ch": "公路",
+    "level": "2B"
+  },
+  {
+    "en": "bridge",
+    "ch": "橋",
+    "level": "2B"
+  },
+  {
+    "en": "tunnel",
+    "ch": "隧道",
+    "level": "2B"
+  },
+  {
+    "en": "temple",
+    "ch": "寺廟",
+    "level": "2B"
+  },
+  {
+    "en": "church",
+    "ch": "教堂",
+    "level": "2B"
+  },
+  {
+    "en": "castle",
+    "ch": "城堡",
+    "level": "2B"
+  },
+  {
+    "en": "tower",
+    "ch": "塔",
+    "level": "2B"
+  },
+  {
+    "en": "building",
+    "ch": "建築物",
+    "level": "2B"
+  },
+  {
+    "en": "apartment",
+    "ch": "公寓",
+    "level": "2B"
+  },
+  {
+    "en": "factory",
+    "ch": "工廠",
+    "level": "2B"
+  },
+  {
+    "en": "company",
+    "ch": "公司",
+    "level": "2B"
+  },
+  {
+    "en": "office",
+    "ch": "辦公室",
+    "level": "2B"
+  },
+  {
+    "en": "mall",
+    "ch": "購物中心",
+    "level": "2B"
+  },
+  {
+    "en": "market",
+    "ch": "市場",
+    "level": "2B"
+  },
+  {
+    "en": "life",
+    "ch": "生活/生命",
+    "level": "3A"
+  },
+  {
+    "en": "death",
+    "ch": "死亡",
+    "level": "3A"
+  },
+  {
+    "en": "birth",
+    "ch": "出生",
+    "level": "3A"
+  },
+  {
+    "en": "age",
+    "ch": "年齡",
+    "level": "3A"
+  },
+  {
+    "en": "health",
+    "ch": "健康",
+    "level": "3A"
+  },
+  {
+    "en": "disease",
+    "ch": "疾病",
+    "level": "3A"
+  },
+  {
+    "en": "pain",
+    "ch": "痛苦",
+    "level": "3A"
+  },
+  {
+    "en": "hurt",
+    "ch": "傷害",
+    "level": "3A"
+  },
+  {
+    "en": "wound",
+    "ch": "傷口",
+    "level": "3A"
+  },
+  {
+    "en": "mind",
+    "ch": "心智/介意",
+    "level": "3A"
+  },
+  {
+    "en": "thought",
+    "ch": "想法",
+    "level": "3A"
+  },
+  {
+    "en": "idea",
+    "ch": "點子",
+    "level": "3A"
+  },
+  {
+    "en": "plan",
+    "ch": "計畫",
+    "level": "3A"
+  },
+  {
+    "en": "dream",
+    "ch": "夢想",
+    "level": "3A"
+  },
+  {
+    "en": "goal",
+    "ch": "目標",
+    "level": "3A"
+  },
+  {
+    "en": "purpose",
+    "ch": "目的",
+    "level": "3A"
+  },
+  {
+    "en": "reason",
+    "ch": "理由",
+    "level": "3A"
+  },
+  {
+    "en": "result",
+    "ch": "結果",
+    "level": "3A"
+  },
+  {
+    "en": "cause",
+    "ch": "原因/造成",
+    "level": "3A"
+  },
+  {
+    "en": "effect",
+    "ch": "效果/影響",
+    "level": "3A"
+  },
+  {
+    "en": "power",
+    "ch": "力量/權力",
+    "level": "3A"
+  },
+  {
+    "en": "force",
+    "ch": "強迫/力量",
+    "level": "3A"
+  },
+  {
+    "en": "energy",
+    "ch": "活力/能源",
+    "level": "3A"
+  },
+  {
+    "en": "strength",
+    "ch": "力量/優點",
+    "level": "3A"
+  },
+  {
+    "en": "weakness",
+    "ch": "弱點",
+    "level": "3A"
+  },
+  {
+    "en": "peace",
+    "ch": "和平",
+    "level": "3A"
+  },
+  {
+    "en": "war",
+    "ch": "戰爭",
+    "level": "3A"
+  },
+  {
+    "en": "fight",
+    "ch": "打架/戰鬥",
+    "level": "3A"
+  },
+  {
+    "en": "danger",
+    "ch": "危險",
+    "level": "3A"
+  },
+  {
+    "en": "safety",
+    "ch": "安全",
+    "level": "3A"
+  },
+  {
+    "en": "risk",
+    "ch": "風險",
+    "level": "3A"
+  },
+  {
+    "en": "chance",
+    "ch": "機會",
+    "level": "3A"
+  },
+  {
+    "en": "opportunity",
+    "ch": "機會",
+    "level": "3A"
+  },
+  {
+    "en": "luck",
+    "ch": "運氣",
+    "level": "3A"
+  },
+  {
+    "en": "success",
+    "ch": "成功",
+    "level": "3A"
+  },
+  {
+    "en": "failure",
+    "ch": "失敗",
+    "level": "3A"
+  },
+  {
+    "en": "mistake",
+    "ch": "錯誤",
+    "level": "3A"
+  },
+  {
+    "en": "truth",
+    "ch": "真相",
+    "level": "3A"
+  },
+  {
+    "en": "lie",
+    "ch": "謊言/說謊",
+    "level": "3A"
+  },
+  {
+    "en": "secret",
+    "ch": "秘密",
+    "level": "3A"
+  },
+  {
+    "en": "trick",
+    "ch": "把戲/惡作劇",
+    "level": "3A"
+  },
+  {
+    "en": "joke",
+    "ch": "笑話",
+    "level": "3A"
+  },
+  {
+    "en": "joy",
+    "ch": "喜悅",
+    "level": "3A"
+  },
+  {
+    "en": "sorrow",
+    "ch": "悲傷",
+    "level": "3A"
+  },
+  {
+    "en": "anger",
+    "ch": "憤怒",
+    "level": "3A"
+  },
+  {
+    "en": "fear",
+    "ch": "恐懼",
+    "level": "3A"
+  },
+  {
+    "en": "courage",
+    "ch": "勇氣",
+    "level": "3A"
+  },
+  {
+    "en": "hope",
+    "ch": "希望",
+    "level": "3A"
+  },
+  {
+    "en": "pity",
+    "ch": "同情/遺憾",
+    "level": "3A"
+  },
+  {
+    "en": "honor",
+    "ch": "榮譽",
+    "level": "3A"
+  },
+  {
+    "en": "pride",
+    "ch": "驕傲",
+    "level": "3A"
+  },
+  {
+    "en": "shame",
+    "ch": "羞恥",
+    "level": "3A"
+  },
+  {
+    "en": "culture",
+    "ch": "文化",
+    "level": "3A"
+  },
+  {
+    "en": "custom",
+    "ch": "習俗",
+    "level": "3A"
+  },
+  {
+    "en": "tradition",
+    "ch": "傳統",
+    "level": "3A"
+  },
+  {
+    "en": "habit",
+    "ch": "習慣",
+    "level": "3A"
+  },
+  {
+    "en": "rule",
+    "ch": "規則",
+    "level": "3A"
+  },
+  {
+    "en": "law",
+    "ch": "法律",
+    "level": "3A"
+  },
+  {
+    "en": "order",
+    "ch": "秩序/點餐",
+    "level": "3A"
+  },
+  {
+    "en": "society",
+    "ch": "社會",
+    "level": "3A"
+  },
+  {
+    "en": "community",
+    "ch": "社區",
+    "level": "3A"
+  },
+  {
+    "en": "nation",
+    "ch": "國家",
+    "level": "3A"
+  },
+  {
+    "en": "country",
+    "ch": "國家/鄉村",
+    "level": "3A"
+  },
+  {
+    "en": "state",
+    "ch": "州/狀態",
+    "level": "3A"
+  },
+  {
+    "en": "city",
+    "ch": "城市",
+    "level": "3A"
+  },
+  {
+    "en": "town",
+    "ch": "城鎮",
+    "level": "3A"
+  },
+  {
+    "en": "village",
+    "ch": "村莊",
+    "level": "3A"
+  },
+  {
+    "en": "capital",
+    "ch": "首都",
+    "level": "3A"
+  },
+  {
+    "en": "citizen",
+    "ch": "公民",
+    "level": "3A"
+  },
+  {
+    "en": "public",
+    "ch": "公眾的",
+    "level": "3A"
+  },
+  {
+    "en": "private",
+    "ch": "私人的",
+    "level": "3A"
+  },
+  {
+    "en": "leader",
+    "ch": "領導者",
+    "level": "3A"
+  },
+  {
+    "en": "president",
+    "ch": "總統/校長",
+    "level": "3A"
+  },
+  {
+    "en": "king",
+    "ch": "國王",
+    "level": "3A"
+  },
+  {
+    "en": "queen",
+    "ch": "皇后",
+    "level": "3A"
+  },
+  {
+    "en": "prince",
+    "ch": "王子",
+    "level": "3A"
+  },
+  {
+    "en": "princess",
+    "ch": "公主",
+    "level": "3A"
+  },
+  {
+    "en": "boss",
+    "ch": "老闆",
+    "level": "3A"
+  },
+  {
+    "en": "manager",
+    "ch": "經理",
+    "level": "3A"
+  },
+  {
+    "en": "clerk",
+    "ch": "店員/職員",
+    "level": "3A"
+  },
+  {
+    "en": "worker",
+    "ch": "工人",
+    "level": "3A"
+  },
+  {
+    "en": "employee",
+    "ch": "員工",
+    "level": "3A"
+  },
+  {
+    "en": "member",
+    "ch": "成員",
+    "level": "3A"
+  },
+  {
+    "en": "partner",
+    "ch": "夥伴",
+    "level": "3A"
+  },
+  {
+    "en": "group",
+    "ch": "團體",
+    "level": "3A"
+  },
+  {
+    "en": "team",
+    "ch": "隊伍",
+    "level": "3A"
+  },
+  {
+    "en": "club",
+    "ch": "俱樂部",
+    "level": "3A"
+  },
+  {
+    "en": "level",
+    "ch": "等級",
+    "level": "3A"
+  },
+  {
+    "en": "grade",
+    "ch": "成績/年級",
+    "level": "3A"
+  },
+  {
+    "en": "score",
+    "ch": "分數",
+    "level": "3A"
+  },
+  {
+    "en": "record",
+    "ch": "紀錄",
+    "level": "3A"
+  },
+  {
+    "en": "history",
+    "ch": "歷史",
+    "level": "3A"
+  },
+  {
+    "en": "science",
+    "ch": "科學",
+    "level": "3A"
+  },
+  {
+    "en": "language",
+    "ch": "語言",
+    "level": "3A"
+  },
+  {
+    "en": "prize",
+    "ch": "獎品",
+    "level": "3A"
+  },
+  {
+    "en": "reward",
+    "ch": "報酬/獎賞",
+    "level": "3A"
+  },
+  {
+    "en": "gift",
+    "ch": "禮物/天賦",
+    "level": "3A"
+  },
+  {
+    "en": "think",
+    "ch": "想",
+    "level": "3A"
+  },
+  {
+    "en": "guess",
+    "ch": "猜測",
+    "level": "3A"
+  },
+  {
+    "en": "wonder",
+    "ch": "想知道",
+    "level": "3A"
+  },
+  {
+    "en": "believe",
+    "ch": "相信",
+    "level": "3A"
+  },
+  {
+    "en": "doubt",
+    "ch": "懷疑",
+    "level": "3A"
+  },
+  {
+    "en": "trust",
+    "ch": "信任",
+    "level": "3A"
+  },
+  {
+    "en": "expect",
+    "ch": "期待",
+    "level": "3A"
+  },
+  {
+    "en": "remember",
+    "ch": "記得",
+    "level": "3A"
+  },
+  {
+    "en": "forget",
+    "ch": "忘記",
+    "level": "3A"
+  },
+  {
+    "en": "remind",
+    "ch": "提醒",
+    "level": "3A"
+  },
+  {
+    "en": "understand",
+    "ch": "理解",
+    "level": "3A"
+  },
+  {
+    "en": "notice",
+    "ch": "注意到",
+    "level": "3A"
+  },
+  {
+    "en": "realize",
+    "ch": "了解到",
+    "level": "3A"
+  },
+  {
+    "en": "discover",
+    "ch": "發現",
+    "level": "3A"
+  },
+  {
+    "en": "invent",
+    "ch": "發明",
+    "level": "3A"
+  },
+  {
+    "en": "create",
+    "ch": "創造",
+    "level": "3A"
+  },
+  {
+    "en": "imagine",
+    "ch": "想像",
+    "level": "3A"
+  },
+  {
+    "en": "decide",
+    "ch": "決定",
+    "level": "3A"
+  },
+  {
+    "en": "choose",
+    "ch": "選擇",
+    "level": "3A"
+  },
+  {
+    "en": "select",
+    "ch": "挑選",
+    "level": "3A"
+  },
+  {
+    "en": "agree",
+    "ch": "同意",
+    "level": "3A"
+  },
+  {
+    "en": "disagree",
+    "ch": "不同意",
+    "level": "3A"
+  },
+  {
+    "en": "accept",
+    "ch": "接受",
+    "level": "3A"
+  },
+  {
+    "en": "refuse",
+    "ch": "拒絕",
+    "level": "3A"
+  },
+  {
+    "en": "deny",
+    "ch": "否認",
+    "level": "3A"
+  },
+  {
+    "en": "admit",
+    "ch": "承認",
+    "level": "3A"
+  },
+  {
+    "en": "complain",
+    "ch": "抱怨",
+    "level": "3A"
+  },
+  {
+    "en": "promise",
+    "ch": "承諾",
+    "level": "3A"
+  },
+  {
+    "en": "forgive",
+    "ch": "原諒",
+    "level": "3A"
+  },
+  {
+    "en": "apologize",
+    "ch": "道歉",
+    "level": "3A"
+  },
+  {
+    "en": "welcome",
+    "ch": "歡迎",
+    "level": "3A"
+  },
+  {
+    "en": "greet",
+    "ch": "打招呼",
+    "level": "3A"
+  },
+  {
+    "en": "invite",
+    "ch": "邀請",
+    "level": "3A"
+  },
+  {
+    "en": "visit",
+    "ch": "拜訪",
+    "level": "3A"
+  },
+  {
+    "en": "cry",
+    "ch": "哭泣",
+    "level": "3A"
+  },
+  {
+    "en": "shout",
+    "ch": "大喊",
+    "level": "3A"
+  },
+  {
+    "en": "yell",
+    "ch": "吼叫",
+    "level": "3A"
+  },
+  {
+    "en": "scream",
+    "ch": "尖叫",
+    "level": "3A"
+  },
+  {
+    "en": "whisper",
+    "ch": "耳語",
+    "level": "3A"
+  },
+  {
+    "en": "speak",
+    "ch": "說(語言)",
+    "level": "3A"
+  },
+  {
+    "en": "talk",
+    "ch": "談話",
+    "level": "3A"
+  },
+  {
+    "en": "say",
+    "ch": "說",
+    "level": "3A"
+  },
+  {
+    "en": "tell",
+    "ch": "告訴",
+    "level": "3A"
+  },
+  {
+    "en": "answer",
+    "ch": "回答",
+    "level": "3A"
+  },
+  {
+    "en": "reply",
+    "ch": "回覆",
+    "level": "3A"
+  },
+  {
+    "en": "question",
+    "ch": "問題/質疑",
+    "level": "3A"
+  },
+  {
+    "en": "explain",
+    "ch": "解釋",
+    "level": "3A"
+  },
+  {
+    "en": "describe",
+    "ch": "描述",
+    "level": "3A"
+  },
+  {
+    "en": "spell",
+    "ch": "拼字",
+    "level": "3A"
+  },
+  {
+    "en": "mean",
+    "ch": "意指",
+    "level": "3A"
+  },
+  {
+    "en": "translate",
+    "ch": "翻譯",
+    "level": "3A"
+  },
+  {
+    "en": "act",
+    "ch": "行動/表演",
+    "level": "3A"
+  },
+  {
+    "en": "build",
+    "ch": "建造",
+    "level": "3A"
+  },
+  {
+    "en": "construct",
+    "ch": "建設",
+    "level": "3A"
+  },
+  {
+    "en": "fix",
+    "ch": "修理",
+    "level": "3A"
+  },
+  {
+    "en": "repair",
+    "ch": "修復",
+    "level": "3A"
+  },
+  {
+    "en": "mend",
+    "ch": "修補",
+    "level": "3A"
+  },
+  {
+    "en": "break",
+    "ch": "打破",
+    "level": "3A"
+  },
+  {
+    "en": "crack",
+    "ch": "裂開",
+    "level": "3A"
+  },
+  {
+    "en": "tear",
+    "ch": "撕裂/眼淚",
+    "level": "3B"
+  },
+  {
+    "en": "cut",
+    "ch": "切/剪",
+    "level": "3B"
+  },
+  {
+    "en": "divide",
+    "ch": "分開",
+    "level": "3B"
+  },
+  {
+    "en": "share",
+    "ch": "分享",
+    "level": "3B"
+  },
+  {
+    "en": "join",
+    "ch": "加入",
+    "level": "3B"
+  },
+  {
+    "en": "connect",
+    "ch": "連接",
+    "level": "3B"
+  },
+  {
+    "en": "tie",
+    "ch": "綁/平手",
+    "level": "3B"
+  },
+  {
+    "en": "bind",
+    "ch": "綑綁",
+    "level": "3B"
+  },
+  {
+    "en": "hold",
+    "ch": "握住/舉辦",
+    "level": "3B"
+  },
+  {
+    "en": "keep",
+    "ch": "保持",
+    "level": "3B"
+  },
+  {
+    "en": "save",
+    "ch": "拯救/存錢",
+    "level": "3B"
+  },
+  {
+    "en": "spend",
+    "ch": "花費",
+    "level": "3B"
+  },
+  {
+    "en": "waste",
+    "ch": "浪費",
+    "level": "3B"
+  },
+  {
+    "en": "use",
+    "ch": "使用",
+    "level": "3B"
+  },
+  {
+    "en": "cost",
+    "ch": "花費(金錢)",
+    "level": "3B"
+  },
+  {
+    "en": "pay",
+    "ch": "付錢",
+    "level": "3B"
+  },
+  {
+    "en": "buy",
+    "ch": "買",
+    "level": "3B"
+  },
+  {
+    "en": "sell",
+    "ch": "賣",
+    "level": "3B"
+  },
+  {
+    "en": "trade",
+    "ch": "貿易/交易",
+    "level": "3B"
+  },
+  {
+    "en": "rent",
+    "ch": "租用",
+    "level": "3B"
+  },
+  {
+    "en": "borrow",
+    "ch": "借入",
+    "level": "3B"
+  },
+  {
+    "en": "lend",
+    "ch": "借出",
+    "level": "3B"
+  },
+  {
+    "en": "earn",
+    "ch": "賺取",
+    "level": "3B"
+  },
+  {
+    "en": "win",
+    "ch": "贏",
+    "level": "3B"
+  },
+  {
+    "en": "lose",
+    "ch": "失去/輸",
+    "level": "3B"
+  },
+  {
+    "en": "beat",
+    "ch": "擊敗/打",
+    "level": "3B"
+  },
+  {
+    "en": "fail",
+    "ch": "失敗",
+    "level": "3B"
+  },
+  {
+    "en": "succeed",
+    "ch": "成功(動詞)",
+    "level": "3B"
+  },
+  {
+    "en": "finish",
+    "ch": "完成",
+    "level": "3B"
+  },
+  {
+    "en": "complete",
+    "ch": "完成/完整的",
+    "level": "3B"
+  },
+  {
+    "en": "end",
+    "ch": "結束",
+    "level": "3B"
+  },
+  {
+    "en": "start",
+    "ch": "開始",
+    "level": "3B"
+  },
+  {
+    "en": "begin",
+    "ch": "開始",
+    "level": "3B"
+  },
+  {
+    "en": "open",
+    "ch": "打開",
+    "level": "3B"
+  },
+  {
+    "en": "close",
+    "ch": "關閉",
+    "level": "3B"
+  },
+  {
+    "en": "shut",
+    "ch": "關上",
+    "level": "3B"
+  },
+  {
+    "en": "lock",
+    "ch": "上鎖",
+    "level": "3B"
+  },
+  {
+    "en": "unlock",
+    "ch": "解鎖",
+    "level": "3B"
+  },
+  {
+    "en": "cover",
+    "ch": "覆蓋",
+    "level": "3B"
+  },
+  {
+    "en": "hide",
+    "ch": "隱藏",
+    "level": "3B"
+  },
+  {
+    "en": "show",
+    "ch": "展示",
+    "level": "3B"
+  },
+  {
+    "en": "display",
+    "ch": "陳列/顯示",
+    "level": "3B"
+  },
+  {
+    "en": "appear",
+    "ch": "出現/似乎",
+    "level": "3B"
+  },
+  {
+    "en": "disappear",
+    "ch": "消失",
+    "level": "3B"
+  },
+  {
+    "en": "seem",
+    "ch": "似乎",
+    "level": "3B"
+  },
+  {
+    "en": "look",
+    "ch": "看起來/看",
+    "level": "3B"
+  },
+  {
+    "en": "sound",
+    "ch": "聽起來/聲音",
+    "level": "3B"
+  },
+  {
+    "en": "smell",
+    "ch": "聞起來/氣味",
+    "level": "3B"
+  },
+  {
+    "en": "taste",
+    "ch": "嚐起來/味道",
+    "level": "3B"
+  },
+  {
+    "en": "feel",
+    "ch": "感覺",
+    "level": "3B"
+  },
+  {
+    "en": "touch",
+    "ch": "觸摸",
+    "level": "3B"
+  },
+  {
+    "en": "hit",
+    "ch": "打擊",
+    "level": "3B"
+  },
+  {
+    "en": "strike",
+    "ch": "打擊/罷工",
+    "level": "3B"
+  },
+  {
+    "en": "kick",
+    "ch": "踢",
+    "level": "3B"
+  },
+  {
+    "en": "push",
+    "ch": "推",
+    "level": "3B"
+  },
+  {
+    "en": "pull",
+    "ch": "拉",
+    "level": "3B"
+  },
+  {
+    "en": "throw",
+    "ch": "丟",
+    "level": "3B"
+  },
+  {
+    "en": "catch",
+    "ch": "接住/抓",
+    "level": "3B"
+  },
+  {
+    "en": "fall",
+    "ch": "掉落/秋天",
+    "level": "3B"
+  },
+  {
+    "en": "slip",
+    "ch": "滑倒",
+    "level": "3B"
+  },
+  {
+    "en": "slide",
+    "ch": "滑動",
+    "level": "3B"
+  },
+  {
+    "en": "roll",
+    "ch": "滾動",
+    "level": "3B"
+  },
+  {
+    "en": "turn",
+    "ch": "轉向",
+    "level": "3B"
+  },
+  {
+    "en": "spin",
+    "ch": "旋轉",
+    "level": "3B"
+  },
+  {
+    "en": "lift",
+    "ch": "舉起/電梯",
+    "level": "3B"
+  },
+  {
+    "en": "raise",
+    "ch": "舉起/募款",
+    "level": "3B"
+  },
+  {
+    "en": "rise",
+    "ch": "上升",
+    "level": "3B"
+  },
+  {
+    "en": "grow",
+    "ch": "成長/種植",
+    "level": "3B"
+  },
+  {
+    "en": "change",
+    "ch": "改變/零錢",
+    "level": "3B"
+  },
+  {
+    "en": "become",
+    "ch": "變成",
+    "level": "3B"
+  },
+  {
+    "en": "happen",
+    "ch": "發生",
+    "level": "3B"
+  },
+  {
+    "en": "occur",
+    "ch": "發生",
+    "level": "3B"
+  },
+  {
+    "en": "belong",
+    "ch": "屬於",
+    "level": "3B"
+  },
+  {
+    "en": "matter",
+    "ch": "要緊/事情",
+    "level": "3B"
+  },
+  {
+    "en": "care",
+    "ch": "在乎/照顧",
+    "level": "3B"
+  },
+  {
+    "en": "rich",
+    "ch": "富有的",
+    "level": "3B"
+  },
+  {
+    "en": "poor",
+    "ch": "貧窮的",
+    "level": "3B"
+  },
+  {
+    "en": "cheap",
+    "ch": "便宜的",
+    "level": "3B"
+  },
+  {
+    "en": "expensive",
+    "ch": "昂貴的",
+    "level": "3B"
+  },
+  {
+    "en": "dear",
+    "ch": "親愛的/昂貴的",
+    "level": "3B"
+  },
+  {
+    "en": "free",
+    "ch": "自由的/免費的",
+    "level": "3B"
+  },
+  {
+    "en": "busy",
+    "ch": "忙碌的",
+    "level": "3B"
+  },
+  {
+    "en": "lazy",
+    "ch": "懶惰的",
+    "level": "3B"
+  },
+  {
+    "en": "hard",
+    "ch": "困難的/硬的",
+    "level": "3B"
+  },
+  {
+    "en": "easy",
+    "ch": "簡單的",
+    "level": "3B"
+  },
+  {
+    "en": "simple",
+    "ch": "簡單的",
+    "level": "3B"
+  },
+  {
+    "en": "complex",
+    "ch": "複雜的",
+    "level": "3B"
+  },
+  {
+    "en": "clear",
+    "ch": "清楚的",
+    "level": "3B"
+  },
+  {
+    "en": "bright",
+    "ch": "明亮的",
+    "level": "3B"
+  },
+  {
+    "en": "dark",
+    "ch": "黑暗的",
+    "level": "3B"
+  },
+  {
+    "en": "dim",
+    "ch": "昏暗的",
+    "level": "3B"
+  },
+  {
+    "en": "light",
+    "ch": "輕的/光線",
+    "level": "3B"
+  },
+  {
+    "en": "heavy",
+    "ch": "重的",
+    "level": "3B"
+  },
+  {
+    "en": "loud",
+    "ch": "大聲的",
+    "level": "3B"
+  },
+  {
+    "en": "quiet",
+    "ch": "安靜的",
+    "level": "3B"
+  },
+  {
+    "en": "silent",
+    "ch": "沉默的",
+    "level": "3B"
+  },
+  {
+    "en": "still",
+    "ch": "靜止的/仍然",
+    "level": "3B"
+  },
+  {
+    "en": "soft",
+    "ch": "柔軟的",
+    "level": "3B"
+  },
+  {
+    "en": "rough",
+    "ch": "粗糙的",
+    "level": "3B"
+  },
+  {
+    "en": "smooth",
+    "ch": "平滑的",
+    "level": "3B"
+  },
+  {
+    "en": "sharp",
+    "ch": "尖銳的",
+    "level": "3B"
+  },
+  {
+    "en": "dull",
+    "ch": "遲鈍的/無聊的",
+    "level": "3B"
+  },
+  {
+    "en": "thick",
+    "ch": "厚的",
+    "level": "3B"
+  },
+  {
+    "en": "thin",
+    "ch": "薄的/瘦的",
+    "level": "3B"
+  },
+  {
+    "en": "wide",
+    "ch": "寬的",
+    "level": "3B"
+  },
+  {
+    "en": "narrow",
+    "ch": "窄的",
+    "level": "3B"
+  },
+  {
+    "en": "deep",
+    "ch": "深的",
+    "level": "3B"
+  },
+  {
+    "en": "shallow",
+    "ch": "淺的",
+    "level": "3B"
+  },
+  {
+    "en": "flat",
+    "ch": "平的",
+    "level": "3B"
+  },
+  {
+    "en": "round",
+    "ch": "圓形的",
+    "level": "3B"
+  },
+  {
+    "en": "square",
+    "ch": "正方形的",
+    "level": "3B"
+  },
+  {
+    "en": "straight",
+    "ch": "直的",
+    "level": "3B"
+  },
+  {
+    "en": "bent",
+    "ch": "彎曲的",
+    "level": "3B"
+  },
+  {
+    "en": "full",
+    "ch": "滿的",
+    "level": "3B"
+  },
+  {
+    "en": "empty",
+    "ch": "空的",
+    "level": "3B"
+  },
+  {
+    "en": "blank",
+    "ch": "空白的",
+    "level": "3B"
+  },
+  {
+    "en": "clean",
+    "ch": "乾淨的",
+    "level": "3B"
+  },
+  {
+    "en": "dirty",
+    "ch": "髒的",
+    "level": "3B"
+  },
+  {
+    "en": "neat",
+    "ch": "整潔的",
+    "level": "3B"
+  },
+  {
+    "en": "messy",
+    "ch": "凌亂的",
+    "level": "3B"
+  },
+  {
+    "en": "pure",
+    "ch": "純潔的",
+    "level": "3B"
+  },
+  {
+    "en": "fresh",
+    "ch": "新鮮的",
+    "level": "3B"
+  },
+  {
+    "en": "safe",
+    "ch": "安全的",
+    "level": "3B"
+  },
+  {
+    "en": "dangerous",
+    "ch": "危險的",
+    "level": "3B"
+  },
+  {
+    "en": "fast",
+    "ch": "快的",
+    "level": "3B"
+  },
+  {
+    "en": "quick",
+    "ch": "迅速的",
+    "level": "3B"
+  },
+  {
+    "en": "rapid",
+    "ch": "快速的",
+    "level": "3B"
+  },
+  {
+    "en": "slow",
+    "ch": "慢的",
+    "level": "3B"
+  },
+  {
+    "en": "early",
+    "ch": "早的",
+    "level": "3B"
+  },
+  {
+    "en": "late",
+    "ch": "晚的/遲的",
+    "level": "3B"
+  },
+  {
+    "en": "true",
+    "ch": "真實的",
+    "level": "3B"
+  },
+  {
+    "en": "false",
+    "ch": "錯誤的",
+    "level": "3B"
+  },
+  {
+    "en": "real",
+    "ch": "真實的",
+    "level": "3B"
+  },
+  {
+    "en": "fake",
+    "ch": "假的",
+    "level": "3B"
+  },
+  {
+    "en": "right",
+    "ch": "右邊/正確的",
+    "level": "3B"
+  },
+  {
+    "en": "wrong",
+    "ch": "錯誤的",
+    "level": "3B"
+  },
+  {
+    "en": "correct",
+    "ch": "正確的",
+    "level": "3B"
+  },
+  {
+    "en": "fair",
+    "ch": "公平的",
+    "level": "3B"
+  },
+  {
+    "en": "equal",
+    "ch": "平等的",
+    "level": "3B"
+  },
+  {
+    "en": "strange",
+    "ch": "奇怪的",
+    "level": "3B"
+  },
+  {
+    "en": "odd",
+    "ch": "奇數的/奇怪的",
+    "level": "3B"
+  },
+  {
+    "en": "usual",
+    "ch": "尋常的",
+    "level": "3B"
+  },
+  {
+    "en": "normal",
+    "ch": "正常的",
+    "level": "3B"
+  },
+  {
+    "en": "common",
+    "ch": "常見的",
+    "level": "3B"
+  },
+  {
+    "en": "rare",
+    "ch": "罕見的",
+    "level": "3B"
+  },
+  {
+    "en": "special",
+    "ch": "特別的",
+    "level": "3B"
+  },
+  {
+    "en": "general",
+    "ch": "一般的",
+    "level": "3B"
+  },
+  {
+    "en": "single",
+    "ch": "單一的/單身的",
+    "level": "3B"
+  },
+  {
+    "en": "double",
+    "ch": "雙倍的",
+    "level": "3B"
+  },
+  {
+    "en": "whole",
+    "ch": "全部的",
+    "level": "3B"
+  },
+  {
+    "en": "half",
+    "ch": "一半的",
+    "level": "3B"
+  },
+  {
+    "en": "certain",
+    "ch": "確定的",
+    "level": "3B"
+  },
+  {
+    "en": "sure",
+    "ch": "確定的",
+    "level": "3B"
+  },
+  {
+    "en": "dead",
+    "ch": "死亡的",
+    "level": "3B"
+  },
+  {
+    "en": "alive",
+    "ch": "活著的",
+    "level": "3B"
+  },
+  {
+    "en": "very",
+    "ch": "非常",
+    "level": "3B"
+  },
+  {
+    "en": "too",
+    "ch": "太/也",
+    "level": "3B"
+  },
+  {
+    "en": "quite",
+    "ch": "相當",
+    "level": "3B"
+  },
+  {
+    "en": "rather",
+    "ch": "寧願/相當",
+    "level": "3B"
+  },
+  {
+    "en": "pretty",
+    "ch": "相當/漂亮的",
+    "level": "3B"
+  },
+  {
+    "en": "enough",
+    "ch": "足夠",
+    "level": "3B"
+  },
+  {
+    "en": "much",
+    "ch": "多",
+    "level": "3B"
+  },
+  {
+    "en": "more",
+    "ch": "更多",
+    "level": "3B"
+  },
+  {
+    "en": "most",
+    "ch": "最多",
+    "level": "3B"
+  },
+  {
+    "en": "less",
+    "ch": "較少",
+    "level": "3B"
+  },
+  {
+    "en": "least",
+    "ch": "最少",
+    "level": "3B"
+  },
+  {
+    "en": "almost",
+    "ch": "幾乎",
+    "level": "3B"
+  },
+  {
+    "en": "nearly",
+    "ch": "幾乎",
+    "level": "3B"
+  },
+  {
+    "en": "hardly",
+    "ch": "幾乎不",
+    "level": "3B"
+  },
+  {
+    "en": "really",
+    "ch": "真地",
+    "level": "3B"
+  },
+  {
+    "en": "exactly",
+    "ch": "確切地",
+    "level": "3B"
+  },
+  {
+    "en": "suddenly",
+    "ch": "突然地",
+    "level": "3B"
+  },
+  {
+    "en": "quickly",
+    "ch": "快速地",
+    "level": "3B"
+  },
+  {
+    "en": "slowly",
+    "ch": "緩慢地",
+    "level": "3B"
+  },
+  {
+    "en": "carefully",
+    "ch": "小心地",
+    "level": "3B"
+  },
+  {
+    "en": "heavily",
+    "ch": "沉重地",
+    "level": "3B"
+  },
+  {
+    "en": "aloud",
+    "ch": "大聲地",
+    "level": "3B"
+  },
+  {
+    "en": "maybe",
+    "ch": "也許",
+    "level": "3B"
+  },
+  {
+    "en": "perhaps",
+    "ch": "或許",
+    "level": "3B"
+  },
+  {
+    "en": "probably",
+    "ch": "可能地",
+    "level": "3B"
+  },
+  {
+    "en": "surely",
+    "ch": "確實地",
+    "level": "3B"
+  },
+  {
+    "en": "certainly",
+    "ch": "當然",
+    "level": "3B"
+  },
+  {
+    "en": "indeed",
+    "ch": "的確",
+    "level": "3B"
+  },
+  {
+    "en": "always",
+    "ch": "總是",
+    "level": "3B"
+  },
+  {
+    "en": "usually",
+    "ch": "通常",
+    "level": "3B"
+  },
+  {
+    "en": "often",
+    "ch": "經常",
+    "level": "3B"
+  },
+  {
+    "en": "sometimes",
+    "ch": "有時",
+    "level": "3B"
+  },
+  {
+    "en": "seldom",
+    "ch": "很少",
+    "level": "3B"
+  },
+  {
+    "en": "rarely",
+    "ch": "罕見地",
+    "level": "3B"
+  },
+  {
+    "en": "never",
+    "ch": "從不",
+    "level": "3B"
+  },
+  {
+    "en": "ever",
+    "ch": "曾經",
+    "level": "3B"
+  },
+  {
+    "en": "already",
+    "ch": "已經",
+    "level": "3B"
+  },
+  {
+    "en": "yet",
+    "ch": "尚未",
+    "level": "3B"
+  },
+  {
+    "en": "still",
+    "ch": "仍然",
+    "level": "3B"
+  },
+  {
+    "en": "just",
+    "ch": "剛剛/只是",
+    "level": "3B"
+  },
+  {
+    "en": "then",
+    "ch": "那麼/然後",
+    "level": "3B"
+  },
+  {
+    "en": "now",
+    "ch": "現在",
+    "level": "3B"
+  },
+  {
+    "en": "soon",
+    "ch": "很快地",
+    "level": "3B"
+  },
+  {
+    "en": "later",
+    "ch": "稍後",
+    "level": "3B"
+  },
+  {
+    "en": "ago",
+    "ch": "之前",
+    "level": "3B"
+  },
+  {
+    "en": "before",
+    "ch": "在...之前",
+    "level": "3B"
+  },
+  {
+    "en": "after",
+    "ch": "在...之後",
+    "level": "3B"
+  },
+  {
+    "en": "while",
+    "ch": "當...的時候",
+    "level": "3B"
+  },
+  {
+    "en": "where",
+    "ch": "在哪裡",
+    "level": "3B"
+  },
+  {
+    "en": "here",
+    "ch": "這裡",
+    "level": "3B"
+  },
+  {
+    "en": "there",
+    "ch": "那裡",
+    "level": "3B"
+  },
+  {
+    "en": "everywhere",
+    "ch": "到處",
+    "level": "3B"
+  },
+  {
+    "en": "nowhere",
+    "ch": "無處",
+    "level": "3B"
+  },
+  {
+    "en": "somewhere",
+    "ch": "某處",
+    "level": "3B"
+  },
+  {
+    "en": "anywhere",
+    "ch": "任何地方",
+    "level": "3B"
+  },
+  {
+    "en": "away",
+    "ch": "遠離",
+    "level": "3B"
+  },
+  {
+    "en": "out",
+    "ch": "外面",
+    "level": "3B"
+  },
+  {
+    "en": "up",
+    "ch": "向上",
+    "level": "3B"
+  },
+  {
+    "en": "down",
+    "ch": "向下",
+    "level": "3B"
+  },
+  {
+    "en": "over",
+    "ch": "在...之上/結束",
+    "level": "3B"
+  },
+  {
+    "en": "under",
+    "ch": "在...之下",
+    "level": "3B"
+  },
+  {
+    "en": "above",
+    "ch": "在...上方",
+    "level": "3B"
+  },
+  {
+    "en": "below",
+    "ch": "在...下方",
+    "level": "3B"
+  },
+  {
+    "en": "behind",
+    "ch": "在...後面",
+    "level": "3B"
+  },
+  {
+    "en": "beside",
+    "ch": "在...旁邊",
+    "level": "3B"
+  },
+  {
+    "en": "near",
+    "ch": "附近",
+    "level": "3B"
+  },
+  {
+    "en": "far",
+    "ch": "遠的",
+    "level": "3B"
+  },
+  {
+    "en": "between",
+    "ch": "在(兩者)之間",
+    "level": "3B"
+  },
+  {
+    "en": "among",
+    "ch": "在(三者以上)之中",
+    "level": "3B"
+  },
+  {
+    "en": "through",
+    "ch": "穿越",
+    "level": "3B"
+  },
+  {
+    "en": "across",
+    "ch": "橫越",
+    "level": "3B"
+  },
+  {
+    "en": "around",
+    "ch": "周圍",
+    "level": "3B"
+  },
+  {
+    "en": "about",
+    "ch": "關於/大約",
+    "level": "3B"
+  },
+  {
+    "en": "against",
+    "ch": "對抗",
+    "level": "3B"
+  },
+  {
+    "en": "without",
+    "ch": "沒有",
+    "level": "3B"
+  },
+  {
+    "en": "within",
+    "ch": "在...之內",
+    "level": "3B"
+  },
+  {
+    "en": "into",
+    "ch": "進入",
+    "level": "3B"
+  },
+  {
+    "en": "onto",
+    "ch": "到...之上",
+    "level": "3B"
+  },
+  {
+    "en": "off",
+    "ch": "離開",
+    "level": "3B"
+  },
+  {
+    "en": "from",
+    "ch": "來自",
+    "level": "3B"
+  },
+  {
+    "en": "by",
+    "ch": "藉由/在...旁邊",
+    "level": "3B"
+  },
+  {
+    "en": "with",
+    "ch": "和/用",
+    "level": "3B"
+  },
+  {
+    "en": "for",
+    "ch": "為了/給",
+    "level": "3B"
+  },
+  {
+    "en": "as",
+    "ch": "如同/作為",
+    "level": "3B"
+  },
+  {
+    "en": "than",
+    "ch": "比...",
+    "level": "3B"
+  },
+  {
+    "en": "because",
+    "ch": "因為",
+    "level": "3B"
+  },
+  {
+    "en": "since",
+    "ch": "自從/因為",
+    "level": "3B"
+  },
+  {
+    "en": "if",
+    "ch": "如果",
+    "level": "3B"
+  },
+  {
+    "en": "unless",
+    "ch": "除非",
+    "level": "3B"
+  },
+  {
+    "en": "although",
+    "ch": "雖然",
+    "level": "3B"
+  },
+  {
+    "en": "though",
+    "ch": "雖然",
+    "level": "3B"
+  },
+  {
+    "en": "but",
+    "ch": "但是",
+    "level": "3B"
+  },
+  {
+    "en": "or",
+    "ch": "或者",
+    "level": "3B"
+  },
+  {
+    "en": "and",
+    "ch": "和",
+    "level": "3B"
+  },
+  {
+    "en": "so",
+    "ch": "所以",
+    "level": "3B"
+  },
+  {
+    "en": "nor",
+    "ch": "也不",
+    "level": "3B"
+  },
+  {
+    "en": "neither",
+    "ch": "兩者都不",
+    "level": "3B"
+  },
+  {
+    "en": "either",
+    "ch": "兩者之一",
+    "level": "3B"
+  }
+]
