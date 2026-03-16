@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英文單字防衛戰 V15 - 雙模切換終極版</title>
+    <title>英文單字防衛戰 V16 - 雙模切換完美重力版</title>
     
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -299,44 +299,74 @@
             });
         }
 
+        // 🌟 修復版物理引擎：確保懸空的方塊會掉下來
         function updatePhysics() {
             if (isGameOver) return;
+            
+            // 💡 每一幀都要先解除所有方塊的休息狀態
+            activeBlocks.forEach(b => b.isResting = false);
+            
+            // 依照 Y 座標由大到小排序（從最靠近地板的開始處理）
             activeBlocks.sort((a, b) => b.y - a.y);
 
-            activeBlocks.forEach((block, index) => {
-                if (block.isResting) return;
+            for (let i = 0; i < activeBlocks.length; i++) {
+                let block = activeBlocks[i];
                 let nextY = block.y + fallSpeed;
                 let blockBottom = nextY + block.element.offsetHeight;
+                let isColliding = false;
 
+                // 1. 檢查是否碰到地板
                 if (blockBottom >= board.clientHeight) {
-                    block.y = board.clientHeight - block.element.offsetHeight; block.isResting = true;
+                    block.y = board.clientHeight - block.element.offsetHeight; 
+                    isColliding = true;
                 } else {
-                    for (let j = 0; j < index; j++) {
+                    // 2. 檢查是否碰到下方的方塊
+                    for (let j = 0; j < i; j++) {
                         let other = activeBlocks[j];
                         if (!other.isResting) continue;
-                        let bLeft = parseFloat(block.element.style.left), bRight = bLeft + block.element.offsetWidth;
-                        let oLeft = parseFloat(other.element.style.left), oRight = oLeft + other.element.offsetWidth;
-                        if (blockBottom >= other.y && bRight > oLeft && bLeft < oRight) {
-                            block.y = other.y - block.element.offsetHeight; block.isResting = true; break;
+                        
+                        let bLeft = parseFloat(block.element.style.left);
+                        let bRight = bLeft + block.element.offsetWidth;
+                        let oLeft = parseFloat(other.element.style.left);
+                        let oRight = oLeft + other.element.offsetWidth;
+
+                        if (blockBottom >= other.y && block.y < other.y && bRight > oLeft && bLeft < oRight) {
+                            block.y = other.y - block.element.offsetHeight; 
+                            isColliding = true; 
+                            break;
                         }
                     }
                 }
-                if (!block.isResting) block.y = nextY;
+
+                // 3. 更新位置與視覺狀態
+                if (isColliding) {
+                    block.isResting = true;
+                    block.element.classList.add("resting");
+                    if (block.y <= 0) {
+                        triggerGameOver();
+                        return; // 堆到最頂端，遊戲結束提早跳出
+                    }
+                } else {
+                    block.y = nextY;
+                    block.element.classList.remove("resting");
+                }
+                
                 block.element.style.top = block.y + "px";
-                if (block.isResting) block.element.classList.add("resting");
-                if (block.isResting && block.y <= 0) triggerGameOver();
-            });
+            }
 
             // --- 選擇題模式：永遠鎖定最靠近底部的方塊 ---
             if (currentInputMode === "mc" && activeBlocks.length > 0) {
-                // activeBlocks 已經依照 y 座標排序過，[0] 就是最底下的
+                // 因為前面已經依照 y 排序過，所以 [0] 絕對是最底下的那個
                 let lowestBlock = activeBlocks[0];
                 if (lowestBlock !== currentTargetBlock) {
                     currentTargetBlock = lowestBlock;
                     updateMCButtons(lowestBlock);
                 }
             } else if (currentInputMode === "mc" && activeBlocks.length === 0) {
-                if (currentTargetBlock !== null) { currentTargetBlock = null; updateMCButtons(null); }
+                if (currentTargetBlock !== null) { 
+                    currentTargetBlock = null; 
+                    updateMCButtons(null); 
+                }
             }
         }
 
@@ -352,7 +382,7 @@
 
             let correctAnswer = block.target;
             let options = [correctAnswer];
-            let isTargetEnglish = /^[a-zA-Z\s-]+$/.test(correctAnswer); // 判斷目標是英文還是中文
+            let isTargetEnglish = /^[a-zA-Z\s-]+$/.test(correctAnswer);
 
             // 產生 3 個錯誤選項
             let attempts = 0;
