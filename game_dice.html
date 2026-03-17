@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎲 骰子矩陣對戰 (V3 自動極速版)</title>
+    
+    <style>
+        body {
+            background-color: #111; color: #00ffcc; font-family: 'Segoe UI', sans-serif;
+            display: flex; flex-direction: column; align-items: center; margin: 0; padding: 10px;
+        }
+        h2 { color: #ff0055; text-shadow: 0 0 10px #ff0055; margin-bottom: 5px;}
+        .container { width: 100%; max-width: 450px; background: #222; padding: 15px; border-radius: 10px; border: 2px solid #444; box-sizing: border-box; text-align: center; }
+        
+        button { background: #3498db; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold; transition: 0.2s;}
+        button:hover:not(:disabled) { background: #2980b9; box-shadow: 0 0 10px #2980b9; }
+        button:disabled { background: #555; cursor: not-allowed; color: #888;}
+        input, select { width: 100%; padding: 12px; font-size: 18px; text-align: center; border-radius: 5px; border: 2px solid #00ffcc; background: #111; color: white; box-sizing: border-box; margin-bottom: 10px;}
+        
+        #lobby-screen, #game-screen { display: none; }
+        .active-screen { display: block !important; }
+
+        /* 分數與回合 */
+        .header-info { display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; margin-bottom: 10px; background: #000; padding: 10px; border-radius: 5px; align-items: center;}
+        .my-score { color: #00ffcc; } .opp-score { color: #ff0055; }
+        .round-info { color: #f1c40f; font-size: 16px;}
+        
+        /* 狀態與骰子 */
+        #status-area { font-size: 22px; font-weight: bold; color: #fff; margin: 10px 0; min-height: 40px; text-shadow: 0 0 10px white; display: flex; align-items: center; justify-content: center;}
+        #dice-display { font-size: 60px; margin: 10px 0; text-shadow: 0 0 20px #e67e22; animation: none;}
+
+        /* 題目區 1-6 */
+        .q-board { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px; text-align: left;}
+        .q-item { background: #2c3e50; padding: 10px; border-radius: 5px; font-size: 18px; border-left: 5px solid #e67e22; color: #fff;}
+        .q-item span { color: #e67e22; font-weight: 900; margin-right: 5px;}
+
+        /* 選項區 A-F (按鈕) */
+        .a-board { display: grid; grid-template-columns: 1fr 1fr; gap: 8px;}
+        .a-btn { background: #8e44ad; font-size: 18px; padding: 15px 5px; border: 2px solid #9b59b6; margin: 0;}
+        .a-btn span { color: #f1c40f; font-weight: 900; margin-right: 5px; font-size: 20px;}
+        .a-btn.correct { background: #27ae60 !important; border-color: #2ecc71 !important; box-shadow: 0 0 20px #2ecc71;}
+        .a-btn.wrong { background: #c0392b !important; border-color: #e74c3c !important;}
+        
+        /* 動畫 */
+        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
+        .pulse-anim { animation: pulse 0.5s infinite; color: #f1c40f !important;}
+        @keyframes roll { 0% {transform: rotate(0deg);} 100% {transform: rotate(360deg);} }
+        .rolling { animation: roll 0.3s infinite linear; }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+
+    <h2>🎲 骰子矩陣對戰</h2>
+
+    <div id="loading-screen" class="container active-screen">
+        <p>正在載入 1200 單字題庫與連線模組...</p>
+    </div>
+
+    <div id="lobby-screen" class="container">
+        <h3>選擇連線模式</h3>
+        <select id="select-rounds" style="background: #2c3e50;">
+            <option value="5">進行 5 回合</option>
+            <option value="7">進行 7 回合</option>
+            <option value="9">進行 9 回合</option>
+        </select>
+        <button id="btn-create-room" style="background:#27ae60;">🏠 建立新房間 (當房主)</button>
+        <hr style="border-color:#444; margin: 20px 0;">
+        <input type="text" id="input-room-code" placeholder="輸入 4 位數房號" maxlength="4">
+        <button id="btn-join-room">🔗 加入房間 (挑戰者)</button>
+    </div>
+
+    <div id="game-screen" class="container">
+        
+        <div class="header-info">
+            <span class="my-score">我: <span id="ui-my-score">0</span></span>
+            <span class="round-info">回合 <span id="ui-round">0/0</span> | 房號:<span id="ui-room-code">----</span></span>
+            <span class="opp-score">對手: <span id="ui-opp-score">0</span></span>
+        </div>
+
+        <div id="status-area">等待對手加入...</div>
+        <div id="dice-display">🎲</div>
+
+        <div id="play-area" style="display: none;">
+            <div class="q-board" id="ui-questions"></div>
+            
+            <div class="a-board" id="ui-answers"></div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 🔑 1. Firebase 初始化
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyAav_2FeSY7k3QXYYUGfep5UCtKuaApEQM",
+            authDomain: "wordgame-pwa.firebaseapp.com",
+            databaseURL: "https://wordgame-pwa-default-rtdb.firebaseio.com/", // ⚠️ 老前輩記得填這行！
+            projectId: "wordgame-pwa",
+            storageBucket: "wordgame-pwa.firebasestorage.app",
+            messagingSenderId: "527450589704",
+            appId: "1:527450589704:web:92d700edfc5b6ed1f15fbd"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // ==========================================
+        // 📖 2. 全域變數
+        // ==========================================
+        let allWords = [];
+        let myRole = ""; 
+        let currentRoom = "";
+        let localState = ""; 
+        let currentTimer = null; // 🌟 新增：全域計時器，方便管理倒數
+        const diceFaces = ["", "⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+        const letters = ["A", "B", "C", "D", "E", "F"];
+
+        const ui = {
+            loading: document.getElementById('loading-screen'), lobby: document.getElementById('lobby-screen'), game: document.getElementById('game-screen'),
+            roomCode: document.getElementById('ui-room-code'), status: document.getElementById('status-area'), dice: document.getElementById('dice-display'),
+            myScore: document.getElementById('ui-my-score'), oppScore: document.getElementById('ui-opp-score'), round: document.getElementById('ui-round'),
+            playArea: document.getElementById('play-area'), questions: document.getElementById('ui-questions'), answers: document.getElementById('ui-answers')
+        };
+
+        async function loadWords() {
+            try {
+                const res = await fetch('words.json');
+                allWords = await res.json();
+                ui.loading.classList.remove('active-screen'); ui.lobby.classList.add('active-screen');
+            } catch(e) { alert("無法載入 words.json！"); }
+        }
+
+        // ==========================================
+        // 🔗 3. 房間系統
+        // ==========================================
+        document.getElementById('btn-create-room').onclick = () => {
+            myRole = 'host'; currentRoom = Math.floor(1000 + Math.random() * 9000).toString();
+            const maxRds = parseInt(document.getElementById('select-rounds').value);
+            
+            db.ref('rooms/' + currentRoom).set({
+                state: 'waiting', maxRounds: maxRds, currentRound: 0,
+                hostScore: 0, guestScore: 0, diceResult: 0, winner: "", roundData: null
+            });
+
+            ui.roomCode.innerText = currentRoom;
+            ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+            listenToRoom();
+        };
+
+        document.getElementById('btn-join-room').onclick = () => {
+            const code = document.getElementById('input-room-code').value;
+            if (code.length !== 4) return alert("請輸入 4 位數房號");
+            
+            db.ref('rooms/' + code).once('value', snap => {
+                if (!snap.exists() || snap.val().state !== 'waiting') return alert("房間不存在或已開始！");
+                myRole = 'guest'; currentRoom = code;
+                ui.roomCode.innerText = currentRoom;
+                ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+                
+                db.ref('rooms/' + currentRoom).update({ state: 'start_round' });
+                listenToRoom();
+            });
+        };
+
+        // ==========================================
+        // 📡 4. 遊戲核心狀態機 (即時監聽與全自動倒數)
+        // ==========================================
+        function listenToRoom() {
+            db.ref('rooms/' + currentRoom).on('value', snap => {
+                const data = snap.val();
+                if (!data) return alert("房間已關閉");
+
+                ui.myScore.innerText = myRole === 'host' ? data.hostScore : data.guestScore;
+                ui.oppScore.innerText = myRole === 'host' ? data.guestScore : data.hostScore;
+                ui.round.innerText = `${data.currentRound}/${data.maxRounds}`;
+
+                // --- 狀態機控制 ---
+                if (data.state === 'start_round') {
+                    if (myRole === 'host' && localState !== 'start_round') {
+                        localState = 'start_round';
+                        generateRoundData(data.currentRound + 1);
+                    }
+                } 
+                else if (data.state === 'countdown') {
+                    if (localState !== 'countdown') {
+                        localState = 'countdown';
+                        clearInterval(currentTimer); // 清除舊計時器
+                        
+                        ui.playArea.style.display = "block";
+                        renderBoard(data.roundData); // 渲染題目
+                        
+                        ui.dice.innerText = "🎲"; 
+                        ui.dice.classList.add('rolling');
+                        ui.status.classList.add('pulse-anim');
+
+                        // 🌟 第一題/每一題的開場倒數 (自動執行)
+                        let count = 3;
+                        ui.status.innerText = `記憶單字位置！準備... ${count}`;
+                        
+                        currentTimer = setInterval(() => {
+                            count--;
+                            if (count > 0) {
+                                ui.status.innerText = `記憶單字位置！準備... ${count}`;
+                            } else if (count === 0) {
+                                ui.status.innerText = `GO!`;
+                                // 倒數結束，房主負責擲骰並解鎖
+                                if (myRole === 'host') {
+                                    const dice = Math.floor(Math.random() * 6) + 1; 
+                                    db.ref('rooms/' + currentRoom).update({ state: 'playing', diceResult: dice });
+                                }
+                            }
+                        }, 1000);
+                    }
+                }
+                else if (data.state === 'playing') {
+                    localState = 'playing';
+                    clearInterval(currentTimer);
+                    ui.status.classList.remove('pulse-anim');
+                    ui.dice.classList.remove('rolling');
+                    ui.dice.innerText = diceFaces[data.diceResult]; 
+                    
+                    let targetCh = data.roundData.pairs[data.diceResult - 1].ch;
+                    ui.status.innerText = `搶答 ${data.diceResult} 號：【${targetCh}】`;
+                    
+                    // 解鎖選項按鈕
+                    document.querySelectorAll('.a-btn').forEach(b => b.disabled = false);
+                }
+                else if (data.state === 'round_end') {
+                    if (localState !== 'round_end') {
+                        localState = 'round_end';
+                        clearInterval(currentTimer);
+                        document.querySelectorAll('.a-btn').forEach(b => b.disabled = true); // 鎖定按鈕
+                        
+                        let winText = data.winner === myRole ? "🎉 答對了！得分！" : "💀 被對手搶先了！";
+                        ui.status.classList.add('pulse-anim');
+
+                        // 🌟 答題後的結算與下一題倒數 (自動執行)
+                        let count = 3;
+                        ui.status.innerHTML = `${winText}<br>下一題... ${count}`;
+                        
+                        currentTimer = setInterval(() => {
+                            count--;
+                            if (count > 0) {
+                                ui.status.innerHTML = `${winText}<br>下一題... ${count}`;
+                            } else if (count === 0) {
+                                ui.status.innerText = "準備發題...";
+                                // 倒數結束，房主判斷是換題還是結束
+                                if (myRole === 'host') {
+                                    if (data.currentRound >= data.maxRounds) {
+                                        db.ref('rooms/' + currentRoom).update({ state: 'game_over' });
+                                    } else {
+                                        db.ref('rooms/' + currentRoom).update({ state: 'start_round' });
+                                    }
+                                }
+                            }
+                        }, 1000);
+                    }
+                }
+                else if (data.state === 'game_over') {
+                    clearInterval(currentTimer);
+                    ui.playArea.style.display = "none";
+                    ui.dice.innerText = "🏆";
+                    ui.status.classList.remove('pulse-anim');
+                    
+                    let myFinal = myRole === 'host' ? data.hostScore : data.guestScore;
+                    let oppFinal = myRole === 'host' ? data.guestScore : data.hostScore;
+                    
+                    if (myFinal > oppFinal) ui.status.innerText = "🔥 恭喜！你是單字霸主！";
+                    else if (myFinal < oppFinal) ui.status.innerText = "😭 挑戰失敗，再接再厲！";
+                    else ui.status.innerText = "🤝 勢均力敵，平局！";
+                }
+            });
+        }
+
+        // ==========================================
+        // 🎲 5. 邏輯控制與渲染
+        // ==========================================
+        function generateRoundData(nextRoundNum) {
+            let pool = [...allWords].sort(() => 0.5 - Math.random()).slice(0, 6);
+            let pairs = pool.map(w => ({ ch: w.ch, en: w.en }));
+            let options = pool.map(w => w.en).sort(() => 0.5 - Math.random());
+            
+            // 抽完題目直接進入 countdown 狀態！
+            db.ref('rooms/' + currentRoom).update({
+                state: 'countdown', currentRound: nextRoundNum, winner: "",
+                roundData: { pairs: pairs, options: options }
+            });
+        }
+
+        function renderBoard(roundData) {
+            ui.questions.innerHTML = ""; ui.answers.innerHTML = "";
+            
+            roundData.pairs.forEach((p, idx) => {
+                let div = document.createElement('div');
+                div.className = "q-item"; div.innerHTML = `<span>${idx + 1}.</span> ${p.ch}`;
+                ui.questions.appendChild(div);
+            });
+
+            roundData.options.forEach((optEn, idx) => {
+                let btn = document.createElement('button');
+                btn.className = "a-btn"; btn.innerHTML = `<span>${letters[idx]}</span> ${optEn}`;
+                btn.disabled = true; // 預設鎖住
+                
+                btn.onclick = () => {
+                    btn.disabled = true;
+                    db.ref('rooms/' + currentRoom).transaction(room => {
+                        if (room && room.state === 'playing') {
+                            let correctEn = room.roundData.pairs[room.diceResult - 1].en;
+                            if (optEn === correctEn) {
+                                room.state = 'round_end'; room.winner = myRole;
+                                if (myRole === 'host') room.hostScore += 10; else room.guestScore += 10;
+                            } else {
+                                room.state = 'round_end'; room.winner = myRole === 'host' ? 'guest' : 'host';
+                                if (myRole === 'host') room.guestScore += 10; else room.hostScore += 10;
+                            }
+                        }
+                        return room;
+                    });
+                };
+                ui.answers.appendChild(btn);
+            });
+        }
+
+        window.onload = loadWords;
+    </script>
+</body>
+</html>

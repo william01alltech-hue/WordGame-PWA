@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英文單字防衛戰 V16 - 雙模切換完美重力版</title>
+    <title>英文單字防衛戰 終極大圓滿版</title>
     
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,34 +50,34 @@
             background-color: var(--bg-main); color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex; flex-direction: column; align-items: center;
-            margin: 0; padding: 15px; overflow-x: hidden; transition: 0.3s;
+            margin: 0; padding: 10px; overflow-x: hidden; transition: 0.3s;
         }
         
-        h2 { color: var(--text-main); text-shadow: var(--title-shadow); margin-top:0; margin-bottom: 10px; transition: 0.3s; font-size: 24px;}
+        h2 { color: var(--text-main); text-shadow: var(--title-shadow); margin-top:0; margin-bottom: 5px; transition: 0.3s; font-size: 22px;}
         h2 span { color: var(--title-accent); text-shadow: var(--title-accent-shadow); }
-
-        .global-shake { animation: anim-global-shake 0.3s cubic-bezier(.36,.07,.19,.97) both; }
-        @keyframes anim-global-shake { 10%, 90% { transform: translate(-5px, 5px) rotate(-1deg); } 20%, 80% { transform: translate(5px, -5px) rotate(1deg); } }
 
         /* --- 控制面板 --- */
         #control-panel {
             width: 100%; max-width: 400px; display: flex; flex-wrap: wrap;
-            justify-content: space-between; gap: 6px; margin-bottom: 10px; align-items: center; z-index: 100;
+            justify-content: space-between; gap: 4px; margin-bottom: 5px; align-items: center; z-index: 100;
         }
-        select, button { padding: 8px 5px; font-size: 14px; border-radius: 5px; border: none; outline: none; cursor: pointer; font-weight:bold; }
+        select, button { padding: 6px 4px; font-size: 13px; border-radius: 5px; border: none; outline: none; cursor: pointer; font-weight:bold; }
         select { background-color: var(--input-bg); color: var(--input-text); border: 1px solid var(--input-border); }
         
         button { background-color: #27ae60; color: white; transition: 0.2s;}
         button:disabled { background-color: #555; cursor: not-allowed; box-shadow:none; color:#888;}
-        #bgm-toggle-btn { background-color: #8e44ad; width: 48%; }
+        #bgm-toggle-btn { background-color: #8e44ad; width: 32%; }
+        #bgm-style-select { width: 32%; }
+        #theme-select { width: 32%; }
         #bgm-toggle-btn.off { background-color: #7f8c8d; text-decoration: line-through;}
-        #level-select { background-color: #e67e22; color: white; width: 48%; border:none;}
+        #level-select { background-color: #e67e22; color: white; width: 32%; border:none;}
+        #input-mode-select { background-color: #3498db; color: white; border: none; width: 100%; padding: 8px;}
 
-        .score-board { font-size: 20px; font-weight: 900; color: var(--text-main); width: 100%; text-align: right; text-shadow: var(--title-shadow); margin-top: 5px; transition: 0.3s;}
+        .score-board { font-size: 18px; font-weight: 900; color: var(--text-main); width: 100%; text-align: right; text-shadow: var(--title-shadow); margin-top: 2px; transition: 0.3s;}
 
         /* --- 遊戲掉落區 --- */
         #game-board {
-            width: 100%; max-width: 400px; height: 420px; 
+            width: 100%; max-width: 400px; height: 380px; 
             background-color: var(--board-bg); border: 4px solid var(--board-border); 
             border-radius: 10px; position: relative; box-shadow: var(--board-shadow); 
             overflow: hidden; z-index: 1; transition: 0.3s;
@@ -86,32 +86,27 @@
         #game-board.game-over { border-color: red !important; box-shadow: 0 0 100px rgba(255, 0, 0, 0.8) !important; }
 
         .word-block {
-            position: absolute; background-color: var(--block-bg); padding: 8px 15px;
-            border-radius: 6px; font-size: 20px; font-weight: 900; color: var(--block-text);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4); white-space: nowrap; 
+            position: absolute; background-color: var(--block-bg); padding: 6px 12px;
+            border-radius: 6px; font-size: 18px; font-weight: 900; color: var(--block-text);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4); white-space: nowrap; transform-origin: center center;
             z-index: 10; border: 2px solid var(--block-border); transition: background-color 0.2s, border-color 0.2s;
         }
         .word-block.resting { background-color: var(--block-bg-resting); border-color: var(--block-border-resting); }
 
         /* --- 輸入與操作區 --- */
-        #action-area { width: 100%; max-width: 400px; margin-top: 15px; z-index: 100; min-height: 120px; }
+        #action-area { width: 100%; max-width: 400px; margin-top: 10px; z-index: 100; min-height: 100px; }
         
-        /* 鍵盤輸入框 */
         #type-input {
-            width: 100%; padding: 15px; font-size: 24px; text-align: center; border: 4px solid var(--input-border);
+            width: 100%; padding: 12px; font-size: 22px; text-align: center; border: 4px solid var(--input-border);
             border-radius: 8px; box-sizing: border-box; outline: none; transition: all 0.2s;
             font-weight: bold; background-color: var(--input-bg); color: var(--input-text); text-transform: uppercase;
         }
         #type-input:focus { border-color: var(--input-focus); box-shadow: 0 0 20px var(--input-focus); }
 
-        /* 選擇題按鈕區 */
-        #mc-container {
-            display: none; /* 預設隱藏，切換模式才顯示 */
-            grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; height: 100%;
-        }
+        #mc-container { display: none; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; height: 100%; }
         .mc-btn {
             background-color: var(--input-bg); color: var(--input-text);
-            border: 2px solid var(--input-border); padding: 15px 5px; font-size: 18px;
+            border: 2px solid var(--input-border); padding: 12px 5px; font-size: 16px;
             border-radius: 8px; cursor: pointer; word-break: break-word; transition: 0.1s;
             display: flex; align-items: center; justify-content: center; text-align: center;
         }
@@ -120,33 +115,76 @@
         .mc-btn.correct { background-color: #27ae60 !important; color: white !important; border-color: #2ecc71 !important; box-shadow: 0 0 15px #2ecc71;}
         .mc-btn.wrong { background-color: #c0392b !important; color: white !important; border-color: #e74c3c !important; box-shadow: 0 0 15px #e74c3c;}
 
-        /* --- 特效 --- */
-        .eff-glow { animation: anim-glow 0.5s forwards; background-color: var(--input-focus) !important; color: var(--bg-main)!important;}
-        @keyframes anim-glow { 50% { transform: scale(3); opacity: 1; } 100% { transform: scale(5); opacity: 0; } }
+        /* =========================================
+           究極視覺特效 (全面回歸！)
+           ========================================= */
+        #flash-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: white; z-index: 9999; opacity: 0; pointer-events: none; }
+        .flash-active { animation: anim-flash 0.4s ease-out forwards; }
+        @keyframes anim-flash { 0% { opacity: 0.9; } 100% { opacity: 0; } }
+        
+        .global-shake { animation: anim-global-shake 0.3s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes anim-global-shake { 0%, 100% { transform: translate(0, 0) rotate(0); } 10%, 30%, 50%, 70%, 90% { transform: translate(-15px, 12px) rotate(-2deg); } 20%, 40%, 60%, 80% { transform: translate(15px, -12px) rotate(2deg); } }
+
+        .eff-glow { animation: anim-glow 0.8s forwards; background-color: var(--input-focus) !important; color: var(--bg-main) !important; z-index: 999; border-color: white;}
+        @keyframes anim-glow { 40% { transform: scale(4); box-shadow: 0 0 80px 40px var(--input-focus); opacity: 1; } 100% { transform: scale(7); opacity: 0; } }
+
+        .eff-flyup { animation: anim-flyup 0.5s ease-in forwards; background-color: var(--title-accent) !important; z-index: 999; color:var(--block-text);}
+        @keyframes anim-flyup { 100% { transform: translateY(-1000px) scale(3) rotate(1080deg); opacity: 0; filter: blur(5px);} }
+
+        .eff-spin { animation: anim-spin 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards; background-color: #9b59b6 !important; z-index: 999; }
+        @keyframes anim-spin { 100% { transform: rotate(3600deg) scale(0); opacity: 0; } }
+
+        .eff-pulse { animation: anim-pulse 0.6s ease-in-out forwards; z-index: 999; }
+        @keyframes anim-pulse { 0% { transform: scale(1); } 20% { transform: scale(3); background-color: #fff; color: #000; box-shadow: 0 0 50px white; } 40% { transform: scale(0.5); } 60% { transform: scale(4); background-color: var(--title-accent); color: #fff;} 100% { transform: scale(8); opacity: 0; } }
+
+        .eff-shrink { animation: anim-shrink 0.4s ease-in forwards; background-color: #000 !important; color: #fff !important; z-index: 999; border-radius: 50%; box-shadow: 0 0 100px #9b59b6;}
+        @keyframes anim-shrink { 50% { transform: rotate(-180deg) scale(2); } 100% { transform: rotate(-1080deg) scale(0); opacity: 0; } }
+
+        .eff-flip { animation: anim-flip 0.5s ease-out forwards; background-color: var(--input-focus) !important; color:var(--bg-main) !important; z-index: 999; }
+        @keyframes anim-flip { 100% { transform: rotateX(1440deg) rotateY(1080deg) scale(4); opacity: 0; } }
+
+        .eff-squish { animation: anim-squish 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; background-color: var(--title-accent) !important; color:var(--block-text); z-index: 999; }
+        @keyframes anim-squish { 30% { transform: scaleX(0.1) scaleY(4); } 70% { transform: scaleX(6) scaleY(0.05); } 100% { transform: scaleX(15) scaleY(0); opacity: 0; } }
+
+        .eff-shake { animation: anim-shake 0.3s linear forwards; background-color: #e67e22 !important; z-index: 999; transform-origin: center; box-shadow: 0 0 50px #e67e22;}
+        @keyframes anim-shake { 0%, 100% { transform: translate(0, 0) rotate(0); opacity: 0; } 10%, 30%, 50%, 70%, 90% { transform: translate(-50px, 40px) rotate(-25deg) scale(2); opacity: 1; } 20%, 40%, 60%, 80% { transform: translate(50px, -40px) rotate(25deg) scale(2.5); opacity: 1; } }
+
+        .eff-blur { animation: anim-blur 0.5s ease-out forwards; background-color: transparent !important; color: var(--text-main) !important; text-shadow: 0 0 20px var(--text-main); border:none; z-index: 999; }
+        @keyframes anim-blur { 100% { filter: blur(20px); letter-spacing: 60px; transform: scale(3); opacity: 0; } }
+
+        .eff-confetti { opacity: 0; transition: opacity 0.01s; }
+
+        .particle { position: absolute; width: 16px; height: 16px; font-weight: 900; color: white; font-size: 20px; pointer-events: none; border-radius: 3px; z-index: 998; animation: anim-particle 0.6s cubic-bezier(0.1, 1, 0.3, 1) forwards; box-shadow: 0 0 10px currentColor; }
+        @keyframes anim-particle { 0% { transform: translate(0,0) scale(1.5); opacity: 1; } 100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0); opacity: 0; } }
+        
+        .shockwave { position: absolute; border: 10px solid white; border-radius: 50%; pointer-events: none; z-index: 997; transform: translate(-50%, -50%); animation: anim-shockwave 0.4s ease-out forwards; box-shadow: 0 0 50px white; }
+        @keyframes anim-shockwave { 0% { width: 0; height: 0; opacity: 1; border-width: 30px; } 100% { width: 800px; height: 800px; opacity: 0; border-width: 1px; } }
     </style>
 </head>
 <body data-theme="cyberpunk">
 
-    <h2>單字防衛戰 <span>DEFENSE</span></h2>
+    <div id="flash-overlay"></div>
+
+    <h2>單字防衛戰 <span>MULTIVERSE</span></h2>
     
     <div id="control-panel">
-        <select id="input-mode-select" style="width: 48%; background-color: #3498db; color: white; border: none;">
-            <option value="typing">⌨️ 鍵盤打字模式</option>
-            <option value="mc" selected>👆 選擇題 (手機推薦)</option>
+        <select id="input-mode-select">
+            <option value="mc" selected>👆 手機專用：四選一點擊模式</option>
+            <option value="typing">⌨️ 電腦專用：實體鍵盤打字模式</option>
+        </select>
+
+        <select id="mode-select" style="width: 32%;">
+            <option value="A">中->英</option>
+            <option value="B">英->中</option>
+            <option value="C">混合</option>
         </select>
         
-        <select id="mode-select" style="width: 48%;">
-            <option value="A">出題: 中文 找 英文</option>
-            <option value="B">出題: 英文 找 中文</option>
-            <option value="C">混合隨機</option>
+        <select id="speed-select" style="width: 32%;">
+            <option value="1">慢速</option>
+            <option value="3" selected>中速</option>
+            <option value="6">快速</option>
         </select>
-        
-        <select id="speed-select" style="width: 48%;">
-            <option value="1">🐢 慢速</option>
-            <option value="2" selected>🚶 中速</option>
-            <option value="4">🏃 快速</option>
-        </select>
-        
+
         <select id="level-select">
             <option value="1A">國一上 (1A)</option>
             <option value="1B">國一下 (1B)</option>
@@ -154,17 +192,22 @@
             <option value="2B">國二下 (2B)</option>
             <option value="3A">國三上 (3A)</option>
             <option value="3B">國三下 (3B)</option>
-            <option value="ALL">地獄混合 (1200字)</option>
+            <option value="ALL">地獄模式 (1200字)</option>
         </select>
 
         <button id="bgm-toggle-btn">🔊 BGM: ON</button>
-        <select id="theme-select" style="width: 48%;">
+        <select id="bgm-style-select">
+            <option value="1">🎵 龐克</option>
+            <option value="2">🎵 街機</option>
+            <option value="3">🎵 電音</option>
+        </select>
+        <select id="theme-select">
             <option value="cyberpunk" selected>🎨 賽博</option>
             <option value="arcade">🎨 街機</option>
             <option value="light">🎨 校園</option>
         </select>
 
-        <button id="start-btn" disabled style="width: 100%; margin-top:5px; padding: 12px; font-size: 16px;">載入單字中...</button>
+        <button id="start-btn" disabled style="width: 100%; margin-top:5px; padding: 10px; font-size: 16px;">載入單字中...</button>
         <div class="score-board">SCORE: <span id="score-display">0</span></div>
     </div>
 
@@ -172,7 +215,6 @@
     
     <div id="action-area">
         <input type="text" id="type-input" placeholder="請先點擊開始遊戲" disabled autocomplete="off" style="display: none;">
-        
         <div id="mc-container">
             <button class="mc-btn" disabled>準備中</button>
             <button class="mc-btn" disabled>準備中</button>
@@ -187,40 +229,197 @@
         // 主題切換
         document.getElementById("theme-select").addEventListener("change", (e) => document.body.setAttribute('data-theme', e.target.value));
 
-        // --- BGM 引擎 ---
+        // =========================================
+        // ★ 多重曲風 BGM 引擎 (全數回歸！) ★
+        // =========================================
         let isBgmPlaying = false, isBgmEnabled = true, nextNoteTime = 0, current16thNote = 0, bgmTimerID;
+        let currentBPM = 130;
+        let currentBgmStyle = '1';
+
         const cpBass = [36, 36, 36, 39, 36, 36, 36, 43, 36, 36, 36, 39, 36, 34, 34, 46];
+        const bitMelody = [72, 75, 79, 72, 75, 79, 84, 79, 70, 74, 77, 70, 74, 77, 82, 77]; 
+        const bitBass = [48, 0, 55, 0, 48, 0, 55, 0, 46, 0, 53, 0, 46, 0, 53, 0];
+        const swBass = [48, 48, 48, 48, 48, 48, 48, 48, 44, 44, 44, 44, 46, 46, 46, 46];
+
         function playBGMNote(time) {
-            const freq = 440 * Math.pow(2, ((cpBass[current16thNote] - 12) - 69) / 12);
-            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.type = 'sawtooth'; osc.frequency.value = freq;
-            gain.gain.setValueAtTime(0.08, time); gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
-            osc.start(time); osc.stop(time + 0.1);
+            if (currentBgmStyle === '1') {
+                const midi = cpBass[current16thNote] - 12; 
+                const freq = 440 * Math.pow(2, (midi - 69) / 12);
+                const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.type = 'sawtooth'; osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.15, time); gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+                osc.start(time); osc.stop(time + 0.1);
+
+                if (current16thNote % 4 === 0) { 
+                    const kickOsc = audioCtx.createOscillator(); const kickGain = audioCtx.createGain();
+                    kickOsc.connect(kickGain); kickGain.connect(audioCtx.destination);
+                    kickOsc.frequency.setValueAtTime(150, time); kickOsc.frequency.exponentialRampToValueAtTime(0.01, time + 0.1);
+                    kickGain.gain.setValueAtTime(0.4, time); kickGain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+                    kickOsc.start(time); kickOsc.stop(time + 0.1);
+                }
+            } else if (currentBgmStyle === '2') {
+                if (bitMelody[current16thNote] > 0) {
+                    const melFreq = 440 * Math.pow(2, (bitMelody[current16thNote] - 69) / 12);
+                    const oscM = audioCtx.createOscillator(); const gainM = audioCtx.createGain();
+                    oscM.connect(gainM); gainM.connect(audioCtx.destination);
+                    oscM.type = 'square'; oscM.frequency.value = melFreq;
+                    gainM.gain.setValueAtTime(0.08, time); gainM.gain.setValueAtTime(0, time + 0.1);
+                    oscM.start(time); oscM.stop(time + 0.1);
+                }
+                if (bitBass[current16thNote] > 0) {
+                    const bassFreq = 440 * Math.pow(2, (bitBass[current16thNote] - 69) / 12);
+                    const oscB = audioCtx.createOscillator(); const gainB = audioCtx.createGain();
+                    oscB.connect(gainB); gainB.connect(audioCtx.destination);
+                    oscB.type = 'triangle'; oscB.frequency.value = bassFreq;
+                    gainB.gain.setValueAtTime(0.2, time); gainB.gain.linearRampToValueAtTime(0.01, time + 0.15);
+                    oscB.start(time); oscB.stop(time + 0.15);
+                }
+            } else if (currentBgmStyle === '3') {
+                const swFreq = 440 * Math.pow(2, (swBass[current16thNote] - 12 - 69) / 12);
+                const oscS = audioCtx.createOscillator(); const gainS = audioCtx.createGain();
+                oscS.connect(gainS); gainS.connect(audioCtx.destination);
+                oscS.type = 'sine'; oscS.frequency.value = swFreq;
+                gainS.gain.setValueAtTime(0.2, time); gainS.gain.linearRampToValueAtTime(0.1, time + 0.2);
+                oscS.start(time); oscS.stop(time + 0.2);
+            }
         }
+
         function bgmScheduler() {
             while (nextNoteTime < audioCtx.currentTime + 0.1) {
-                playBGMNote(nextNoteTime); nextNoteTime += 0.25 * (60.0 / 120); current16thNote = (current16thNote + 1) % 16;
+                playBGMNote(nextNoteTime);
+                nextNoteTime += 0.25 * (60.0 / currentBPM);
+                current16thNote = (current16thNote + 1) % 16;
             }
             bgmTimerID = setTimeout(bgmScheduler, 25);
         }
-        function startBGM() { if (isBgmEnabled && !isBgmPlaying) { isBgmPlaying = true; nextNoteTime = audioCtx.currentTime; bgmScheduler(); } }
+
+        function startBGM() { if (isBgmEnabled && !isBgmPlaying) { isBgmPlaying = true; current16thNote = 0; nextNoteTime = audioCtx.currentTime + 0.05; bgmScheduler(); } }
         function stopBGM() { isBgmPlaying = false; clearTimeout(bgmTimerID); }
-        document.getElementById("bgm-toggle-btn").addEventListener("click", function() {
-            isBgmEnabled = !isBgmEnabled; this.textContent = isBgmEnabled ? "🔊 BGM: ON" : "🔇 BGM: OFF";
-            this.classList.toggle("off", !isBgmEnabled); isBgmEnabled ? startBGM() : stopBGM();
+
+        const bgmBtn = document.getElementById("bgm-toggle-btn");
+        const bgmStyleSelect = document.getElementById("bgm-style-select");
+        bgmBtn.addEventListener("click", () => {
+            isBgmEnabled = !isBgmEnabled;
+            bgmBtn.textContent = isBgmEnabled ? "🔊 BGM: ON" : "🔇 BGM: OFF";
+            bgmBtn.classList.toggle("off", !isBgmEnabled);
+            isBgmEnabled && !isGameOver && startBtn.disabled ? startBGM() : stopBGM();
         });
+        bgmStyleSelect.addEventListener("change", (e) => { currentBgmStyle = e.target.value; });
 
         // =========================================
-        // ★ 核心遊戲邏輯 ★
+        // ★ 核心特效合成器 (全數回歸！) ★
+        // =========================================
+        function playExtremeSound(effectType) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator(); const gainNode = audioCtx.createGain();
+            osc.connect(gainNode); gainNode.connect(audioCtx.destination);
+
+            switch(effectType) {
+                case 'eff-glow': 
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.exponentialRampToValueAtTime(20, now + 0.6);
+                    gainNode.gain.setValueAtTime(0.8, now); gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
+                    osc.start(now); osc.stop(now + 0.8); break;
+                case 'eff-flyup':
+                    osc.type = 'square'; osc.frequency.setValueAtTime(400, now); osc.frequency.exponentialRampToValueAtTime(2500, now + 0.4);
+                    gainNode.gain.setValueAtTime(0.3, now); gainNode.gain.linearRampToValueAtTime(0, now + 0.5);
+                    osc.start(now); osc.stop(now + 0.5); break;
+                case 'eff-spin':
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(600, now); osc.frequency.linearRampToValueAtTime(1200, now + 0.1);
+                    osc.frequency.linearRampToValueAtTime(300, now + 0.2); osc.frequency.linearRampToValueAtTime(1000, now + 0.4);
+                    gainNode.gain.setValueAtTime(0.5, now); gainNode.gain.linearRampToValueAtTime(0, now + 0.5);
+                    osc.start(now); osc.stop(now + 0.5); break;
+                case 'eff-pulse':
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(100, now); osc.frequency.exponentialRampToValueAtTime(30, now + 0.1);
+                    gainNode.gain.setValueAtTime(0.8, now); gainNode.gain.linearRampToValueAtTime(0, now + 0.1); osc.start(now); osc.stop(now + 0.1);
+                    break;
+                case 'eff-shrink':
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(3000, now); osc.frequency.exponentialRampToValueAtTime(10, now + 0.3);
+                    gainNode.gain.setValueAtTime(0.5, now); gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3); break;
+                case 'eff-flip':
+                    osc.type = 'square'; osc.frequency.setValueAtTime(800, now); osc.frequency.setValueAtTime(200, now + 0.1); osc.frequency.setValueAtTime(1200, now + 0.2);
+                    gainNode.gain.setValueAtTime(0.4, now); gainNode.gain.linearRampToValueAtTime(0, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3); break;
+                case 'eff-squish':
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(200, now); osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
+                    osc.frequency.exponentialRampToValueAtTime(100, now + 0.4); gainNode.gain.setValueAtTime(0.6, now);
+                    gainNode.gain.linearRampToValueAtTime(0, now + 0.5); osc.start(now); osc.stop(now + 0.5); break;
+                case 'eff-shake':
+                    osc.type = 'square'; osc.frequency.setValueAtTime(50, now); osc.frequency.linearRampToValueAtTime(30, now + 0.4);
+                    gainNode.gain.setValueAtTime(1.0, now); gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now); osc.stop(now + 0.4); break;
+                case 'eff-blur':
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(440, now); osc.frequency.setValueAtTime(880, now + 0.15); 
+                    gainNode.gain.setValueAtTime(0.5, now); gainNode.gain.linearRampToValueAtTime(0, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3); break;
+                case 'eff-confetti':
+                    osc.type = 'square'; osc.frequency.setValueAtTime(100, now); osc.frequency.exponentialRampToValueAtTime(10, now + 0.5);
+                    gainNode.gain.setValueAtTime(1, now); gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
+                    osc.start(now); osc.stop(now + 0.6);
+                    break;
+                case 'error':
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.linearRampToValueAtTime(60, now + 0.2);
+                    gainNode.gain.setValueAtTime(0.8, now); gainNode.gain.linearRampToValueAtTime(0, now + 0.2);
+                    osc.start(now); osc.stop(now + 0.2); break;
+                case 'gameover':
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(300, now); osc.frequency.exponentialRampToValueAtTime(10, now + 1.5);
+                    gainNode.gain.setValueAtTime(0.8, now); gainNode.gain.linearRampToValueAtTime(0, now + 1.5);
+                    osc.start(now); osc.stop(now + 1.5); break;
+            }
+        }
+
+        const effectsList = ['eff-glow', 'eff-flyup', 'eff-spin', 'eff-pulse', 'eff-shrink', 'eff-flip', 'eff-squish', 'eff-shake', 'eff-blur', 'eff-confetti'];
+        const flashOverlay = document.getElementById("flash-overlay");
+
+        function playRandomEffect(blockObj) {
+            const el = blockObj.element;
+            const randomEffect = effectsList[Math.floor(Math.random() * effectsList.length)];
+            
+            el.style.zIndex = "999"; 
+            el.classList.add(randomEffect);
+
+            playExtremeSound(randomEffect);
+
+            document.body.classList.remove("global-shake");
+            void document.body.offsetWidth; 
+            document.body.classList.add("global-shake");
+
+            if(Math.random() > 0.6 || randomEffect === 'eff-glow' || randomEffect === 'eff-confetti') {
+                flashOverlay.classList.remove("flash-active");
+                void flashOverlay.offsetWidth; flashOverlay.classList.add("flash-active");
+            }
+
+            if (randomEffect === 'eff-confetti') {
+                const centerX = parseFloat(el.style.left) + el.offsetWidth / 2; const centerY = blockObj.y + el.offsetHeight / 2;
+                const wave = document.createElement("div"); wave.className = "shockwave";
+                wave.style.left = centerX + "px"; wave.style.top = centerY + "px"; board.appendChild(wave);
+                setTimeout(() => { if(board.contains(wave)) board.removeChild(wave); }, 400);
+
+                const colors = ['#00ffcc', '#ff0055', '#b700ff', '#ffaa00', '#ffffff', '#3498db', '#e74c3c'];
+                const chars = ['!', 'BOOM', '★', 'HIT', '%', '⚡', 'A', 'Z']; 
+                for (let k = 0; k < 60; k++) {
+                    const p = document.createElement("div"); p.className = "particle";
+                    p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    p.style.color = p.style.backgroundColor; 
+                    p.textContent = chars[Math.floor(Math.random() * chars.length)];
+                    p.style.left = centerX + "px"; p.style.top = centerY + "px";
+                    p.style.setProperty('--tx', (Math.random() - 0.5) * 600 + "px"); p.style.setProperty('--ty', (Math.random() - 0.5) * 600 + "px");
+                    p.style.setProperty('--rot', Math.random() * 1080 + "deg");
+                    board.appendChild(p); setTimeout(() => { if(board.contains(p)) board.removeChild(p); }, 600);
+                }
+            }
+            setTimeout(() => { if (board.contains(el)) board.removeChild(el); }, 800);
+        }
+
+        // =========================================
+        // ★ 遊戲主邏輯 (重力修復 + 雙模切換) ★
         // =========================================
         let fetchedWords = []; let activePool = []; let activeBlocks = [];
         let gameInterval, spawnInterval;
-        let fallSpeed = 2, isGameOver = false, score = 0, currentMode = "A";
-        
-        // 操作模式狀態
-        let currentInputMode = "mc"; 
-        let currentTargetBlock = null; // 選擇題目前鎖定最底下的方塊
+        let fallSpeed = 3, isGameOver = false, score = 0, currentMode = "A";
+        let currentInputMode = "mc"; let currentTargetBlock = null;
 
         const board = document.getElementById("game-board");
         const typeInput = document.getElementById("type-input");
@@ -229,7 +428,6 @@
         const scoreDisplay = document.getElementById("score-display");
         const inputModeSelect = document.getElementById("input-mode-select");
 
-        // 監聽模式切換
         inputModeSelect.addEventListener("change", (e) => {
             currentInputMode = e.target.value;
             if (currentInputMode === "typing") {
@@ -245,8 +443,6 @@
                 if (!response.ok) throw new Error();
                 fetchedWords = await response.json();
                 startBtn.textContent = "🚀 開始防衛 (1200字就緒)"; startBtn.disabled = false;
-                
-                // 初始化介面
                 inputModeSelect.dispatchEvent(new Event('change'));
             } catch (e) {
                 startBtn.textContent = "無法載入 words.json";
@@ -261,23 +457,23 @@
             if (activePool.length === 0) { alert("該學期沒有單字！"); return; }
 
             board.innerHTML = ""; activeBlocks = []; isGameOver = false; score = 0; scoreDisplay.textContent = "0";
-            board.classList.remove("game-over"); currentTargetBlock = null;
+            board.classList.remove("game-over"); currentTargetBlock = null; document.body.style.backgroundColor = "";
 
             currentMode = document.getElementById("mode-select").value;
             fallSpeed = parseInt(document.getElementById("speed-select").value);
-            
-            // 鎖定設定
+            currentBPM = fallSpeed > 4 ? 160 : (fallSpeed === 1 ? 100 : 130);
+            currentBgmStyle = document.getElementById("bgm-style-select").value;
+
             startBtn.disabled = true; document.querySelectorAll("select").forEach(s => s.disabled = true);
 
-            // 啟動操作區
             if (currentInputMode === "typing") {
                 typeInput.disabled = false; typeInput.value = ""; typeInput.focus();
             } else {
-                updateMCButtons(null); // 清空按鈕
+                updateMCButtons(null);
             }
 
             startBGM();
-            spawnInterval = setInterval(spawnWord, fallSpeed > 2 ? 1500 : 2500);
+            spawnInterval = setInterval(spawnWord, fallSpeed > 3 ? 1200 : 2000);
             gameInterval = setInterval(updatePhysics, 40);
         });
 
@@ -292,21 +488,13 @@
             board.appendChild(blockEl);
             
             blockEl.style.left = Math.random() * (board.clientWidth - blockEl.clientWidth - 10) + "px";
-            activeBlocks.push({ 
-                element: blockEl, y: 0, 
-                target: isCnToEn ? wordData.en.toLowerCase() : wordData.ch,
-                isResting: false 
-            });
+            activeBlocks.push({ element: blockEl, y: 0, target: isCnToEn ? wordData.en.toLowerCase() : wordData.ch, isResting: false });
         }
 
-        // 🌟 修復版物理引擎：確保懸空的方塊會掉下來
         function updatePhysics() {
             if (isGameOver) return;
             
-            // 💡 每一幀都要先解除所有方塊的休息狀態
             activeBlocks.forEach(b => b.isResting = false);
-            
-            // 依照 Y 座標由大到小排序（從最靠近地板的開始處理）
             activeBlocks.sort((a, b) => b.y - a.y);
 
             for (let i = 0; i < activeBlocks.length; i++) {
@@ -315,132 +503,87 @@
                 let blockBottom = nextY + block.element.offsetHeight;
                 let isColliding = false;
 
-                // 1. 檢查是否碰到地板
                 if (blockBottom >= board.clientHeight) {
-                    block.y = board.clientHeight - block.element.offsetHeight; 
-                    isColliding = true;
+                    block.y = board.clientHeight - block.element.offsetHeight; isColliding = true;
                 } else {
-                    // 2. 檢查是否碰到下方的方塊
                     for (let j = 0; j < i; j++) {
                         let other = activeBlocks[j];
                         if (!other.isResting) continue;
-                        
-                        let bLeft = parseFloat(block.element.style.left);
-                        let bRight = bLeft + block.element.offsetWidth;
-                        let oLeft = parseFloat(other.element.style.left);
-                        let oRight = oLeft + other.element.offsetWidth;
-
+                        let bLeft = parseFloat(block.element.style.left), bRight = bLeft + block.element.offsetWidth;
+                        let oLeft = parseFloat(other.element.style.left), oRight = oLeft + other.element.offsetWidth;
                         if (blockBottom >= other.y && block.y < other.y && bRight > oLeft && bLeft < oRight) {
-                            block.y = other.y - block.element.offsetHeight; 
-                            isColliding = true; 
-                            break;
+                            block.y = other.y - block.element.offsetHeight; isColliding = true; break;
                         }
                     }
                 }
 
-                // 3. 更新位置與視覺狀態
                 if (isColliding) {
-                    block.isResting = true;
-                    block.element.classList.add("resting");
-                    if (block.y <= 0) {
-                        triggerGameOver();
-                        return; // 堆到最頂端，遊戲結束提早跳出
-                    }
+                    block.isResting = true; block.element.classList.add("resting");
+                    if (block.y <= 0) { triggerGameOver(); return; }
                 } else {
-                    block.y = nextY;
-                    block.element.classList.remove("resting");
+                    block.y = nextY; block.element.classList.remove("resting");
                 }
-                
                 block.element.style.top = block.y + "px";
             }
 
-            // --- 選擇題模式：永遠鎖定最靠近底部的方塊 ---
             if (currentInputMode === "mc" && activeBlocks.length > 0) {
-                // 因為前面已經依照 y 排序過，所以 [0] 絕對是最底下的那個
                 let lowestBlock = activeBlocks[0];
-                if (lowestBlock !== currentTargetBlock) {
-                    currentTargetBlock = lowestBlock;
-                    updateMCButtons(lowestBlock);
-                }
+                if (lowestBlock !== currentTargetBlock) { currentTargetBlock = lowestBlock; updateMCButtons(lowestBlock); }
             } else if (currentInputMode === "mc" && activeBlocks.length === 0) {
-                if (currentTargetBlock !== null) { 
-                    currentTargetBlock = null; 
-                    updateMCButtons(null); 
-                }
+                if (currentTargetBlock !== null) { currentTargetBlock = null; updateMCButtons(null); }
             }
         }
 
-        // =========================================
-        // ★ 選擇題模式核心邏輯 ★
-        // =========================================
+        // --- 選擇題處理 ---
         function updateMCButtons(block) {
             const buttons = mcContainer.querySelectorAll(".mc-btn");
-            if (!block) {
-                buttons.forEach(btn => { btn.textContent = "等待單字..."; btn.onclick = null; btn.disabled = true; });
-                return;
-            }
+            if (!block) { buttons.forEach(btn => { btn.textContent = "等待單字..."; btn.onclick = null; btn.disabled = true; }); return; }
 
-            let correctAnswer = block.target;
-            let options = [correctAnswer];
+            let correctAnswer = block.target; let options = [correctAnswer];
             let isTargetEnglish = /^[a-zA-Z\s-]+$/.test(correctAnswer);
 
-            // 產生 3 個錯誤選項
-            let attempts = 0;
-            while(options.length < 4 && attempts < 100) {
-                attempts++;
+            while(options.length < 4) {
                 let randWord = activePool[Math.floor(Math.random() * activePool.length)];
                 let wrongVal = isTargetEnglish ? randWord.en.toLowerCase() : randWord.ch;
                 if (!options.includes(wrongVal)) options.push(wrongVal);
             }
-
-            // 洗牌
             options.sort(() => Math.random() - 0.5);
 
             buttons.forEach((btn, index) => {
-                btn.textContent = options[index];
-                btn.className = "mc-btn"; // 重置顏色
-                btn.disabled = false;
+                btn.textContent = options[index]; btn.className = "mc-btn"; btn.disabled = false;
                 btn.onclick = () => handleMCClick(options[index], btn, block);
             });
         }
 
         function handleMCClick(selectedAnswer, btnElement, targetBlock) {
             if (isGameOver || !targetBlock) return;
-
-            // 答對了！
             if (selectedAnswer === targetBlock.target) {
                 btnElement.classList.add("correct");
                 const hitIdx = activeBlocks.indexOf(targetBlock);
                 if (hitIdx > -1) activeBlocks.splice(hitIdx, 1);
                 
-                targetBlock.element.classList.add("eff-glow");
-                setTimeout(() => targetBlock.element.remove(), 400);
-                
+                playRandomEffect(targetBlock); // 觸發華麗特效！
                 score += 10; scoreDisplay.textContent = score;
-                currentTargetBlock = null; // 觸發下一幀更新按鈕
-                mcContainer.querySelectorAll(".mc-btn").forEach(b => b.onclick = null); // 暫停連點
-                
+                currentTargetBlock = null; mcContainer.querySelectorAll(".mc-btn").forEach(b => b.onclick = null);
             } else {
-                // 答錯了！
-                btnElement.classList.add("wrong");
-                document.body.style.backgroundColor = "#4a0000";
+                playExtremeSound('error'); // 觸發錯誤音效
+                btnElement.classList.add("wrong"); document.body.style.backgroundColor = "#4a0000";
                 setTimeout(()=> document.body.style.backgroundColor = "", 150);
                 setTimeout(()=> btnElement.classList.remove("wrong"), 300);
             }
         }
 
-        // --- 鍵盤模式核心邏輯 ---
+        // --- 鍵盤處理 ---
         typeInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter" && currentInputMode === "typing") {
                 const val = typeInput.value.trim().toLowerCase();
                 let hitIdx = activeBlocks.findIndex(b => b.target.toLowerCase() === val);
                 if (hitIdx !== -1) {
                     const b = activeBlocks.splice(hitIdx, 1)[0];
-                    b.element.classList.add("eff-glow");
-                    setTimeout(() => b.element.remove(), 400);
-                    score += 15; // 打字比較難，給 15 分
-                    scoreDisplay.textContent = score;
+                    playRandomEffect(b); // 觸發華麗特效！
+                    score += 15; scoreDisplay.textContent = score;
                 } else {
+                    playExtremeSound('error'); // 觸發錯誤音效
                     document.body.style.backgroundColor = "#4a0000";
                     setTimeout(()=> document.body.style.backgroundColor = "", 150);
                 }
@@ -450,23 +593,14 @@
 
         function triggerGameOver() {
             isGameOver = true; clearInterval(gameInterval); clearInterval(spawnInterval); stopBGM();
-            board.classList.add("game-over"); document.body.classList.add("global-shake");
-            
-            if (currentInputMode === "typing") {
-                typeInput.disabled = true; typeInput.placeholder = "GAME OVER";
-            } else {
-                mcContainer.querySelectorAll(".mc-btn").forEach(b => { b.disabled = true; b.textContent = "GAME OVER"; b.className="mc-btn"; });
-            }
-            
-            startBtn.disabled = false; startBtn.textContent = "🔄 重新挑戰";
-            document.querySelectorAll("select").forEach(s => s.disabled = false);
+            playExtremeSound('gameover');
+            board.classList.add("game-over"); document.body.classList.add("global-shake"); document.body.style.backgroundColor = "#8b0000";
+            if (currentInputMode === "typing") { typeInput.disabled = true; typeInput.placeholder = "GAME OVER"; } 
+            else { mcContainer.querySelectorAll(".mc-btn").forEach(b => { b.disabled = true; b.textContent = "GAME OVER"; b.className="mc-btn"; }); }
+            startBtn.disabled = false; startBtn.textContent = "🔄 重新挑戰"; document.querySelectorAll("select").forEach(s => s.disabled = false);
         }
 
-        // 註冊 PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
-        }
-
+        if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js')); }
         initApp();
     </script>
 </body>

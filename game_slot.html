@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 連線單字小瑪莉</title>
+    
+    <style>
+        body {
+            background-color: #0a0a0a; color: #fff; font-family: 'Segoe UI', sans-serif;
+            display: flex; flex-direction: column; align-items: center; margin: 0; padding: 15px;
+            background-image: radial-gradient(circle at 50% 50%, #222 0%, #000 100%);
+            min-height: 100vh;
+        }
+        h2 { color: #f1c40f; text-shadow: 0 0 20px #f1c40f; margin-top: 5px; font-size: 26px; letter-spacing: 2px;}
+        
+        /* 大廳容器 */
+        .lobby-container { width: 100%; max-width: 380px; background: #222; padding: 20px; border-radius: 10px; border: 2px solid #444; box-sizing: border-box; text-align: center; margin-bottom: 20px;}
+        .lobby-btn { background: #3498db; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold; transition: 0.2s;}
+        .lobby-btn:hover { background: #2980b9; box-shadow: 0 0 10px #2980b9; }
+        .lobby-input { width: 100%; padding: 12px; font-size: 20px; text-align: center; border-radius: 5px; border: 2px solid #00ffcc; background: #111; color: white; box-sizing: border-box; margin-bottom: 10px;}
+        
+        #lobby-screen, #game-screen { display: none; }
+        .active-screen { display: flex !important; flex-direction: column; align-items: center; width: 100%;}
+
+        /* 資訊看板 */
+        .info-board {
+            display: flex; justify-content: space-between; width: 100%; max-width: 380px;
+            background: #111; padding: 10px; border-radius: 10px; border: 2px solid #333;
+            box-sizing: border-box; margin-bottom: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.8);
+            align-items: center;
+        }
+        .score-box { font-size: 16px; font-weight: 900; color: #fff; display: flex; flex-direction: column; align-items: center;}
+        .score-box span { color: #f1c40f; font-size: 20px;}
+        .my-color { color: #00ffcc !important; } .opp-color { color: #ff0055 !important; }
+
+        #room-status { font-size: 18px; font-weight: bold; color: #fff; margin-bottom: 10px; text-shadow: 0 0 10px #fff; text-align: center;}
+
+        /* --- 12宮格 小瑪莉跑道 --- */
+        .machine-container {
+            position: relative; width: 100%; max-width: 380px; 
+            background: #222; padding: 15px; border-radius: 15px;
+            border: 4px solid #555; box-shadow: inset 0 0 20px #000, 0 0 30px rgba(241, 196, 15, 0.2);
+            box-sizing: border-box;
+        }
+        .grid-board { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: 8px; }
+        .cell {
+            background: #1a1a1a; border: 2px solid #333; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            height: 60px; font-size: 14px; font-weight: bold; color: #888;
+            text-align: center; word-break: break-word; transition: 0.1s; box-shadow: inset 0 0 10px #000;
+        }
+
+        /* 定位 12 個格子的位置 (繞一圈) */
+        .cell-0 { grid-column: 1; grid-row: 1; } .cell-1 { grid-column: 2; grid-row: 1; }
+        .cell-2 { grid-column: 3; grid-row: 1; } .cell-3 { grid-column: 4; grid-row: 1; }
+        .cell-4 { grid-column: 4; grid-row: 2; } .cell-5 { grid-column: 4; grid-row: 3; }
+        .cell-6 { grid-column: 4; grid-row: 4; } .cell-7 { grid-column: 3; grid-row: 4; }
+        .cell-8 { grid-column: 2; grid-row: 4; } .cell-9 { grid-column: 1; grid-row: 4; }
+        .cell-10 { grid-column: 1; grid-row: 3; } .cell-11 { grid-column: 1; grid-row: 2; }
+
+        .active-light { background: #e74c3c !important; color: white !important; border-color: #ff7675 !important; box-shadow: 0 0 20px #e74c3c, inset 0 0 10px #ff7675 !important; transform: scale(1.05); z-index: 10; }
+        @keyframes jackpot-flash { 0%, 100% { background: #f1c40f; box-shadow: 0 0 30px #f1c40f; } 50% { background: #e67e22; box-shadow: 0 0 10px #e67e22; } }
+        .jackpot { animation: jackpot-flash 0.3s infinite !important; color: #000 !important; border-color: #fff !important;}
+
+        .center-control { grid-column: 2 / 4; grid-row: 2 / 4; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        #spin-btn {
+            width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, #e74c3c, #c0392b);
+            border: 4px solid #fff; color: white; font-size: 20px; font-weight: 900; cursor: pointer;
+            box-shadow: 0 10px 0 #8e0000, 0 15px 20px rgba(0,0,0,0.5); transition: 0.1s; outline: none; text-shadow: 0 2px 2px rgba(0,0,0,0.5);
+        }
+        #spin-btn:active:not(:disabled) { transform: translateY(10px); box-shadow: 0 0 0 #8e0000, 0 5px 10px rgba(0,0,0,0.5); }
+        #spin-btn:disabled { background: radial-gradient(circle, #7f8c8d, #34495e); box-shadow: 0 10px 0 #2c3e50; cursor: not-allowed; color:#aaa; border-color:#888;}
+
+        /* --- 搶答彈出視窗 --- */
+        #quiz-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.85); z-index: 100; flex-direction: column;
+            align-items: center; justify-content: center; backdrop-filter: blur(5px);
+        }
+        .quiz-box { background: #222; border: 4px solid #f1c40f; padding: 25px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 0 50px rgba(241,196,15,0.3); }
+        .quiz-word { font-size: 36px; color: #f1c40f; font-weight: 900; margin-bottom: 20px; letter-spacing: 2px;}
+        .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .quiz-btn { background: #34495e; color: white; padding: 15px 5px; font-size: 16px; border: 2px solid #2c3e50; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .quiz-btn.correct { background: #27ae60 !important; border-color: #2ecc71 !important; box-shadow: 0 0 20px #2ecc71;}
+        .quiz-btn.wrong { background: #c0392b !important; border-color: #e74c3c !important;}
+
+        #menu-btn { margin-top: 15px; background: #555; padding: 10px 20px; border-radius: 5px; text-decoration: none; color: white; font-weight: bold; border: 2px solid #777;}
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+
+    <h2>🎰 連線小瑪莉</h2>
+
+    <div id="lobby-screen" class="lobby-container active-screen">
+        <h3 id="lobby-title">載入題庫中...</h3>
+        <div id="lobby-actions" style="display:none; width: 100%;">
+            <button id="btn-create-room" class="lobby-btn" style="background:#27ae60;">🏠 建立對戰房間 (房主)</button>
+            <hr style="border-color:#444; margin: 20px 0;">
+            <input type="text" id="input-room-code" class="lobby-input" placeholder="輸入 4 位數房號" maxlength="4">
+            <button id="btn-join-room" class="lobby-btn">🔗 加入對戰 (挑戰者)</button>
+        </div>
+        <a href="index.html" id="menu-btn">⬅ 返回大廳</a>
+    </div>
+
+    <div id="game-screen">
+        <div class="info-board">
+            <div class="score-box">我<br><span id="ui-my-score" class="my-color">0</span></div>
+            <div class="score-box">回合<br><span id="ui-spins" style="color:white;">0/10</span></div>
+            <div class="score-box">對手<br><span id="ui-opp-score" class="opp-color">0</span></div>
+        </div>
+
+        <div id="room-status">房號: <span id="ui-room-code" style="color:#f1c40f;">----</span> | 等待加入...</div>
+
+        <div class="machine-container" id="machine-area" style="display:none;">
+            <div class="grid-board" id="board">
+                <div class="center-control">
+                    <button id="spin-btn" disabled>SPIN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-modal">
+        <div class="quiz-box">
+            <h3 id="quiz-title" style="margin-top:0; color:#aaa;">最快搶答：</h3>
+            <div class="quiz-word" id="quiz-target">APPLE</div>
+            <div class="opt-grid" id="quiz-options"></div>
+        </div>
+    </div>
+
+    <script>
+        // 音效引擎
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+        function playSound(type) {
+            if (!audioCtx) audioCtx = new AudioContext();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            const now = audioCtx.currentTime;
+            if (type === 'tick') { osc.type = 'square'; osc.frequency.setValueAtTime(800, now); osc.frequency.exponentialRampToValueAtTime(100, now + 0.1); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.1); osc.start(now); osc.stop(now + 0.1); } 
+            else if (type === 'win') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); osc.frequency.setValueAtTime(600, now + 0.1); osc.frequency.setValueAtTime(1000, now + 0.2); gain.gain.setValueAtTime(0.3, now); gain.gain.linearRampToValueAtTime(0, now + 0.5); osc.start(now); osc.stop(now + 0.5); }
+        }
+
+        // ==========================================
+        // 🔑 1. Firebase 初始化
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyAav_2FeSY7k3QXYYUGfep5UCtKuaApEQM",
+            authDomain: "wordgame-pwa.firebaseapp.com",
+            databaseURL: "您的 databaseURL 請貼在這裡", // ⚠️ 老前輩記得貼上 URL
+            projectId: "wordgame-pwa",
+            storageBucket: "wordgame-pwa.firebasestorage.app",
+            messagingSenderId: "527450589704",
+            appId: "1:527450589704:web:92d700edfc5b6ed1f15fbd"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // ==========================================
+        // 📖 2. 全域變數
+        // ==========================================
+        let allWords = []; let myRole = ""; let currentRoom = ""; let localState = "";
+        const maxSpins = 10;
+        let cells = []; // 存放 12 宮格 DOM
+
+        const ui = {
+            lobby: document.getElementById('lobby-screen'), game: document.getElementById('game-screen'),
+            machine: document.getElementById('machine-area'), board: document.getElementById('board'),
+            spinBtn: document.getElementById('spin-btn'), status: document.getElementById('room-status'),
+            myScore: document.getElementById('ui-my-score'), oppScore: document.getElementById('ui-opp-score'),
+            spins: document.getElementById('ui-spins'), roomCode: document.getElementById('ui-room-code'),
+            modal: document.getElementById('quiz-modal'), quizTarget: document.getElementById('quiz-target'),
+            quizOpts: document.getElementById('quiz-options'), quizTitle: document.getElementById('quiz-title')
+        };
+
+        // 載入題庫
+        async function loadWords() {
+            try {
+                const res = await fetch('words.json');
+                allWords = await res.json();
+                document.getElementById('lobby-title').innerText = "選擇連線模式";
+                document.getElementById('lobby-actions').style.display = "block";
+            } catch(e) { alert("無法載入 words.json！"); }
+        }
+
+        // ==========================================
+        // 🔗 3. 房間與盤面建立
+        // ==========================================
+        document.getElementById('btn-create-room').onclick = () => {
+            myRole = 'host'; currentRoom = Math.floor(1000 + Math.random() * 9000).toString();
+            
+            // 房主負責抽出 12 個單字作為這場遊戲的盤面
+            let pool = [...allWords].sort(() => 0.5 - Math.random()).slice(0, 12);
+            let boardWords = pool.map(w => ({ ch: w.ch, en: w.en }));
+
+            db.ref('rooms/' + currentRoom).set({
+                state: 'waiting', hostScore: 0, guestScore: 0, currentSpin: 0,
+                boardWords: boardWords, targetIndex: 0, currentQuiz: null, winner: ""
+            });
+
+            ui.roomCode.innerText = currentRoom;
+            ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+            listenToRoom();
+        };
+
+        document.getElementById('btn-join-room').onclick = () => {
+            const code = document.getElementById('input-room-code').value;
+            if (code.length !== 4) return alert("請輸入 4 位數房號");
+            
+            db.ref('rooms/' + code).once('value', snap => {
+                if (!snap.exists() || snap.val().state !== 'waiting') return alert("房間不存在或已滿！");
+                myRole = 'guest'; currentRoom = code;
+                ui.roomCode.innerText = currentRoom;
+                ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+                
+                db.ref('rooms/' + currentRoom).update({ state: 'idle' });
+                listenToRoom();
+            });
+        };
+
+        // 繪製 12 宮格
+        function renderBoard(boardWords) {
+            if (cells.length > 0) return; // 已繪製過就不重繪
+            for(let i=0; i<12; i++) {
+                let cell = document.createElement('div');
+                cell.className = `cell cell-${i}`;
+                cell.innerText = boardWords[i].en;
+                ui.board.appendChild(cell);
+                cells.push(cell);
+            }
+            cells[0].classList.add('active-light');
+            ui.machine.style.display = "block";
+        }
+
+        // ==========================================
+        // 📡 4. 遊戲核心狀態機 (即時監聽)
+        // ==========================================
+        let currentPos = 0; // 跑馬燈目前位置
+        
+        function listenToRoom() {
+            db.ref('rooms/' + currentRoom).on('value', snap => {
+                const data = snap.val();
+                if (!data) return alert("房間已關閉");
+
+                ui.myScore.innerText = myRole === 'host' ? data.hostScore : data.guestScore;
+                ui.oppScore.innerText = myRole === 'host' ? data.guestScore : data.hostScore;
+                ui.spins.innerText = `${data.currentSpin}/${maxSpins}`;
+
+                if (data.boardWords) renderBoard(data.boardWords);
+
+                // --- 狀態控制 ---
+                if (data.state === 'idle') {
+                    if (localState !== 'idle') {
+                        localState = 'idle';
+                        ui.modal.style.display = 'none';
+                        cells.forEach(c => c.classList.remove('jackpot'));
+                        cells[currentPos].classList.add('active-light');
+
+                        if (myRole === 'host') {
+                            ui.status.innerText = "請按下 SPIN 啟動輪盤！";
+                            ui.spinBtn.disabled = false;
+                            ui.spinBtn.onclick = () => {
+                                ui.spinBtn.disabled = true;
+                                if (!audioCtx) audioCtx = new AudioContext();
+                                
+                                // 房主決定這回合的題目與停下來的位子
+                                let targetIdx = Math.floor(Math.random() * 12);
+                                let targetWord = data.boardWords[targetIdx];
+                                
+                                // 產生 4 個選項
+                                let opts = [targetWord.ch];
+                                while(opts.length < 4) {
+                                    let wrong = allWords[Math.floor(Math.random() * allWords.length)].ch;
+                                    if(!opts.includes(wrong)) opts.push(wrong);
+                                }
+                                opts.sort(() => 0.5 - Math.random());
+                                
+                                db.ref('rooms/' + currentRoom).update({ 
+                                    state: 'spinning', targetIndex: targetIdx, 
+                                    currentQuiz: { targetEn: targetWord.en, targetCh: targetWord.ch, options: opts }
+                                });
+                            };
+                        } else {
+                            ui.status.innerText = "等待房主啟動轉盤...";
+                            ui.spinBtn.disabled = true;
+                        }
+                    }
+                }
+                else if (data.state === 'spinning') {
+                    if (localState !== 'spinning') {
+                        localState = 'spinning';
+                        ui.status.innerText = "輪盤轉動中...";
+                        ui.spinBtn.disabled = true;
+                        
+                        // 雙方同時開始播放跑馬燈動畫，目標停在 data.targetIndex
+                        playSpinAnimation(data.targetIndex, () => {
+                            // 動畫播完後，由房主切換到搶答狀態
+                            if (myRole === 'host') {
+                                db.ref('rooms/' + currentRoom).update({ state: 'answering' });
+                            }
+                        });
+                    }
+                }
+                else if (data.state === 'answering') {
+                    if (localState !== 'answering') {
+                        localState = 'answering';
+                        ui.status.innerText = "搶答開始！";
+                        showQuizModal(data.currentQuiz);
+                    }
+                }
+                else if (data.state === 'round_end') {
+                    if (localState !== 'round_end') {
+                        localState = 'round_end';
+                        document.querySelectorAll('.quiz-btn').forEach(b => b.disabled = true);
+                        
+                        let winText = data.winner === myRole ? "🎉 你搶到了金幣！" : "💀 被對手搶先了！";
+                        ui.quizTitle.innerHTML = winText;
+                        
+                        // 3 秒後進入下一局
+                        if (myRole === 'host') {
+                            setTimeout(() => {
+                                let nextSpin = data.currentSpin + 1;
+                                if (nextSpin >= maxSpins) {
+                                    db.ref('rooms/' + currentRoom).update({ state: 'game_over', currentSpin: nextSpin });
+                                } else {
+                                    db.ref('rooms/' + currentRoom).update({ state: 'idle', currentSpin: nextSpin });
+                                }
+                            }, 2000);
+                        }
+                    }
+                }
+                else if (data.state === 'game_over') {
+                    ui.modal.style.display = 'none';
+                    let myFinal = myRole === 'host' ? data.hostScore : data.guestScore;
+                    let oppFinal = myRole === 'host' ? data.guestScore : data.hostScore;
+                    
+                    if (myFinal > oppFinal) ui.status.innerHTML = "🏆 遊戲結束！你是大贏家！";
+                    else if (myFinal < oppFinal) ui.status.innerHTML = "😭 遊戲結束！挑戰失敗！";
+                    else ui.status.innerHTML = "🤝 遊戲結束！雙方平手！";
+                }
+            });
+        }
+
+        // ==========================================
+        // 🎲 5. 動畫與搶答邏輯
+        // ==========================================
+        function playSpinAnimation(targetIdx, callback) {
+            let steps = 24; // 至少跑 2 圈
+            let diff = targetIdx - currentPos;
+            if (diff < 0) diff += 12;
+            steps += diff; // 確保精準停在 targetIdx
+            
+            let currentStep = 0; let speed = 40;
+
+            function runLight() {
+                cells[currentPos].classList.remove('active-light');
+                currentPos = (currentPos + 1) % 12;
+                cells[currentPos].classList.add('active-light');
+                playSound('tick');
+
+                currentStep++;
+                if (currentStep > steps - 8) speed += 40; // 結尾減速
+                
+                if (currentStep < steps) {
+                    setTimeout(runLight, speed);
+                } else {
+                    cells[currentPos].classList.add('jackpot'); // 中獎閃爍
+                    setTimeout(callback, 800); // 停頓 0.8 秒後執行回呼(跳出題目)
+                }
+            }
+            runLight();
+        }
+
+        function showQuizModal(quizData) {
+            ui.modal.style.display = 'flex';
+            ui.quizTitle.innerText = "最快搶答：";
+            ui.quizTarget.innerText = quizData.targetEn;
+            ui.quizOpts.innerHTML = '';
+
+            quizData.options.forEach(optCh => {
+                let btn = document.createElement('button');
+                btn.className = 'quiz-btn'; btn.innerText = optCh;
+                
+                btn.onclick = () => {
+                    btn.disabled = true;
+                    // 使用 Transaction 確保只有先按的人得分
+                    db.ref('rooms/' + currentRoom).transaction(room => {
+                        if (room && room.state === 'answering') {
+                            if (optCh === room.currentQuiz.targetCh) {
+                                room.state = 'round_end'; room.winner = myRole;
+                                if (myRole === 'host') room.hostScore += 50; else room.guestScore += 50;
+                                playSound('win');
+                            } else {
+                                // 答錯直接讓對方贏
+                                room.state = 'round_end'; room.winner = myRole === 'host' ? 'guest' : 'host';
+                                if (myRole === 'host') room.guestScore += 50; else room.hostScore += 50;
+                            }
+                        }
+                        return room;
+                    });
+                };
+                ui.quizOpts.appendChild(btn);
+            });
+        }
+
+        window.onload = loadWords;
+    </script>
+</body>
+</html>
