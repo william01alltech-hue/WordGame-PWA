@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎰 連線單字小瑪莉</title>
+    <title>🎰 連線單字小瑪莉 (全自動極速版)</title>
     
     <style>
         body {
@@ -18,7 +18,7 @@
         .lobby-container { width: 100%; max-width: 380px; background: #222; padding: 20px; border-radius: 10px; border: 2px solid #444; box-sizing: border-box; text-align: center; margin-bottom: 20px;}
         .lobby-btn { background: #3498db; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold; transition: 0.2s;}
         .lobby-btn:hover { background: #2980b9; box-shadow: 0 0 10px #2980b9; }
-        .lobby-input { width: 100%; padding: 12px; font-size: 20px; text-align: center; border-radius: 5px; border: 2px solid #00ffcc; background: #111; color: white; box-sizing: border-box; margin-bottom: 10px;}
+        .lobby-input { width: 100%; padding: 12px; font-size: 18px; text-align: center; border-radius: 5px; border: 2px solid #00ffcc; background: #111; color: white; box-sizing: border-box; margin-bottom: 10px;}
         
         #lobby-screen, #game-screen { display: none; }
         .active-screen { display: flex !important; flex-direction: column; align-items: center; width: 100%;}
@@ -51,7 +51,6 @@
             text-align: center; word-break: break-word; transition: 0.1s; box-shadow: inset 0 0 10px #000;
         }
 
-        /* 定位 12 個格子的位置 (繞一圈) */
         .cell-0 { grid-column: 1; grid-row: 1; } .cell-1 { grid-column: 2; grid-row: 1; }
         .cell-2 { grid-column: 3; grid-row: 1; } .cell-3 { grid-column: 4; grid-row: 1; }
         .cell-4 { grid-column: 4; grid-row: 2; } .cell-5 { grid-column: 4; grid-row: 3; }
@@ -98,6 +97,13 @@
     <div id="lobby-screen" class="lobby-container active-screen">
         <h3 id="lobby-title">載入題庫中...</h3>
         <div id="lobby-actions" style="display:none; width: 100%;">
+            
+            <select id="select-rounds" class="lobby-input" style="background: #2c3e50; border-color: #3498db;">
+                <option value="5">進行 5 回合</option>
+                <option value="7">進行 7 回合</option>
+                <option value="9">進行 9 回合</option>
+            </select>
+
             <button id="btn-create-room" class="lobby-btn" style="background:#27ae60;">🏠 建立對戰房間 (房主)</button>
             <hr style="border-color:#444; margin: 20px 0;">
             <input type="text" id="input-room-code" class="lobby-input" placeholder="輸入 4 位數房號" maxlength="4">
@@ -109,7 +115,7 @@
     <div id="game-screen">
         <div class="info-board">
             <div class="score-box">我<br><span id="ui-my-score" class="my-color">0</span></div>
-            <div class="score-box">回合<br><span id="ui-spins" style="color:white;">0/10</span></div>
+            <div class="score-box">回合<br><span id="ui-spins" style="color:white;">0/0</span></div>
             <div class="score-box">對手<br><span id="ui-opp-score" class="opp-color">0</span></div>
         </div>
 
@@ -152,7 +158,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyAav_2FeSY7k3QXYYUGfep5UCtKuaApEQM",
             authDomain: "wordgame-pwa.firebaseapp.com",
-            databaseURL: "https://wordgame-pwa-default-rtdb.firebaseio.com/", // ⚠️ 老前輩記得貼上 URL
+            databaseURL: "您的 databaseURL 請貼在這裡", // ⚠️ 老前輩記得貼上 URL！
             projectId: "wordgame-pwa",
             storageBucket: "wordgame-pwa.firebasestorage.app",
             messagingSenderId: "527450589704",
@@ -165,8 +171,7 @@
         // 📖 2. 全域變數
         // ==========================================
         let allWords = []; let myRole = ""; let currentRoom = ""; let localState = "";
-        const maxSpins = 10;
-        let cells = []; // 存放 12 宮格 DOM
+        let cells = []; 
 
         const ui = {
             lobby: document.getElementById('lobby-screen'), game: document.getElementById('game-screen'),
@@ -194,12 +199,13 @@
         document.getElementById('btn-create-room').onclick = () => {
             myRole = 'host'; currentRoom = Math.floor(1000 + Math.random() * 9000).toString();
             
-            // 房主負責抽出 12 個單字作為這場遊戲的盤面
+            const maxRds = parseInt(document.getElementById('select-rounds').value);
             let pool = [...allWords].sort(() => 0.5 - Math.random()).slice(0, 12);
             let boardWords = pool.map(w => ({ ch: w.ch, en: w.en }));
 
             db.ref('rooms/' + currentRoom).set({
-                state: 'waiting', hostScore: 0, guestScore: 0, currentSpin: 0,
+                state: 'waiting', hostScore: 0, guestScore: 0, 
+                currentSpin: 0, maxRounds: maxRds, 
                 boardWords: boardWords, targetIndex: 0, currentQuiz: null, winner: ""
             });
 
@@ -223,9 +229,8 @@
             });
         };
 
-        // 繪製 12 宮格
         function renderBoard(boardWords) {
-            if (cells.length > 0) return; // 已繪製過就不重繪
+            if (cells.length > 0) return; 
             for(let i=0; i<12; i++) {
                 let cell = document.createElement('div');
                 cell.className = `cell cell-${i}`;
@@ -240,7 +245,7 @@
         // ==========================================
         // 📡 4. 遊戲核心狀態機 (即時監聽)
         // ==========================================
-        let currentPos = 0; // 跑馬燈目前位置
+        let currentPos = 0; 
         
         function listenToRoom() {
             db.ref('rooms/' + currentRoom).on('value', snap => {
@@ -249,11 +254,12 @@
 
                 ui.myScore.innerText = myRole === 'host' ? data.hostScore : data.guestScore;
                 ui.oppScore.innerText = myRole === 'host' ? data.guestScore : data.hostScore;
-                ui.spins.innerText = `${data.currentSpin}/${maxSpins}`;
+                ui.spins.innerText = `${data.currentSpin}/${data.maxRounds}`;
 
                 if (data.boardWords) renderBoard(data.boardWords);
 
                 // --- 狀態控制 ---
+                // 狀態 1: Idle (只有第一局會用到，等待房主點火)
                 if (data.state === 'idle') {
                     if (localState !== 'idle') {
                         localState = 'idle';
@@ -262,17 +268,16 @@
                         cells[currentPos].classList.add('active-light');
 
                         if (myRole === 'host') {
-                            ui.status.innerText = "請按下 SPIN 啟動輪盤！";
+                            ui.status.innerText = "請按下 SPIN 啟動首輪戰鬥！";
                             ui.spinBtn.disabled = false;
+                            
                             ui.spinBtn.onclick = () => {
                                 ui.spinBtn.disabled = true;
                                 if (!audioCtx) audioCtx = new AudioContext();
                                 
-                                // 房主決定這回合的題目與停下來的位子
                                 let targetIdx = Math.floor(Math.random() * 12);
                                 let targetWord = data.boardWords[targetIdx];
                                 
-                                // 產生 4 個選項
                                 let opts = [targetWord.ch];
                                 while(opts.length < 4) {
                                     let wrong = allWords[Math.floor(Math.random() * allWords.length)].ch;
@@ -286,26 +291,32 @@
                                 });
                             };
                         } else {
-                            ui.status.innerText = "等待房主啟動轉盤...";
+                            ui.status.innerText = "等待房主啟動首輪...";
                             ui.spinBtn.disabled = true;
                         }
                     }
                 }
+                // 狀態 2: Spinning (跑馬燈轉動中，第一局手動觸發，後續自動觸發)
                 else if (data.state === 'spinning') {
                     if (localState !== 'spinning') {
                         localState = 'spinning';
+                        
+                        // 🌟 關鍵：一進入 Spinning 狀態，立刻強制隱藏結算畫面，並移除上次的中獎光環
+                        ui.modal.style.display = 'none';
+                        cells.forEach(c => c.classList.remove('jackpot'));
+                        cells[currentPos].classList.add('active-light');
+
                         ui.status.innerText = "輪盤轉動中...";
                         ui.spinBtn.disabled = true;
                         
-                        // 雙方同時開始播放跑馬燈動畫，目標停在 data.targetIndex
                         playSpinAnimation(data.targetIndex, () => {
-                            // 動畫播完後，由房主切換到搶答狀態
                             if (myRole === 'host') {
                                 db.ref('rooms/' + currentRoom).update({ state: 'answering' });
                             }
                         });
                     }
                 }
+                // 狀態 3: Answering (答題中)
                 else if (data.state === 'answering') {
                     if (localState !== 'answering') {
                         localState = 'answering';
@@ -313,6 +324,7 @@
                         showQuizModal(data.currentQuiz);
                     }
                 }
+                // 狀態 4: Round End (回合結束結算，1.5秒後全自動進入下一局)
                 else if (data.state === 'round_end') {
                     if (localState !== 'round_end') {
                         localState = 'round_end';
@@ -321,19 +333,37 @@
                         let winText = data.winner === myRole ? "🎉 你搶到了金幣！" : "💀 被對手搶先了！";
                         ui.quizTitle.innerHTML = winText;
                         
-                        // 3 秒後進入下一局
+                        // 🌟 自動化核心：房主負責在 1.5 秒後直接產生新題目並啟動下一局 SPIN！
                         if (myRole === 'host') {
                             setTimeout(() => {
                                 let nextSpin = data.currentSpin + 1;
-                                if (nextSpin >= maxSpins) {
+                                
+                                if (nextSpin >= data.maxRounds) { 
                                     db.ref('rooms/' + currentRoom).update({ state: 'game_over', currentSpin: nextSpin });
                                 } else {
-                                    db.ref('rooms/' + currentRoom).update({ state: 'idle', currentSpin: nextSpin });
+                                    // 🌟 自動產生下一題，並且直接把狀態跳轉為 'spinning'，跳過 'idle'
+                                    let targetIdx = Math.floor(Math.random() * 12);
+                                    let targetWord = data.boardWords[targetIdx];
+                                    
+                                    let opts = [targetWord.ch];
+                                    while(opts.length < 4) {
+                                        let wrong = allWords[Math.floor(Math.random() * allWords.length)].ch;
+                                        if(!opts.includes(wrong)) opts.push(wrong);
+                                    }
+                                    opts.sort(() => 0.5 - Math.random());
+                                    
+                                    db.ref('rooms/' + currentRoom).update({ 
+                                        state: 'spinning', 
+                                        currentSpin: nextSpin,
+                                        targetIndex: targetIdx, 
+                                        currentQuiz: { targetEn: targetWord.en, targetCh: targetWord.ch, options: opts }
+                                    });
                                 }
-                            }, 2000);
+                            }, 1500); 
                         }
                     }
                 }
+                // 狀態 5: Game Over (結算總成績)
                 else if (data.state === 'game_over') {
                     ui.modal.style.display = 'none';
                     let myFinal = myRole === 'host' ? data.hostScore : data.guestScore;
@@ -350,10 +380,10 @@
         // 🎲 5. 動畫與搶答邏輯
         // ==========================================
         function playSpinAnimation(targetIdx, callback) {
-            let steps = 24; // 至少跑 2 圈
+            let steps = 24; 
             let diff = targetIdx - currentPos;
             if (diff < 0) diff += 12;
-            steps += diff; // 確保精準停在 targetIdx
+            steps += diff; 
             
             let currentStep = 0; let speed = 40;
 
@@ -364,13 +394,13 @@
                 playSound('tick');
 
                 currentStep++;
-                if (currentStep > steps - 8) speed += 40; // 結尾減速
+                if (currentStep > steps - 8) speed += 40; 
                 
                 if (currentStep < steps) {
                     setTimeout(runLight, speed);
                 } else {
-                    cells[currentPos].classList.add('jackpot'); // 中獎閃爍
-                    setTimeout(callback, 800); // 停頓 0.8 秒後執行回呼(跳出題目)
+                    cells[currentPos].classList.add('jackpot'); 
+                    setTimeout(callback, 800); 
                 }
             }
             runLight();
@@ -388,7 +418,6 @@
                 
                 btn.onclick = () => {
                     btn.disabled = true;
-                    // 使用 Transaction 確保只有先按的人得分
                     db.ref('rooms/' + currentRoom).transaction(room => {
                         if (room && room.state === 'answering') {
                             if (optCh === room.currentQuiz.targetCh) {
@@ -396,7 +425,6 @@
                                 if (myRole === 'host') room.hostScore += 50; else room.guestScore += 50;
                                 playSound('win');
                             } else {
-                                // 答錯直接讓對方贏
                                 room.state = 'round_end'; room.winner = myRole === 'host' ? 'guest' : 'host';
                                 if (myRole === 'host') room.guestScore += 50; else room.hostScore += 50;
                             }
