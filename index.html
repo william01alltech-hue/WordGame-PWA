@@ -48,27 +48,36 @@
         .game-card p { margin: 0; color: #bbb; font-size: 15px; z-index: 2; line-height: 1.4;}
         
         .badge {
-            position: absolute; top: 10px; right: -30px; background: #e74c3c; color: white;
+            position: absolute; top: 10px; right: -30px; color: white;
             padding: 5px 30px; font-size: 12px; font-weight: bold; transform: rotate(45deg);
             box-shadow: 0 2px 5px rgba(0,0,0,0.5); z-index: 3; letter-spacing: 1px;
         }
 
-        /* --- 個別遊戲的專屬主題光效 --- */
+        /* --- 個別單元專屬主題光效 --- */
         
+        /* 0. 單字圖書館 (紫色系) */
+        .card-study { border-color: #9b59b6; }
+        .card-study:hover { background: #1a0b2e; border-color: #d291bc; box-shadow: 0 0 30px rgba(210, 145, 188, 0.4); transform: scale(1.05) translateY(-5px); }
+        .card-study h2 { color: #d291bc; text-shadow: 0 0 15px #d291bc;}
+        .card-study .badge { background: #8e44ad; }
+
         /* 1. 防衛戰 (藍色系) */
         .card-defense { border-color: #3498db; }
         .card-defense:hover { background: #1a252f; border-color: #00ffcc; box-shadow: 0 0 30px rgba(0, 255, 204, 0.4); transform: scale(1.05) translateY(-5px); }
         .card-defense h2 { color: #00ffcc; text-shadow: 0 0 15px #00ffcc;}
+        .card-defense .badge { background: #2980b9; }
 
         /* 2. 骰子對戰 (橙色系) */
         .card-dice { border-color: #e67e22; }
         .card-dice:hover { background: #2d1c0a; border-color: #f39c12; box-shadow: 0 0 30px rgba(243, 156, 18, 0.4); transform: scale(1.05) translateY(-5px); }
         .card-dice h2 { color: #f39c12; text-shadow: 0 0 15px #f39c12;}
+        .card-dice .badge { background: #d35400; }
 
         /* 3. 小瑪莉 (紅色系) */
         .card-slot { border-color: #e74c3c; }
         .card-slot:hover { background: #2c0e0e; border-color: #ff0055; box-shadow: 0 0 30px rgba(255, 0, 85, 0.4); transform: scale(1.05) translateY(-5px); }
         .card-slot h2 { color: #ff0055; text-shadow: 0 0 15px #ff0055;}
+        .card-slot .badge { background: #c0392b; }
 
         /* 底部資訊 */
         .footer-info { margin-top: 40px; color: #666; font-size: 12px; text-align: center; }
@@ -81,7 +90,14 @@
 
     <div class="menu-container">
         
+        <a href="study_list.html" class="game-card card-study">
+            <div class="badge">STUDY</div>
+            <h2>📖 單字圖書館</h2>
+            <p>A1 ~ C2 程度分級，穩紮穩打<br>內建發音、音標、詞性與實用造句</p>
+        </a>
+
         <a href="game_defense.html" class="game-card card-defense">
+            <div class="badge">SOLO</div>
             <h2>🧱 單字防衛戰</h2>
             <p>單機挑戰！消除落下的方塊<br>支援手機點擊與電腦實體鍵盤打字</p>
         </a>
@@ -101,7 +117,7 @@
     </div>
 
     <div class="footer-info">
-        1200 單字題庫就緒 | 雙人連線模組正常運行中<br>
+        1200 單字題庫與發音引擎就緒 | 雙人連線模組正常運行中<br>
         Developed for Junior High School English
     </div>
 

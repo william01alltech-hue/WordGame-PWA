@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📖 單字圖書館</title>
+    <style>
+        body {
+            background-color: #0a0a0a; color: #fff; font-family: 'Segoe UI', sans-serif;
+            margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center;
+            background-image: linear-gradient(to bottom, #111, #000); min-height: 100vh;
+        }
+        
+        .header { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;}
+        .header h2 { color: #00ffcc; margin: 0; text-shadow: 0 0 10px #00ffcc; font-size: 24px;}
+        .back-btn { background: #444; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; border: 1px solid #666;}
+
+        /* 篩選控制器 */
+        .filter-panel { width: 100%; max-width: 500px; background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid #333; box-sizing: border-box; margin-bottom: 20px; display: flex; gap: 10px;}
+        select { flex: 1; padding: 10px; border-radius: 5px; background: #222; color: #fff; border: 1px solid #00ffcc; font-size: 16px; outline: none; cursor: pointer;}
+
+        /* 單字列表區 */
+        .word-list { width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 10px; padding-bottom: 50px;}
+        
+        /* 單字卡片 */
+        .word-card {
+            background: #222; border: 1px solid #444; border-radius: 10px; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .word-card.expanded { border-color: #00ffcc; box-shadow: 0 0 15px rgba(0,255,204,0.2); background: #2a2a2a;}
+
+        /* 卡片標題區 (點擊展開) */
+        .card-header { padding: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .word-en { font-size: 22px; font-weight: 900; color: #fff; }
+        .word-ch { font-size: 16px; color: #aaa; margin-left: 10px;}
+        .expand-icon { font-size: 14px; color: #00ffcc; transition: transform 0.3s;}
+        .word-card.expanded .expand-icon { transform: rotate(180deg); }
+
+        /* 卡片詳細內容區 (隱藏/展開) */
+        .card-details { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; background: #1a1a1a;}
+        .word-card.expanded .card-details { padding: 15px; max-height: 300px; border-top: 1px dashed #444;}
+        
+        .info-row { margin-bottom: 10px; font-size: 15px; color: #ddd;}
+        .info-label { color: #f1c40f; font-weight: bold; margin-right: 5px; font-size: 13px; background:#333; padding:2px 6px; border-radius:3px;}
+        
+        .sentence-box { background: #111; padding: 10px; border-left: 3px solid #3498db; border-radius: 4px; margin-top: 15px;}
+        .sentence-en { font-size: 16px; color: #fff; margin-bottom: 5px; font-style: italic;}
+        .sentence-ch { font-size: 14px; color: #aaa; }
+
+        /* 語音播放按鈕 */
+        .btn-speak { background: transparent; border: 1px solid #3498db; color: #3498db; border-radius: 50%; width: 30px; height: 30px; display: inline-flex; justify-content: center; align-items: center; cursor: pointer; margin-left: 10px; transition: 0.2s; font-size: 16px;}
+        .btn-speak:hover, .btn-speak:active { background: #3498db; color: white; transform: scale(1.1);}
+        .sentence-box .btn-speak { float: right; margin-top: -5px;}
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>📖 單字圖書館</h2>
+        <a href="index.html" class="back-btn">⬅ 返回大廳</a>
+    </div>
+
+    <div class="filter-panel">
+        <select id="sel-main-level"><option value="ALL">載入中...</option></select>
+        <select id="sel-sub-level"><option value="ALL">所有細分類</option></select>
+    </div>
+
+    <div class="word-list" id="word-list-container">
+        </div>
+
+    <script>
+        let allWords = [];
+        const selMain = document.getElementById('sel-main-level');
+        const selSub = document.getElementById('sel-sub-level');
+        const listContainer = document.getElementById('word-list-container');
+
+        // --- 1. TTS 語音朗讀引擎 ---
+        function speakText(text) {
+            // 停止正在播放的聲音，避免重疊
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // 設定為美式英文
+            utterance.rate = 0.9;     // 稍微放慢語速，適合學習
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // --- 2. 載入資料 ---
+        async function loadData() {
+            try {
+                const res = await fetch('words.json');
+                allWords = await res.json();
+                buildFilters();
+                renderList(allWords);
+            } catch(e) {
+                listContainer.innerHTML = "<p style='color:red;'>載入題庫失敗，請確認 words.json 格式是否正確！</p>";
+            }
+        }
+
+        // --- 3. 動態建立下拉選單 ---
+        function buildFilters() {
+            // 抓出所有不重複的大分類 (A1, A2...) 並排序
+            const mainLevels = [...new Set(allWords.map(w => w.mainLevel))].sort();
+            selMain.innerHTML = `<option value="ALL">🌟 所有級別 (A1-C2)</option>`;
+            mainLevels.forEach(lvl => {
+                selMain.innerHTML += `<option value="${lvl}">${lvl}</option>`;
+            });
+
+            // 當大分類改變時，連動更新細分類
+            selMain.addEventListener('change', () => {
+                const selectedMain = selMain.value;
+                selSub.innerHTML = `<option value="ALL">📂 所有細分類</option>`;
+                
+                if (selectedMain !== "ALL") {
+                    const subLevels = [...new Set(allWords.filter(w => w.mainLevel === selectedMain).map(w => w.subLevel))].sort();
+                    subLevels.forEach(sub => {
+                        selSub.innerHTML += `<option value="${sub}">${sub}</option>`;
+                    });
+                }
+                filterAndRender();
+            });
+
+            // 細分類改變時直接重新渲染
+            selSub.addEventListener('change', filterAndRender);
+        }
+
+        // --- 4. 篩選與渲染卡片 ---
+        function filterAndRender() {
+            const mainF = selMain.value;
+            const subF = selSub.value;
+            
+            let filtered = allWords;
+            if (mainF !== "ALL") filtered = filtered.filter(w => w.mainLevel === mainF);
+            if (subF !== "ALL") filtered = filtered.filter(w => w.subLevel === subF);
+
+            renderList(filtered);
+        }
+
+        function renderList(wordsArray) {
+            listContainer.innerHTML = "";
+            if(wordsArray.length === 0) {
+                listContainer.innerHTML = "<p style='text-align:center; color:#888;'>此分類目前沒有單字哦！</p>";
+                return;
+            }
+
+            wordsArray.forEach((w, index) => {
+                const card = document.createElement('div');
+                card.className = 'word-card';
+                
+                card.innerHTML = `
+                    <div class="card-header" onclick="toggleCard(this)">
+                        <div>
+                            <span class="word-en">${w.en}</span>
+                            <span class="word-ch">${w.ch}</span>
+                        </div>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="info-row">
+                            <span class="info-label">KK音標</span> ${w.kk}
+                            <button class="btn-speak" onclick="speakText('${w.en}')">🔊</button>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">詞性</span> ${w.pos}
+                        </div>
+                        <div class="sentence-box">
+                            <button class="btn-speak" onclick="speakText('${w.sentenceEn.replace(/'/g, "\\'")}')">🔊</button>
+                            <div class="sentence-en">${w.sentenceEn}</div>
+                            <div class="sentence-ch">${w.sentenceCh}</div>
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        // --- 5. 卡片展開/收合動畫 ---
+        window.toggleCard = function(headerElement) {
+            const card = headerElement.parentElement;
+            // 如果想要手風琴效果 (一次只開一個)，可以加上這兩行：
+            // document.querySelectorAll('.word-card.expanded').forEach(c => { if(c !== card) c.classList.remove('expanded'); });
+            card.classList.toggle('expanded');
+        };
+
+        window.onload = loadData;
+    </script>
+</body>
+</html>
