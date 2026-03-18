@@ -1,52 +1,21 @@
-[
-  {
-    "en": "apple",
-    "ch": "蘋果",
-    "mainLevel": "A1",
-    "subLevel": "A1-1 (基礎名詞)",
-    "kk": "[ˋæp!]",
-    "pos": "n. (名詞)",
-    "sentenceEn": "I eat an apple every day.",
-    "sentenceCh": "我每天吃一顆蘋果。"
-  },
-  {
-    "en": "happy",
-    "ch": "快樂的",
-    "mainLevel": "A1",
-    "subLevel": "A1-2 (基礎形容詞)",
-    "kk": "[ˋhæpɪ]",
-    "pos": "adj. (形容詞)",
-    "sentenceEn": "She is a happy girl.",
-    "sentenceCh": "她是一個快樂的女孩。"
-  },
-  {
-    "en": "beautiful",
-    "ch": "美麗的",
-    "mainLevel": "A2",
-    "subLevel": "A2-1 (進階形容詞)",
-    "kk": "[ˋbjutəfəl]",
-    "pos": "adj. (形容詞)",
-    "sentenceEn": "The scenery here is very beautiful.",
-    "sentenceCh": "這裡的風景非常美麗。"
-  },
-  {
-    "en": "experience",
-    "ch": "經驗",
-    "mainLevel": "B1",
-    "subLevel": "B1-1 (生活與職場)",
-    "kk": "[ɪkˋspɪrɪəns]",
-    "pos": "n. / v. (名詞/動詞)",
-    "sentenceEn": "He has a lot of experience in teaching.",
-    "sentenceCh": "他在教學方面有很多經驗。"
-  },
-  {
-    "en": "significant",
-    "ch": "重要的；顯著的",
-    "mainLevel": "B2",
-    "subLevel": "B2-1 (學術與論述)",
-    "kk": "[sɪgˋnɪfəkənt]",
-    "pos": "adj. (形容詞)",
-    "sentenceEn": "There is a significant difference between the two.",
-    "sentenceCh": "兩者之間有著顯著的差異。"
-  }
-]
+{
+  "name": "英文單字遊樂場",
+  "short_name": "WordArcade",
+  "description": "國中1200核心單字精準打擊系統",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#00ffcc",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

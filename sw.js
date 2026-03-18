@@ -1,60 +1,53 @@
-const CACHE_NAME = 'word-defender-v1';
-
-// 這裡列出我們需要「強制快取」存到手機硬碟裡的檔案
-const ASSETS_TO_CACHE = [
+const CACHE_NAME = 'wordgame-v2';
+const ASSETS = [
     './',
     './index.html',
-    './manifest.json',
-    // 連您放在 GitHub 上的題庫 API 也一併快取下來！
-    'https://william01alltech-hue.github.io/english-words-api/words.json' 
+    './game_defense.html',
+    './game_dice.html',
+    './game_slot.html',
+    './words.json',
+    './manifest.json'
 ];
 
-// 1. 安裝階段：把檔案抓下來存進 Cache
-self.addEventListener('install', event => {
+// 安裝階段：將核心檔案存入快取
+self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-        .then(cache => {
+        caches.open(CACHE_NAME).then((cache) => {
             console.log('快取寫入中...');
-            return cache.addAll(ASSETS_TO_CACHE);
+            return cache.addAll(ASSETS);
         })
-        .then(() => self.skipWaiting())
     );
+    // 強制立即進入啟動階段，不需等待舊版 Service Worker 關閉
+    self.skipWaiting(); 
 });
 
-// 2. 啟動階段：清除舊版本的 Cache (方便未來更新)
-self.addEventListener('activate', event => {
+// 啟動階段：清除舊版本的快取
+self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cache => {
-                    if (cache !== CACHE_NAME) {
-                        console.log('清除舊快取:', cache);
-                        return caches.delete(cache);
-                    }
-                })
-            );
+        caches.keys().then((keyList) => {
+            return Promise.all(keyList.map((key) => {
+                if (key !== CACHE_NAME) {
+                    console.log('清除舊快取:', key);
+                    return caches.delete(key);
+                }
+            }));
         })
     );
+    // 立即接管所有頁面的控制權
+    self.clients.claim();
 });
 
-// 3. 攔截請求階段 (Cache-First 策略)
-self.addEventListener('fetch', event => {
+// 攔截請求：優先讀取快取，若無則透過網路抓取
+self.addEventListener('fetch', (event) => {
+    // ⚠️ 關鍵防呆：忽略非 http/https 的請求 (解決 chrome-extension 報錯)
+    if (!event.request.url.startsWith('http')) {
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request)
-        .then(response => {
-            // 如果在快取裡有找到，就直接回傳 (0秒啟動、免網路)
-            if (response) {
-                return response;
-            }
-            // 如果沒有，才真的去網路上抓
-            return fetch(event.request).then(fetchRes => {
-                return caches.open(CACHE_NAME).then(cache => {
-                    cache.put(event.request.url, fetchRes.clone());
-                    return fetchRes;
-                });
-            });
-        }).catch(() => {
-            console.log('網路斷線且無快取可讀');
+        caches.match(event.request).then((response) => {
+            // 如果快取裡有，就回傳快取；沒有就去網路拿
+            return response || fetch(event.request);
         })
     );
 });
