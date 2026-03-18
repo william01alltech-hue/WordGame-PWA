@@ -2,12 +2,13 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
     <title>英文單字遊樂場 Word Arcade</title>
     
     <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <meta name="mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <style>
         body {
@@ -15,10 +16,18 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex; flex-direction: column; align-items: center;
             margin: 0; padding: 20px; min-height: 100vh;
+            
+            /* radial-gradient 的寫法修正，符合現代標準 */
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(241, 196, 15, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(52, 152, 219, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 80%, rgba(231, 76, 60, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 15% 50%, rgba(241, 196, 15, 0.08), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(52, 152, 219, 0.08), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(231, 76, 60, 0.08), transparent 50%);
+
+            /* ✅ 修改：加入防呆點擊 CSS，消除網頁感 */
+            -webkit-user-select: none; /* 防止文字反白 */
+            user-select: none;
+            -webkit-touch-callout: none; /* 防止長按跳出系統選單 */
+            touch-action: manipulation; /* 防止雙擊縮放，提升按鈕反應速度 */
         }
 
         /* 大廳標題霓虹特效 */
@@ -122,11 +131,11 @@
     </div>
 
     <script>
-        // PWA Service Worker 註冊 (確保可以安裝到手機桌面)
+        // PWA Service Worker 註冊 (CACHE_NAME v3 更新會由此啟動)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('SW 註冊成功！大廳啟動。'))
+                    .then(reg => console.log('SW 註冊成功！v3 已就緒。'))
                     .catch(err => console.log('SW 註冊失敗', err));
             });
         }

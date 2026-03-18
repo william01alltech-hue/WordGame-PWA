@@ -1,9 +1,11 @@
 {
   "name": "英文單字遊樂場",
   "short_name": "WordArcade",
-  "description": "國中1200核心單字精準打擊系統",
+  "description": "國中1200核心單字精準打擊系統，支援單機與雙人連線對戰。",
+  "categories": ["education", "game"],
   "start_url": "./index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#111111",
   "theme_color": "#00ffcc",
   "icons": [
@@ -15,7 +17,8 @@
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
