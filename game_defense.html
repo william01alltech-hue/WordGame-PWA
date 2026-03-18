@@ -3,299 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧱 單字防衛戰</title>
+    <title>🧱 單字防衛戰 (雙模連線版)</title>
     
     <style>
-        /* =========================================
-           ★ CSS 變數主題庫 (Theme Engine) ★
-           ========================================= */
+        /* CSS 變數主題庫 */
         :root, body[data-theme="cyberpunk"] {
-            --bg-main: #111; --text-main: #00ffcc;
-            --title-shadow: 0 0 15px #00ffcc; --title-accent: #ff0055; --title-accent-shadow: 0 0 10px #ff0055;
+            --bg-main: #111; --text-main: #00ffcc; --title-shadow: 0 0 15px #00ffcc; --title-accent: #ff0055; 
             --board-bg: #0a0a0a; --board-border: #333; --board-shadow: 0 0 40px rgba(0,255,204,0.1);
             --board-bg-img: linear-gradient(#111 2px, transparent 2px), linear-gradient(90deg, #111 2px, transparent 2px);
-            --block-bg: #ff0055; --block-border: #ff4d88;
-            --block-bg-resting: #b3003b; --block-border-resting: #80002a; --block-text: white;
+            --block-bg: #ff0055; --block-border: #ff4d88; --block-text: white;
             --input-bg: #222; --input-text: #00ffcc; --input-border: #444; --input-focus: #00ffcc;
-            --panel-bg: #222; --panel-text: #ddd;
         }
 
-        body[data-theme="arcade"] {
-            --bg-main: #2b2b2b; --text-main: #ffe000;
-            --title-shadow: 3px 3px 0px #e52521; --title-accent: #e52521; --title-accent-shadow: none;
-            --board-bg: #000; --board-border: #ffe000; --board-shadow: 0 0 20px rgba(255,224,0,0.2);
-            --board-bg-img: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.05) 2px, rgba(255,255,255,0.05) 4px);
-            --block-bg: #e52521; --block-border: #fff;
-            --block-bg-resting: #8a1614; --block-border-resting: #aaaaaa; --block-text: white;
-            --input-bg: #000; --input-text: #ffe000; --input-border: #ffe000; --input-focus: #e52521;
-            --panel-bg: #1a1a1a; --panel-text: #ccc;
-        }
-
-        body {
-            background-color: var(--bg-main); color: var(--text-main);
-            font-family: 'Segoe UI', sans-serif;
-            display: flex; flex-direction: column; align-items: center;
-            margin: 0; padding: 10px; overflow-x: hidden; transition: 0.3s;
-        }
-        
+        body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; margin: 0; padding: 10px; overflow-x: hidden; min-height: 100vh;}
         h2 { color: var(--text-main); text-shadow: var(--title-shadow); margin-top:0; margin-bottom: 5px; font-size: 22px; display: flex; justify-content: space-between; width: 100%; max-width: 400px; align-items: center;}
-        h2 span.title-text { color: var(--title-accent); text-shadow: var(--title-accent-shadow); }
+        h2 span.title-text { color: var(--title-accent); }
         .back-btn { background: #555; color: white; padding: 5px 10px; font-size: 12px; border-radius: 5px; text-decoration: none; border: 1px solid #777;}
 
-        /* --- 控制面板 --- */
-        #control-panel {
-            width: 100%; max-width: 400px; display: flex; flex-wrap: wrap;
-            justify-content: space-between; gap: 4px; margin-bottom: 5px; align-items: center; z-index: 100;
-        }
-        select, button { padding: 6px 4px; font-size: 13px; border-radius: 5px; border: none; outline: none; cursor: pointer; font-weight:bold; }
-        select { background-color: var(--input-bg); color: var(--input-text); border: 1px solid var(--input-border); }
-        button { background-color: #27ae60; color: white; transition: 0.2s;}
-        button:disabled { background-color: #555; cursor: not-allowed; color:#888;}
+        /* 大廳與遊戲區切換 */
+        .container { width: 100%; max-width: 400px; background: #222; padding: 15px; border-radius: 10px; border: 2px solid #444; box-sizing: border-box; text-align: center; margin-bottom: 20px;}
+        #lobby-screen, #game-screen { display: none; }
+        .active-screen { display: block !important; }
         
-        #input-mode-select { background-color: #3498db; color: white; border: none; width: 100%; padding: 8px;}
-        #level-select { background-color: #e67e22; color: white; width: 48%; border:none;}
-        #theme-select { width: 48%; }
+        .btn { background: #3498db; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold; transition: 0.2s;}
+        .btn:hover:not(:disabled) { filter: brightness(1.2); } .btn:disabled { background: #555; color:#888; cursor:not-allowed;}
+        .input-box { width: 100%; padding: 12px; font-size: 16px; text-align: center; border-radius: 5px; border: 2px solid #00ffcc; background: #111; color: white; box-sizing: border-box; margin-bottom: 10px;}
 
-        .score-board { font-size: 18px; font-weight: 900; color: var(--text-main); width: 100%; text-align: right; text-shadow: var(--title-shadow); margin-top: 2px;}
+        /* 控制面板 & 分數板 */
+        #control-panel { width: 100%; max-width: 400px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px; margin-bottom: 5px; z-index: 100; }
+        .header-info { width: 100%; display: flex; justify-content: space-between; background: #000; padding: 8px; border-radius: 5px; box-sizing: border-box; font-weight: bold; font-size: 16px;}
+        .my-score { color: #00ffcc; } .opp-score { color: #ff0055; }
+        #room-status { font-size: 14px; color: #f1c40f; width: 100%; text-align: center; margin-bottom: 5px;}
 
-        /* --- 遊戲掉落區 --- */
-        #game-board {
-            width: 100%; max-width: 400px; height: 380px; 
-            background-color: var(--board-bg); border: 4px solid var(--board-border); 
-            border-radius: 10px; position: relative; box-shadow: var(--board-shadow); 
-            overflow: hidden; z-index: 1; transition: 0.3s;
-            background-image: var(--board-bg-img); background-size: 30px 30px; 
-        }
-        #game-board.game-over { border-color: red !important; box-shadow: 0 0 100px rgba(255, 0, 0, 0.8) !important; }
+        /* 遊戲掉落區 */
+        #game-board { width: 100%; max-width: 400px; height: 350px; background-color: var(--board-bg); border: 4px solid var(--board-border); border-radius: 10px; position: relative; box-shadow: var(--board-shadow); overflow: hidden; background-image: var(--board-bg-img); background-size: 30px 30px; }
+        .word-block { position: absolute; background-color: var(--block-bg); padding: 6px 12px; border-radius: 6px; font-size: 16px; font-weight: 900; color: var(--block-text); box-shadow: 0 4px 10px rgba(0,0,0,0.4); white-space: nowrap; border: 2px solid var(--block-border); z-index: 10;}
 
-        .word-block {
-            position: absolute; background-color: var(--block-bg); padding: 6px 12px;
-            border-radius: 6px; font-size: 18px; font-weight: 900; color: var(--block-text);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4); white-space: nowrap; transform-origin: center center;
-            z-index: 10; border: 2px solid var(--block-border); transition: background-color 0.2s, border-color 0.2s;
-        }
-        .word-block.resting { background-color: var(--block-bg-resting); border-color: var(--block-border-resting); }
-
-        /* --- 輸入與操作區 --- */
-        #action-area { width: 100%; max-width: 400px; margin-top: 10px; z-index: 100; min-height: 100px; }
-        
-        #type-input {
-            width: 100%; padding: 12px; font-size: 22px; text-align: center; border: 4px solid var(--input-border);
-            border-radius: 8px; box-sizing: border-box; outline: none; transition: all 0.2s;
-            font-weight: bold; background-color: var(--input-bg); color: var(--input-text); text-transform: uppercase;
-        }
-        #type-input:focus { border-color: var(--input-focus); box-shadow: 0 0 20px var(--input-focus); }
-
-        #mc-container { display: none; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; height: 100%; }
-        .mc-btn {
-            background-color: var(--input-bg); color: var(--input-text);
-            border: 2px solid var(--input-border); padding: 12px 5px; font-size: 16px;
-            border-radius: 8px; cursor: pointer; word-break: break-word; transition: 0.1s;
-            display: flex; align-items: center; justify-content: center; text-align: center;
-        }
-        .mc-btn:active { transform: scale(0.95); }
-        .mc-btn.correct { background-color: #27ae60 !important; color: white !important; border-color: #2ecc71 !important; box-shadow: 0 0 15px #2ecc71;}
-        .mc-btn.wrong { background-color: #c0392b !important; color: white !important; border-color: #e74c3c !important; box-shadow: 0 0 15px #e74c3c;}
+        /* 輸入與操作區 */
+        #action-area { width: 100%; max-width: 400px; margin-top: 10px; min-height: 100px; }
+        #type-input { width: 100%; padding: 12px; font-size: 22px; text-align: center; border: 4px solid var(--input-border); border-radius: 8px; box-sizing: border-box; outline: none; font-weight: bold; background-color: var(--input-bg); color: var(--input-text); text-transform: uppercase; }
+        #type-input:focus { border-color: var(--input-focus); box-shadow: 0 0 15px var(--input-focus); }
+        #mc-container { display: none; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+        .mc-btn { background-color: var(--input-bg); color: var(--input-text); border: 2px solid var(--input-border); padding: 12px 5px; font-size: 16px; border-radius: 8px; cursor: pointer; transition: 0.1s; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .mc-btn:active { transform: scale(0.95); } .mc-btn.correct { background: #27ae60; color: white; border-color: #2ecc71;} .mc-btn.wrong { background: #c0392b; color: white; border-color: #e74c3c;}
 
         /* 特效 */
-        #flash-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: white; z-index: 9999; opacity: 0; pointer-events: none; }
-        .flash-active { animation: anim-flash 0.4s ease-out forwards; }
-        @keyframes anim-flash { 0% { opacity: 0.9; } 100% { opacity: 0; } }
-        .global-shake { animation: anim-global-shake 0.3s cubic-bezier(.36,.07,.19,.97) both; }
-        @keyframes anim-global-shake { 0%, 100% { transform: translate(0, 0) rotate(0); } 10%, 30%, 50%, 70%, 90% { transform: translate(-15px, 12px) rotate(-2deg); } 20%, 40%, 60%, 80% { transform: translate(15px, -12px) rotate(2deg); } }
-
-        .eff-glow { animation: anim-glow 0.8s forwards; background-color: var(--input-focus) !important; color: var(--bg-main) !important; z-index: 999; border-color: white;}
-        @keyframes anim-glow { 40% { transform: scale(4); box-shadow: 0 0 80px 40px var(--input-focus); opacity: 1; } 100% { transform: scale(7); opacity: 0; } }
-        .eff-flyup { animation: anim-flyup 0.5s ease-in forwards; background-color: var(--title-accent) !important; z-index: 999; color:var(--block-text);}
-        @keyframes anim-flyup { 100% { transform: translateY(-1000px) scale(3) rotate(1080deg); opacity: 0; filter: blur(5px);} }
+        .eff-glow { animation: anim-glow 0.6s forwards; background-color: var(--input-focus) !important; color: #000 !important; z-index: 999; border-color: white;}
+        @keyframes anim-glow { 50% { transform: scale(2); box-shadow: 0 0 50px var(--input-focus); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
     </style>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 </head>
-<body data-theme="cyberpunk">
+<body>
 
-    <div id="flash-overlay"></div>
+    <h2><div>單字防衛戰 <span class="title-text">DEFENSE</span></div><a href="index.html" class="back-btn">⬅ 大廳</a></h2>
 
-    <h2>
-        <div>單字防衛戰 <span class="title-text">DEFENSE</span></div>
-        <a href="index.html" class="back-btn">⬅ 大廳</a>
-    </h2>
-    
-    <div id="control-panel">
-        <select id="input-mode-select">
-            <option value="mc" selected>👆 手機專用：選擇題模式</option>
-            <option value="typing">⌨️ 電腦專用：鍵盤打字模式</option>
-        </select>
-
-        <select id="level-select">
-            <option value="1A">國一上 (1A)</option>
-            <option value="1B">國一下 (1B)</option>
-            <option value="2A">國二上 (2A)</option>
-            <option value="2B">國二下 (2B)</option>
-            <option value="3A">國三上 (3A)</option>
-            <option value="3B">國三下 (3B)</option>
-            <option value="ALL">地獄模式 (1200字)</option>
-        </select>
-
-        <select id="theme-select">
-            <option value="cyberpunk" selected>🎨 賽博</option>
-            <option value="arcade">🎨 街機</option>
-        </select>
-
-        <button id="start-btn" disabled style="width: 100%; margin-top:5px; padding: 10px; font-size: 16px;">載入單字中...</button>
-        <div class="score-board">SCORE: <span id="score-display">0</span></div>
+    <div id="lobby-screen" class="container active-screen">
+        <h3 id="lobby-title">載入題庫中...</h3>
+        <div id="lobby-actions" style="display:none; width: 100%;">
+            
+            <select id="level-select" class="input-box" style="background: #e67e22; border:none; color:white;">
+                <option value="1A">國一上 (1A)</option>
+                <option value="1B">國一下 (1B)</option>
+                <option value="ALL">地獄模式 (全題庫)</option>
+            </select>
+            
+            <button id="btn-single-play" class="btn" style="background:#8e44ad;">👤 單機防衛模式 (本機)</button>
+            <hr style="border-color:#444; margin: 15px 0;">
+            <button id="btn-create-room" class="btn" style="background:#27ae60;">🏠 建立連線戰場 (房主)</button>
+            <input type="text" id="input-room-code" class="input-box" placeholder="輸入 4 位數房號" maxlength="4">
+            <button id="btn-join-room" class="btn">🔗 加入戰場 (挑戰者)</button>
+        </div>
     </div>
 
-    <div id="game-board"></div>
-    
-    <div id="action-area">
-        <input type="text" id="type-input" placeholder="請先點擊開始遊戲" disabled autocomplete="off" style="display: none;">
-        <div id="mc-container">
-            <button class="mc-btn" disabled>準備中</button>
-            <button class="mc-btn" disabled>準備中</button>
-            <button class="mc-btn" disabled>準備中</button>
-            <button class="mc-btn" disabled>準備中</button>
+    <div id="game-screen">
+        <div id="control-panel">
+            <select id="input-mode-select" class="input-box" style="background:#3498db; border:none; margin-bottom:0;">
+                <option value="mc" selected>👆 手機專用：四選一搶答</option>
+                <option value="typing">⌨️ 電腦專用：實體鍵盤打字</option>
+            </select>
+            <div class="header-info">
+                <span class="my-score">我: <span id="ui-my-score">0</span></span>
+                <span class="opp-score" id="ui-opp-container">對手: <span id="ui-opp-score">0</span></span>
+            </div>
+            <div id="room-status">等待開始...</div>
+        </div>
+
+        <div id="game-board"></div>
+        
+        <div id="action-area">
+            <input type="text" id="type-input" placeholder="請打字輸入..." autocomplete="off">
+            <div id="mc-container">
+                <button class="mc-btn" disabled>準備中</button>
+                <button class="mc-btn" disabled>準備中</button>
+                <button class="mc-btn" disabled>準備中</button>
+                <button class="mc-btn" disabled>準備中</button>
+            </div>
         </div>
     </div>
 
     <script>
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
-        // 主題切換
-        document.getElementById("theme-select").addEventListener("change", (e) => document.body.setAttribute('data-theme', e.target.value));
-
-        // 音效
-        function playEffectSound(isCorrect) {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            const now = audioCtx.currentTime;
-            const osc = audioCtx.createOscillator(); const gainNode = audioCtx.createGain();
-            osc.connect(gainNode); gainNode.connect(audioCtx.destination);
-            
-            if (isCorrect) {
-                osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.exponentialRampToValueAtTime(20, now + 0.6);
-                gainNode.gain.setValueAtTime(0.8, now); gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
-                osc.start(now); osc.stop(now + 0.8);
-            } else {
-                osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.linearRampToValueAtTime(60, now + 0.2);
-                gainNode.gain.setValueAtTime(0.8, now); gainNode.gain.linearRampToValueAtTime(0, now + 0.2);
-                osc.start(now); osc.stop(now + 0.2);
-            }
+        // 音效引擎
+        const AudioContext = window.AudioContext || window.webkitAudioContext; let audioCtx;
+        function playSound(isCorrect) {
+            if (!audioCtx) audioCtx = new AudioContext(); if (audioCtx.state === 'suspended') audioCtx.resume();
+            const now = audioCtx.currentTime; const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination);
+            if (isCorrect) { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.exponentialRampToValueAtTime(20, now + 0.4); gain.gain.setValueAtTime(0.5, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4); } 
+            else { osc.type = 'square'; osc.frequency.setValueAtTime(150, now); osc.frequency.linearRampToValueAtTime(60, now + 0.2); gain.gain.setValueAtTime(0.5, now); gain.gain.linearRampToValueAtTime(0, now + 0.2); osc.start(now); osc.stop(now + 0.2); }
         }
 
-        let fetchedWords = []; let activePool = []; let activeBlocks = [];
+        // ==========================================
+        // 🔑 1. Firebase 初始化
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyAav_2FeSY7k3QXYYUGfep5UCtKuaApEQM",
+            authDomain: "wordgame-pwa.firebaseapp.com",
+            databaseURL: "https://wordgame-pwa-default-rtdb.firebaseio.com/", // ⚠️ 老前輩記得貼上 URL！
+            projectId: "wordgame-pwa",
+            storageBucket: "wordgame-pwa.firebasestorage.app",
+            messagingSenderId: "527450589704",
+            appId: "1:527450589704:web:92d700edfc5b6ed1f15fbd"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // ==========================================
+        // 📖 2. 全域變數
+        // ==========================================
+        let allWords = []; let activePool = []; 
+        let myRole = ""; let currentRoom = ""; let myScore = 0; let oppScore = 0;
+        let isGameOver = false; let fallSpeed = 2;
         let gameInterval, spawnInterval;
-        let fallSpeed = 3, isGameOver = false, score = 0;
-        let currentInputMode = "mc"; let currentTargetBlock = null;
+        let activeBlocks = {}; // { id: { element, target, y, isHostSpawned } }
+        let currentInputMode = "mc"; let currentTargetId = null;
 
-        const board = document.getElementById("game-board");
-        const typeInput = document.getElementById("type-input");
-        const mcContainer = document.getElementById("mc-container");
-        const startBtn = document.getElementById("start-btn");
-        const scoreDisplay = document.getElementById("score-display");
-        const inputModeSelect = document.getElementById("input-mode-select");
+        const ui = {
+            lobby: document.getElementById('lobby-screen'), game: document.getElementById('game-screen'),
+            board: document.getElementById('game-board'), status: document.getElementById('room-status'),
+            myScore: document.getElementById('ui-my-score'), oppScore: document.getElementById('ui-opp-score'), oppContainer: document.getElementById('ui-opp-container'),
+            typeInput: document.getElementById('type-input'), mcContainer: document.getElementById('mc-container'),
+            inputModeSelect: document.getElementById('input-mode-select')
+        };
 
-        inputModeSelect.addEventListener("change", (e) => {
+        ui.inputModeSelect.addEventListener("change", (e) => {
             currentInputMode = e.target.value;
-            if (currentInputMode === "typing") {
-                typeInput.style.display = "block"; mcContainer.style.display = "none";
-            } else {
-                typeInput.style.display = "none"; mcContainer.style.display = "grid";
-            }
+            if (currentInputMode === "typing") { ui.typeInput.style.display = "block"; ui.mcContainer.style.display = "none"; } 
+            else { ui.typeInput.style.display = "none"; ui.mcContainer.style.display = "grid"; }
         });
 
-        async function initApp() {
-            try {
-                const response = await fetch('words.json');
-                fetchedWords = await response.json();
-                startBtn.textContent = "🚀 開始防衛"; startBtn.disabled = false;
-                inputModeSelect.dispatchEvent(new Event('change'));
-            } catch (e) {
-                startBtn.textContent = "無法載入 words.json";
-            }
+        async function loadWords() {
+            try { const res = await fetch('words.json'); allWords = await res.json();
+                document.getElementById('lobby-title').innerText = "選擇連線模式"; document.getElementById('lobby-actions').style.display = "block";
+                ui.inputModeSelect.dispatchEvent(new Event('change'));
+            } catch(e) { alert("無法載入 words.json！"); }
         }
 
-        startBtn.addEventListener("click", () => {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            
-            const selectedLevel = document.getElementById("level-select").value;
-            activePool = selectedLevel === "ALL" ? [...fetchedWords] : fetchedWords.filter(w => w.level === selectedLevel);
-            if (activePool.length === 0) { alert("該學期沒有單字！"); return; }
-
-            board.innerHTML = ""; activeBlocks = []; isGameOver = false; score = 0; scoreDisplay.textContent = "0";
-            board.classList.remove("game-over"); currentTargetBlock = null; document.body.style.backgroundColor = "";
-
-            startBtn.disabled = true; document.querySelectorAll("select").forEach(s => s.disabled = true);
-
-            if (currentInputMode === "typing") {
-                typeInput.disabled = false; typeInput.value = ""; typeInput.focus();
-            } else {
-                updateMCButtons(null);
-            }
-
-            spawnInterval = setInterval(spawnWord, 1800);
+        // ==========================================
+        // 🌟 3. 單機與連線共用：物理引擎與作答邏輯
+        // ==========================================
+        function startGameLoop() {
+            ui.board.innerHTML = ""; activeBlocks = {}; isGameOver = false; myScore = 0; ui.myScore.innerText = 0;
+            if (currentInputMode === "typing") { ui.typeInput.disabled = false; ui.typeInput.value = ""; ui.typeInput.focus(); }
             gameInterval = setInterval(updatePhysics, 40);
-        });
+            
+            // 只有單機模式或連線模式的房主，有權限「產生單字」
+            if (myRole === 'single' || myRole === 'host') {
+                spawnInterval = setInterval(spawnWord, 2000);
+            }
+        }
 
         function spawnWord() {
             if (isGameOver) return;
             const wordData = activePool[Math.floor(Math.random() * activePool.length)];
-            let isCnToEn = Math.random() > 0.5; // 隨機中翻英或英翻中
-            
+            let isCnToEn = Math.random() > 0.5;
+            let targetText = isCnToEn ? wordData.en.toLowerCase() : wordData.ch;
+            let displayText = isCnToEn ? wordData.ch : wordData.en;
+            let startX = Math.random() * 70; // 0% ~ 70% 寬度
+
+            let blockId = "blk_" + Date.now();
+
+            if (myRole === 'single') {
+                createBlockOnScreen(blockId, displayText, targetText, startX);
+            } else if (myRole === 'host') {
+                // 連線模式：房主把單字丟到雲端，雙方透過監聽來生成
+                db.ref(`rooms/${currentRoom}/activeWords/${blockId}`).set({
+                    display: displayText, target: targetText, x: startX
+                });
+            }
+        }
+
+        function createBlockOnScreen(id, displayText, targetText, startX) {
             const blockEl = document.createElement("div");
-            blockEl.className = "word-block";
-            blockEl.textContent = isCnToEn ? wordData.ch : wordData.en;
-            board.appendChild(blockEl);
+            blockEl.className = "word-block"; blockEl.textContent = displayText;
+            blockEl.style.left = startX + "%"; blockEl.style.top = "0px";
+            ui.board.appendChild(blockEl);
             
-            blockEl.style.left = Math.random() * (board.clientWidth - blockEl.clientWidth - 10) + "px";
-            activeBlocks.push({ element: blockEl, y: 0, target: isCnToEn ? wordData.en.toLowerCase() : wordData.ch, isResting: false });
+            activeBlocks[id] = { element: blockEl, target: targetText, y: 0 };
+        }
+
+        function removeBlock(id, isWinner) {
+            if (activeBlocks[id]) {
+                let el = activeBlocks[id].element;
+                if (isWinner) {
+                    el.classList.add("eff-glow"); playSound(true);
+                    setTimeout(() => { if (ui.board.contains(el)) el.remove(); }, 600);
+                } else {
+                    if (ui.board.contains(el)) el.remove();
+                }
+                delete activeBlocks[id];
+                if (currentTargetId === id) { currentTargetId = null; updateMCButtons(null); }
+            }
         }
 
         function updatePhysics() {
             if (isGameOver) return;
-            
-            activeBlocks.forEach(b => b.isResting = false);
-            activeBlocks.sort((a, b) => b.y - a.y);
+            let lowestId = null; let lowestY = -1;
 
-            for (let i = 0; i < activeBlocks.length; i++) {
-                let block = activeBlocks[i];
-                let nextY = block.y + fallSpeed;
-                let blockBottom = nextY + block.element.offsetHeight;
-                let isColliding = false;
-
-                if (blockBottom >= board.clientHeight) {
-                    block.y = board.clientHeight - block.element.offsetHeight; isColliding = true;
-                } else {
-                    for (let j = 0; j < i; j++) {
-                        let other = activeBlocks[j];
-                        if (!other.isResting) continue;
-                        let bLeft = parseFloat(block.element.style.left), bRight = bLeft + block.element.offsetWidth;
-                        let oLeft = parseFloat(other.element.style.left), oRight = oLeft + other.element.offsetWidth;
-                        if (blockBottom >= other.y && block.y < other.y && bRight > oLeft && bLeft < oRight) {
-                            block.y = other.y - block.element.offsetHeight; isColliding = true; break;
-                        }
-                    }
-                }
-
-                if (isColliding) {
-                    block.isResting = true; block.element.classList.add("resting");
-                    if (block.y <= 0) { triggerGameOver(); return; }
-                } else {
-                    block.y = nextY; block.element.classList.remove("resting");
-                }
+            Object.keys(activeBlocks).forEach(id => {
+                let block = activeBlocks[id];
+                block.y += fallSpeed;
                 block.element.style.top = block.y + "px";
-            }
 
-            if (currentInputMode === "mc" && activeBlocks.length > 0) {
-                let lowestBlock = activeBlocks[0];
-                if (lowestBlock !== currentTargetBlock) { currentTargetBlock = lowestBlock; updateMCButtons(lowestBlock); }
-            } else if (currentInputMode === "mc" && activeBlocks.length === 0) {
-                if (currentTargetBlock !== null) { currentTargetBlock = null; updateMCButtons(null); }
+                if (block.y > ui.board.clientHeight - 30) {
+                    // 撞到底部，刪除扣分 (房主負責清雲端)
+                    removeBlock(id, false);
+                    if (myRole === 'host') db.ref(`rooms/${currentRoom}/activeWords/${id}`).remove();
+                } else {
+                    if (block.y > lowestY) { lowestY = block.y; lowestId = id; }
+                }
+            });
+
+            // MC 模式：永遠鎖定最低的那顆方塊產生選項
+            if (currentInputMode === "mc" && lowestId !== currentTargetId) {
+                currentTargetId = lowestId; updateMCButtons(lowestId);
             }
         }
 
-        function updateMCButtons(block) {
-            const buttons = mcContainer.querySelectorAll(".mc-btn");
-            if (!block) { buttons.forEach(btn => { btn.textContent = "等待單字..."; btn.onclick = null; btn.disabled = true; }); return; }
+        // ==========================================
+        // 🎮 4. 玩家操作處理 (MC / Typing)
+        // ==========================================
+        function updateMCButtons(targetId) {
+            const buttons = ui.mcContainer.querySelectorAll(".mc-btn");
+            if (!targetId || !activeBlocks[targetId]) { buttons.forEach(btn => { btn.textContent = "等待單字..."; btn.onclick = null; btn.disabled = true; }); return; }
 
-            let correctAnswer = block.target; let options = [correctAnswer];
+            let correctAnswer = activeBlocks[targetId].target; let options = [correctAnswer];
             let isTargetEnglish = /^[a-zA-Z\s-]+$/.test(correctAnswer);
 
             while(options.length < 4) {
@@ -307,59 +259,120 @@
 
             buttons.forEach((btn, index) => {
                 btn.textContent = options[index]; btn.className = "mc-btn"; btn.disabled = false;
-                btn.onclick = () => handleMCClick(options[index], btn, block);
+                btn.onclick = () => handlePlayerAnswer(options[index], btn, targetId);
             });
         }
 
-        function handleMCClick(selectedAnswer, btnElement, targetBlock) {
-            if (isGameOver || !targetBlock) return;
-            if (selectedAnswer === targetBlock.target) {
-                btnElement.classList.add("correct");
-                const hitIdx = activeBlocks.indexOf(targetBlock);
-                if (hitIdx > -1) activeBlocks.splice(hitIdx, 1);
-                
-                playEffectSound(true);
-                targetBlock.element.classList.add(Math.random() > 0.5 ? "eff-glow" : "eff-flyup");
-                setTimeout(() => { if (board.contains(targetBlock.element)) targetBlock.element.remove(); }, 600);
-                
-                score += 10; scoreDisplay.textContent = score;
-                currentTargetBlock = null; mcContainer.querySelectorAll(".mc-btn").forEach(b => b.onclick = null);
-            } else {
-                playEffectSound(false);
-                btnElement.classList.add("wrong"); document.body.style.backgroundColor = "#4a0000";
-                setTimeout(()=> document.body.style.backgroundColor = "", 150);
-                setTimeout(()=> btnElement.classList.remove("wrong"), 300);
-            }
-        }
-
-        typeInput.addEventListener("keydown", (e) => {
+        ui.typeInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter" && currentInputMode === "typing") {
-                const val = typeInput.value.trim().toLowerCase();
-                let hitIdx = activeBlocks.findIndex(b => b.target.toLowerCase() === val);
-                if (hitIdx !== -1) {
-                    const b = activeBlocks.splice(hitIdx, 1)[0];
-                    playEffectSound(true);
-                    b.element.classList.add("eff-glow");
-                    setTimeout(() => { if (board.contains(b.element)) b.element.remove(); }, 600);
-                    score += 15; scoreDisplay.textContent = score;
-                } else {
-                    playEffectSound(false);
-                    document.body.style.backgroundColor = "#4a0000";
-                    setTimeout(()=> document.body.style.backgroundColor = "", 150);
-                }
-                typeInput.value = "";
+                const val = ui.typeInput.value.trim().toLowerCase();
+                ui.typeInput.value = "";
+                // 找尋畫面上符合的字
+                let hitId = Object.keys(activeBlocks).find(id => activeBlocks[id].target.toLowerCase() === val);
+                if (hitId) handlePlayerAnswer(val, null, hitId);
+                else playSound(false);
             }
         });
 
-        function triggerGameOver() {
-            isGameOver = true; clearInterval(gameInterval); clearInterval(spawnInterval);
-            board.classList.add("game-over"); document.body.classList.add("global-shake"); document.body.style.backgroundColor = "#8b0000";
-            if (currentInputMode === "typing") { typeInput.disabled = true; typeInput.placeholder = "GAME OVER"; } 
-            else { mcContainer.querySelectorAll(".mc-btn").forEach(b => { b.disabled = true; b.textContent = "GAME OVER"; b.className="mc-btn"; }); }
-            startBtn.disabled = false; startBtn.textContent = "🔄 重新挑戰"; document.querySelectorAll("select").forEach(s => s.disabled = false);
+        function handlePlayerAnswer(selectedVal, btnElement, targetId) {
+            if (isGameOver || !activeBlocks[targetId]) return;
+            
+            if (selectedVal === activeBlocks[targetId].target) {
+                // 答對了！
+                if (btnElement) btnElement.classList.add("correct");
+                
+                if (myRole === 'single') {
+                    removeBlock(targetId, true);
+                    myScore += 10; ui.myScore.innerText = myScore;
+                } else {
+                    // 連線模式：對雲端發動 Transaction 搶殺
+                    db.ref(`rooms/${currentRoom}/activeWords/${targetId}`).transaction(wordData => {
+                        if (wordData) {
+                            // 我搶到了！刪除它並加分
+                            db.ref(`rooms/${currentRoom}/${myRole}Score`).set(firebase.database.ServerValue.increment(10));
+                            return null; // 刪除節點
+                        }
+                        return wordData; // 已經被對手搶走了
+                    });
+                }
+            } else {
+                playSound(false);
+                if (btnElement) {
+                    btnElement.classList.add("wrong");
+                    setTimeout(() => btnElement.classList.remove("wrong"), 300);
+                }
+            }
         }
 
-        initApp();
+        // ==========================================
+        // 🚀 5. 遊戲啟動與連線監聽
+        // ==========================================
+        document.getElementById('btn-single-play').onclick = () => {
+            myRole = 'single'; ui.oppContainer.style.display = 'none';
+            const lvl = document.getElementById('level-select').value;
+            activePool = lvl === "ALL" ? [...allWords] : allWords.filter(w => w.mainLevel === lvl || !w.mainLevel);
+            ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+            ui.status.innerText = "單機模式運行中";
+            startGameLoop();
+        };
+
+        document.getElementById('btn-create-room').onclick = () => {
+            myRole = 'host'; currentRoom = Math.floor(1000 + Math.random() * 9000).toString();
+            const lvl = document.getElementById('level-select').value;
+            activePool = lvl === "ALL" ? [...allWords] : allWords.filter(w => w.mainLevel === lvl || !w.mainLevel);
+            
+            db.ref('rooms/' + currentRoom).set({ state: 'waiting', hostScore: 0, guestScore: 0 });
+            ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+            ui.status.innerText = `房號: ${currentRoom} (等待對手)`;
+            listenToRoom();
+        };
+
+        document.getElementById('btn-join-room').onclick = () => {
+            const code = document.getElementById('input-room-code').value;
+            if (code.length !== 4) return alert("請輸入 4 位數房號");
+            myRole = 'guest'; currentRoom = code;
+            
+            db.ref('rooms/' + currentRoom).once('value', snap => {
+                if (!snap.exists()) return alert("房間不存在！");
+                ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+                db.ref('rooms/' + currentRoom).update({ state: 'playing' }); // 觸發開戰
+                listenToRoom();
+            });
+        };
+
+        function listenToRoom() {
+            // 監聽分數與狀態
+            db.ref('rooms/' + currentRoom).on('value', snap => {
+                const data = snap.val(); if (!data) return;
+                ui.myScore.innerText = myRole === 'host' ? data.hostScore : data.guestScore;
+                ui.oppScore.innerText = myRole === 'host' ? data.guestScore : data.hostScore;
+
+                if (data.state === 'playing' && isGameOver === false && !gameInterval) {
+                    ui.status.innerText = "🔥 對戰開始！率先 150 分者獲勝";
+                    startGameLoop();
+                }
+
+                // 勝負判定
+                if (data.hostScore >= 150 || data.guestScore >= 150) {
+                    isGameOver = true; clearInterval(gameInterval); clearInterval(spawnInterval);
+                    let myFinal = myRole === 'host' ? data.hostScore : data.guestScore;
+                    let oppFinal = myRole === 'host' ? data.guestScore : data.hostScore;
+                    ui.status.innerText = myFinal > oppFinal ? "🏆 恭喜！你贏得了單字防衛戰！" : "💀 挑戰失敗！對手獲勝！";
+                    ui.status.style.color = myFinal > oppFinal ? "#2ecc71" : "#e74c3c";
+                    document.querySelectorAll('.mc-btn').forEach(b => b.disabled = true);
+                }
+            });
+
+            // 🌟 核心：監聽雲端單字的 新增 與 刪除
+            db.ref(`rooms/${currentRoom}/activeWords`).on('child_added', snap => {
+                let w = snap.val(); createBlockOnScreen(snap.key, w.display, w.target, w.x);
+            });
+            db.ref(`rooms/${currentRoom}/activeWords`).on('child_removed', snap => {
+                removeBlock(snap.key, true); // 被刪除代表有人打中了，播放爆炸特效
+            });
+        }
+
+        window.onload = loadWords;
     </script>
 </body>
 </html>
