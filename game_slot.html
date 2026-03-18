@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎰 幸運小瑪莉 (雙模切換版)</title>
+    <title>🎰 幸運小瑪莉 (精準打擊版)</title>
     
     <style>
         body { background-color: #0a0a0a; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; margin: 0; padding: 15px; background-image: radial-gradient(circle at 50% 50%, #222 0%, #000 100%); min-height: 100vh; }
@@ -11,12 +11,11 @@
         .container { width: 100%; max-width: 380px; background: #222; padding: 20px; border-radius: 10px; border: 2px solid #444; box-sizing: border-box; text-align: center; margin-bottom: 20px;}
         .btn { background: #3498db; color: white; border: none; padding: 12px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; font-weight: bold; transition: 0.2s;}
         .btn:hover { filter: brightness(1.2); } .btn:disabled { background:#555; color:#888; cursor:not-allowed;}
-        .input-box { width: 100%; padding: 12px; font-size: 18px; text-align: center; border-radius: 5px; border: 2px solid #00ffcc; background: #111; color: white; box-sizing: border-box; margin-bottom: 10px;}
+        .input-box { width: 100%; padding: 12px; font-size: 16px; text-align: center; border-radius: 5px; border: 2px solid #00ffcc; background: #111; color: white; box-sizing: border-box; margin-bottom: 10px; outline:none;}
         
         #lobby-screen, #game-screen { display: none; }
         .active-screen { display: flex !important; flex-direction: column; align-items: center; width: 100%;}
 
-        /* 資訊區與 12 宮格 */
         .info-board { display: flex; justify-content: space-between; width: 100%; max-width: 380px; background: #111; padding: 10px; border-radius: 10px; border: 2px solid #333; box-sizing: border-box; margin-bottom: 10px; align-items: center;}
         .score-box { font-size: 16px; font-weight: 900; color: #fff; display: flex; flex-direction: column; align-items: center;}
         .score-box span { color: #f1c40f; font-size: 20px;}
@@ -37,7 +36,6 @@
         #spin-btn:active:not(:disabled) { transform: translateY(10px); box-shadow: 0 0 0 #8e0000; }
         #spin-btn:disabled { background: radial-gradient(circle, #7f8c8d, #34495e); box-shadow: 0 10px 0 #2c3e50; cursor: not-allowed; color:#aaa;}
 
-        /* 答題彈窗 */
         #quiz-modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 100; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .quiz-box { background: #222; border: 4px solid #f1c40f; padding: 25px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; }
         .quiz-word { font-size: 36px; color: #f1c40f; font-weight: 900; margin-bottom: 20px;}
@@ -58,13 +56,27 @@
         <h3 id="lobby-title">載入題庫中...</h3>
         <div id="lobby-actions" style="display:none; width: 100%;">
             
+            <div style="display:flex; gap:5px; margin-bottom:10px; width:100%;">
+                <select id="sel-main-level" class="input-box" style="flex:1; background:#e67e22; border:none; color:white; padding:10px;">
+                    <option value="ALL">🌟 全冊題庫</option>
+                    <option value="1A">國一上 (1A)</option>
+                    <option value="1B">國一下 (1B)</option>
+                    <option value="2A">國二上 (2A)</option>
+                    <option value="2B">國二下 (2B)</option>
+                    <option value="3A">國三上 (3A)</option>
+                    <option value="3B">國三下 (3B)</option>
+                </select>
+                <select id="sel-sub-level" class="input-box" style="flex:1; background:#d35400; border:none; color:white; padding:10px;">
+                    <option value="ALL">📂 所有細項</option>
+                </select>
+            </div>
+
             <select id="select-rounds" class="input-box" style="background: #2c3e50;">
                 <option value="5">進行 5 回合</option>
                 <option value="10">進行 10 回合</option>
             </select>
             
             <button id="btn-single-play" class="btn" style="background:#8e44ad;">👤 單人練習模式 (本機)</button>
-            
             <hr style="border-color:#444; margin: 15px 0;">
             <button id="btn-create-room" class="btn" style="background:#27ae60;">🏠 建立對戰房間 (房主)</button>
             <input type="text" id="input-room-code" class="input-box" placeholder="輸入 4 位數房號" maxlength="4">
@@ -96,7 +108,6 @@
     </div>
 
     <script>
-        // 音效引擎
         const AudioContext = window.AudioContext || window.webkitAudioContext; let audioCtx;
         function playSound(type) {
             if (!audioCtx) audioCtx = new AudioContext(); if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -106,13 +117,10 @@
             else if (type === 'win') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); osc.frequency.setValueAtTime(1000, now + 0.2); gain.gain.setValueAtTime(0.3, now); gain.gain.linearRampToValueAtTime(0, now + 0.5); osc.start(now); osc.stop(now + 0.5); }
         }
 
-        // ==========================================
-        // 🔑 1. Firebase 初始化
-        // ==========================================
         const firebaseConfig = {
             apiKey: "AIzaSyAav_2FeSY7k3QXYYUGfep5UCtKuaApEQM",
             authDomain: "wordgame-pwa.firebaseapp.com",
-            databaseURL: "https://wordgame-pwa-default-rtdb.firebaseio.com/", // ⚠️ 老前輩記得貼上 URL！
+            databaseURL: "https://wordgame-pwa-default-rtdb.firebaseio.com/", // ⚠️ 貼上您的 Firebase 資料庫網址
             projectId: "wordgame-pwa",
             storageBucket: "wordgame-pwa.firebasestorage.app",
             messagingSenderId: "527450589704",
@@ -121,10 +129,7 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // ==========================================
-        // 📖 2. 全域變數與 UI
-        // ==========================================
-        let allWords = []; let myRole = ""; let currentRoom = ""; let localState = ""; let cells = [];
+        let allWords = []; let activePool = []; let myRole = ""; let currentRoom = ""; let localState = ""; let cells = [];
         let singlePlayData = { score: 0, currentSpin: 0, maxRounds: 5, boardWords: [], targetWord: null };
 
         const ui = {
@@ -133,8 +138,33 @@
             status: document.getElementById('room-status'), myScore: document.getElementById('ui-my-score'), 
             oppScore: document.getElementById('ui-opp-score'), spins: document.getElementById('ui-spins'),
             modal: document.getElementById('quiz-modal'), qTarget: document.getElementById('quiz-target'), 
-            qOpts: document.getElementById('quiz-options'), qTitle: document.getElementById('quiz-title')
+            qOpts: document.getElementById('quiz-options'), qTitle: document.getElementById('quiz-title'),
+            selMain: document.getElementById('sel-main-level'), selSub: document.getElementById('sel-sub-level')
         };
+
+        // 🌟 連動下拉選單邏輯
+        ui.selMain.addEventListener('change', () => {
+            const main = ui.selMain.value;
+            ui.selSub.innerHTML = '<option value="ALL">📂 所有細項</option>';
+            if (main !== "ALL") {
+                const subs = [...new Set(allWords.filter(w => w.mainLevel === main).map(w => w.subLevel))].sort();
+                subs.forEach(sub => {
+                    let opt = document.createElement('option');
+                    opt.value = sub;
+                    opt.innerText = sub.substring(sub.indexOf(' ') + 1) || sub;
+                    ui.selSub.appendChild(opt);
+                });
+            }
+        });
+
+        function getFilteredPool() {
+            const main = ui.selMain.value;
+            const sub = ui.selSub.value;
+            let pool = allWords;
+            if (main !== "ALL") pool = pool.filter(w => w.mainLevel === main);
+            if (sub !== "ALL") pool = pool.filter(w => w.subLevel === sub);
+            return pool;
+        }
 
         async function loadWords() {
             try { const res = await fetch('words.json'); allWords = await res.json();
@@ -144,7 +174,8 @@
         }
 
         function renderBoard(boardWords) {
-            if (cells.length > 0) return; 
+            ui.board.innerHTML = '<div class="center-control"><button id="spin-btn" disabled>SPIN</button></div>';
+            ui.spinBtn = document.getElementById('spin-btn'); cells = [];
             for(let i=0; i<12; i++) {
                 let cell = document.createElement('div'); cell.className = `cell cell-${i}`; cell.innerText = boardWords[i].en;
                 ui.board.appendChild(cell); cells.push(cell);
@@ -152,25 +183,23 @@
             cells[0].classList.add('active-light'); document.getElementById('machine-area').style.display = "block";
         }
 
-        // ==========================================
-        // 🌟 3. 單人練習模式引擎 (完全斷開 Firebase)
-        // ==========================================
         document.getElementById('btn-single-play').onclick = () => {
+            activePool = getFilteredPool();
+            if(activePool.length < 12) return alert("❌ 此分類單字不足 12 個，無法排滿小瑪莉機台！請選擇更大的範圍。");
+
             myRole = 'single';
             singlePlayData.maxRounds = parseInt(document.getElementById('select-rounds').value);
-            singlePlayData.boardWords = [...allWords].sort(() => 0.5 - Math.random()).slice(0, 12);
+            singlePlayData.boardWords = [...activePool].sort(() => 0.5 - Math.random()).slice(0, 12);
             
             ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
-            document.getElementById('ui-opp-name').style.display = "none"; // 隱藏對手分數
+            document.getElementById('ui-opp-name').style.display = "none";
             
             ui.spins.innerText = `0/${singlePlayData.maxRounds}`;
-            ui.status.innerText = "單機模式：請按 SPIN 啟動！";
-            ui.status.style.color = "#8e44ad";
+            ui.status.innerText = "單機模式：請按 SPIN 啟動！"; ui.status.style.color = "#8e44ad";
             
             renderBoard(singlePlayData.boardWords);
             ui.spinBtn.disabled = false;
             
-            // 單機版按鈕邏輯
             ui.spinBtn.onclick = () => {
                 ui.spinBtn.disabled = true; ui.status.innerText = "轉動中...";
                 ui.modal.style.display = 'none'; cells.forEach(c => c.classList.remove('jackpot'));
@@ -178,15 +207,13 @@
                 let targetIdx = Math.floor(Math.random() * 12);
                 singlePlayData.targetWord = singlePlayData.boardWords[targetIdx];
                 
-                // 產生選項
                 let opts = [singlePlayData.targetWord.ch];
                 while(opts.length < 4) {
-                    let wrong = allWords[Math.floor(Math.random() * allWords.length)].ch;
+                    let wrong = activePool[Math.floor(Math.random() * activePool.length)].ch;
                     if(!opts.includes(wrong)) opts.push(wrong);
                 }
                 opts.sort(() => 0.5 - Math.random());
 
-                // 播放動畫並在本機作答
                 playSpinAnimation(targetIdx, () => {
                     ui.status.innerText = "請作答！";
                     showLocalQuiz(opts);
@@ -205,36 +232,116 @@
                     if (optCh === singlePlayData.targetWord.ch) {
                         btn.classList.add('correct'); playSound('win'); singlePlayData.score += 50;
                         ui.qTitle.innerHTML = "🎉 答對了！";
-                    } else {
-                        btn.classList.add('wrong'); ui.qTitle.innerHTML = "💀 答錯了！";
-                    }
+                    } else { btn.classList.add('wrong'); ui.qTitle.innerHTML = "💀 答錯了！"; }
                     ui.myScore.innerText = singlePlayData.score;
                     
-                    // 單機版 1.5 秒自動換題
                     setTimeout(() => {
-                        singlePlayData.currentSpin++;
-                        ui.spins.innerText = `${singlePlayData.currentSpin}/${singlePlayData.maxRounds}`;
+                        singlePlayData.currentSpin++; ui.spins.innerText = `${singlePlayData.currentSpin}/${singlePlayData.maxRounds}`;
                         if (singlePlayData.currentSpin >= singlePlayData.maxRounds) {
                             ui.modal.style.display = 'none'; ui.status.innerText = `遊戲結束！得分: ${singlePlayData.score}`;
-                        } else {
-                            ui.spinBtn.disabled = false; ui.spinBtn.click(); // 自動連環 SPIN
-                        }
+                        } else { ui.spinBtn.disabled = false; ui.spinBtn.click(); }
                     }, 1500);
                 };
                 ui.qOpts.appendChild(btn);
             });
         }
 
-        // ==========================================
-        // 🔗 4. 雲端連線引擎 (原版保留)
-        // ==========================================
-        // ... (為了節省篇幅，此處保留與上一版完全相同的 Firebase btn-create-room, btn-join-room 以及 listenToRoom 邏輯)
-        // ... (您可以直接把上一版的 連線邏輯 複製貼到底下)
-        
-        // --- 以下為連線模式的簡化代碼 (請將舊版的 listenToRoom 等貼回此處) ---
-        // 由於篇幅限制，請保留您原本在 Firebase 連線的設定。
+        document.getElementById('btn-create-room').onclick = () => {
+            activePool = getFilteredPool();
+            if(activePool.length < 12) return alert("❌ 此分類單字不足 12 個，無法排滿小瑪莉機台！請選擇更大的範圍。");
 
-        // --- 共用的動畫邏輯 ---
+            myRole = 'host'; currentRoom = Math.floor(1000 + Math.random() * 9000).toString();
+            let pool = [...activePool].sort(() => 0.5 - Math.random()).slice(0, 12);
+            let bWords = pool.map(w => ({ ch: w.ch, en: w.en }));
+            
+            db.ref('rooms/' + currentRoom).set({
+                state: 'waiting', maxRounds: parseInt(document.getElementById('select-rounds').value),
+                currentRound: 0, hostScore: 0, guestScore: 0, boardWords: bWords,
+                targetIndex: -1, winner: "", options: []
+            });
+            ui.status.innerText = `房號: ${currentRoom} (等待對手加入)`; ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+            listenToRoom();
+        };
+
+        document.getElementById('btn-join-room').onclick = () => {
+            const code = document.getElementById('input-room-code').value;
+            if (code.length !== 4) return alert("請輸入 4 位數房號");
+            db.ref('rooms/' + code).once('value', snap => {
+                if (!snap.exists() || snap.val().state !== 'waiting') return alert("房間不存在或已開始！");
+                myRole = 'guest'; currentRoom = code; activePool = getFilteredPool(); // For guest fallback pool
+                ui.lobby.classList.remove('active-screen'); ui.game.classList.add('active-screen');
+                db.ref('rooms/' + currentRoom).update({ state: 'start_round' }); listenToRoom();
+            });
+        };
+
+        function listenToRoom() {
+            db.ref('rooms/' + currentRoom).on('value', snap => {
+                const data = snap.val(); if (!data) return alert("房間已關閉");
+                
+                if (cells.length === 0 && data.boardWords) renderBoard(data.boardWords);
+
+                ui.myScore.innerText = myRole === 'host' ? data.hostScore : data.guestScore;
+                ui.oppScore.innerText = myRole === 'host' ? data.guestScore : data.hostScore;
+                ui.spins.innerText = `${data.currentRound}/${data.maxRounds}`;
+
+                if (data.state === 'start_round') {
+                    if (myRole === 'host') {
+                        ui.spinBtn.disabled = false; ui.status.innerText = "你是房主，請按 SPIN 啟動機台！";
+                        ui.spinBtn.onclick = () => {
+                            let tidx = Math.floor(Math.random() * 12);
+                            let targetWord = data.boardWords[tidx];
+                            let opts = [targetWord.ch];
+                            while(opts.length < 4 && allWords.length > 4) {
+                                let wrong = allWords[Math.floor(Math.random() * allWords.length)].ch;
+                                if(!opts.includes(wrong)) opts.push(wrong);
+                            }
+                            opts.sort(() => 0.5 - Math.random());
+                            db.ref('rooms/' + currentRoom).update({ state: 'spinning', targetIndex: tidx, options: opts });
+                        };
+                    } else { ui.status.innerText = "等待房主按下 SPIN..."; ui.spinBtn.disabled = true; }
+                } 
+                else if (data.state === 'spinning' && localState !== 'spinning') {
+                    localState = 'spinning'; ui.spinBtn.disabled = true; ui.modal.style.display = 'none'; cells.forEach(c => c.classList.remove('jackpot'));
+                    ui.status.innerText = "轉動中...";
+                    playSpinAnimation(data.targetIndex, () => {
+                        if (myRole === 'host') db.ref('rooms/' + currentRoom).update({ state: 'answering', currentRound: data.currentRound + 1 });
+                    });
+                }
+                else if (data.state === 'answering' && localState !== 'answering') {
+                    localState = 'answering'; ui.status.innerText = "請作答！";
+                    showMultiQuiz(data.options, data.boardWords[data.targetIndex].ch, data.boardWords[data.targetIndex].en);
+                }
+                else if (data.state === 'round_end' && localState !== 'round_end') {
+                    localState = 'round_end'; ui.modal.style.display = 'none';
+                    ui.status.innerText = data.winner === myRole ? "🎉 你搶先答對了！" : "💀 被對手搶走了！";
+                    if (myRole === 'host') setTimeout(() => { db.ref('rooms/' + currentRoom).update({ state: data.currentRound >= data.maxRounds ? 'game_over' : 'start_round' }); }, 1500);
+                }
+                else if (data.state === 'game_over') {
+                    ui.modal.style.display = 'none'; ui.spinBtn.disabled = true;
+                    let myFinal = myRole === 'host' ? data.hostScore : data.guestScore; let oppFinal = myRole === 'host' ? data.guestScore : data.hostScore;
+                    if (myFinal > oppFinal) ui.status.innerText = "🔥 恭喜！你是小瑪莉之神！"; else if (myFinal < oppFinal) ui.status.innerText = "😭 挑戰失敗！"; else ui.status.innerText = "🤝 平手！";
+                }
+            });
+        }
+
+        function showMultiQuiz(options, correctCh, targetEn) {
+            ui.modal.style.display = 'flex'; ui.qTitle.innerText = "最快搶答："; ui.qTarget.innerText = targetEn; ui.qOpts.innerHTML = '';
+            options.forEach(optCh => {
+                let btn = document.createElement('button'); btn.className = 'quiz-btn'; btn.innerText = optCh;
+                btn.onclick = () => {
+                    document.querySelectorAll('.quiz-btn').forEach(b => b.disabled = true);
+                    db.ref('rooms/' + currentRoom).transaction(room => {
+                        if (room && room.state === 'answering') {
+                            if (optCh === correctCh) { room.state = 'round_end'; room.winner = myRole; if (myRole === 'host') room.hostScore += 50; else room.guestScore += 50; } 
+                            else { room.state = 'round_end'; room.winner = myRole === 'host' ? 'guest' : 'host'; if (myRole === 'host') room.guestScore += 50; else room.hostScore += 50; }
+                        }
+                        return room;
+                    });
+                };
+                ui.qOpts.appendChild(btn);
+            });
+        }
+
         let currentPos = 0; 
         function playSpinAnimation(targetIdx, callback) {
             if (!audioCtx) audioCtx = new AudioContext();
